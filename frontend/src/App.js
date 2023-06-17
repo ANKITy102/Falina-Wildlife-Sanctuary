@@ -1,11 +1,13 @@
 import React from 'react'
-
+import {BrowserRouter, Route, Routes} from "react-router-dom"
+import Mainpage from './pages/main/Mainpage'
 const App = () => {
   return (
-    <div>
-      <h1>App</h1>
-      <h2>Mayank Rawat</h2>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Mainpage/>}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
