@@ -2,21 +2,15 @@ import React, { useEffect, useRef, useState } from 'react'
 import st from "./HeroSection.module.css"
 import logo from "../../assets/images/logo.svg"
 import {Link} from "react-router-dom"
-const image1 = "https://images.unsplash.com/photo-1603483080228-04f2313d9f10?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80";
+const image3 = "https://images.unsplash.com/photo-1603483080228-04f2313d9f10?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80";
 const image2 = "https://umcreationjustice.org/wp-content/uploads/sites/702/2022/10/andy-holmes-d9REESouhwI-unsplash-980x653.jpg";
-const image3 = "https://images.unsplash.com/photo-1504173010664-32509aeebb62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=827&q=80";
+const image1 = "https://images.unsplash.com/photo-1504173010664-32509aeebb62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=827&q=80";
 const HeroSection = () => {
   const [activeImage, setActive] = useState(1);
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
-  useEffect(()=>{
-    // console.log("hello")
-    ref1.current.style.left="0px"
-    ref2.current.style.left="100vw"
-    ref3.current.style.left="200vw"
-  },[])
-
+  
   const imageChanger = (num) =>{
     if(activeImage==num){
       return
@@ -40,6 +34,13 @@ const HeroSection = () => {
     }
     setActive(num)
   }
+  useEffect(()=>{
+    // console.log("hello")
+    ref1.current.style.left="0px"
+    ref2.current.style.left="100vw"
+    ref3.current.style.left="200vw"
+   
+  },[])
   return (
     <div className={st.container}>
       <img src={image1} alt="background/image" ref={ref1} className={`${activeImage==1?st.mainBackground:st.backgroundInactive} ${st.contImage} ${st.img}`} />

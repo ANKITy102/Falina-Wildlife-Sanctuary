@@ -17,7 +17,7 @@
     z-index: -100;
 }
 .container .img{
-    transition: opacity 1s cubic-bezier(0.39, 0.575, 0.565, 1), left 1s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    transition: opacity 1.2s cubic-bezier(0.39, 0.575, 0.565, 1), left 1s cubic-bezier(0.175, 0.885, 0.32, 1.1);
   
    /* transition-timing-function:cubic-bezier(0.39, 0.575, 0.565, 1); */
     height: 100%;
@@ -34,7 +34,7 @@
 
     /* width: 0px;  */
     /* left: 100vw; */
-    opacity: 0.4;
+    opacity: 0.7;
   
     
 }
