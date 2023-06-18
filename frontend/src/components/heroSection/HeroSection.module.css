@@ -164,6 +164,7 @@ margin-left: 20px;
     cursor: pointer;
     border: none;
     font-weight: 200;
+    background-color: white;
 }
 .imageChanger{
     display: flex;
