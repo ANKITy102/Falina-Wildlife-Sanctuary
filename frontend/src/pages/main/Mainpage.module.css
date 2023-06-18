@@ -1,0 +1,26 @@
+.explore{
+    height: 16vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    background-color: transparent;
+    margin-top: -8vh;
+}
+.roundedButton{
+    position: relative;
+    border-radius: 50% ;
+    background-color: white;
+    border: 1.3px solid black;
+    height: 100%;
+    width: 16vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    gap: 3px;
+}
+.exploreIcon{
+    position: absolute;
+    bottom: 2.5vh;
+}

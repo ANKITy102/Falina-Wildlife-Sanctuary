@@ -47,7 +47,7 @@ export default function Footer() {
                 </div>
             </div>
         </div>
-        <hr class="h-px mt-5 mb-5 bg-gray-200 border-0 dark:bg-gray-500 mx-[100px]"></hr>
+        <hr className="h-px mt-5 mb-5 bg-gray-200 border-0 dark:bg-gray-500 mx-[100px]"></hr>
         <div className='flex flex-row justify-between mx-[100px] mb-[60px]'>
             <div>
                 <p className='text-gray-500 font-light text-sm'>©2023 Falina Wildlife Sanctuary. All right reserved.</p>

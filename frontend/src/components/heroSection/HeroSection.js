@@ -12,22 +12,22 @@ const HeroSection = () => {
   const ref3 = useRef(null);
   
   const imageChanger = (num) =>{
-    if(activeImage==num){
+    if(activeImage===num){
       return
     }
-    if(num==1){
+    if(num===1){
       
       ref1.current.style.left="0px"
       ref2.current.style.left="100vw"
       ref3.current.style.left="200vw"
     }
-    if(num==2){
+    if(num===2){
       
       ref2.current.style.left="0vw"
       ref1.current.style.left="-100vw"
       ref3.current.style.left="100vw"
     }
-    if(num==3){
+    if(num===3){
       ref3.current.style.left="0vw"
       ref1.current.style.left="-200vw"
       ref2.current.style.left="-100vw"
@@ -43,9 +43,9 @@ const HeroSection = () => {
   },[])
   return (
     <div className={st.container}>
-      <img src={image1} alt="background/image" ref={ref1} className={`${activeImage==1?st.mainBackground:st.backgroundInactive} ${st.contImage} ${st.img}`} />
-      <img src={image2} alt="background/image" ref={ref2} className={`${activeImage==2?st.mainBackground:st.backgroundInactive} ${st.contImage} ${st.img}`} />
-      <img src={image3} alt="background/image" ref={ref3} className={`${activeImage==3?st.mainBackground:st.backgroundInactive} ${st.contImage} ${st.img}`} />
+      <img src={image1} alt="background" ref={ref1} className={`${activeImage===1?st.mainBackground:st.backgroundInactive} ${st.contImage} ${st.img}`} />
+      <img src={image2} alt="background" ref={ref2} className={`${activeImage===2?st.mainBackground:st.backgroundInactive} ${st.contImage} ${st.img}`} />
+      <img src={image3} alt="background" ref={ref3} className={`${activeImage===3?st.mainBackground:st.backgroundInactive} ${st.contImage} ${st.img}`} />
       <nav className={st.navbar}>
         <div className={st.logo}>
             <img src={logo} alt="logo" />
@@ -78,11 +78,11 @@ const HeroSection = () => {
             </div>
             <div className={st.secondHalf}>
               <div className={st.imageChanger}>
-                <button className={`${st.button1} ${activeImage==1? st.active: ""}`} onClick={()=>{imageChanger(1)}}>1</button>
+                <button className={`${st.button1} ${activeImage===1? st.active: ""}`} onClick={()=>{imageChanger(1)}}>1</button>
                 <div className={st.line}></div>
-                <button className={`${st.button1} ${activeImage==2? st.active: ""}`}  onClick={()=>{imageChanger(2)}}>2</button>
+                <button className={`${st.button1} ${activeImage===2? st.active: ""}`}  onClick={()=>{imageChanger(2)}}>2</button>
                 <div className={st.line}></div>
-                <button className={`${st.button1} ${activeImage==3? st.active: ""}`}  onClick={()=>{imageChanger(3)}}>3</button>
+                <button className={`${st.button1} ${activeImage===3? st.active: ""}`}  onClick={()=>{imageChanger(3)}}>3</button>
               </div>
             </div>
       </div>
