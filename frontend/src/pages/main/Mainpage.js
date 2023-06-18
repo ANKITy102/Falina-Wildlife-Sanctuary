@@ -4,6 +4,7 @@ import Footer from '../../components/footer/Footer'
 import Aboutus from '../../components/mainpageAboutus/Aboutus'
 import {BsChevronDown} from "react-icons/bs"
 import st from "./Mainpage.module.css"
+import FantasticFalina from '../../components/fantasticFalina/FantasticFalina'
 const Mainpage = () => {
   return (
     <div>
@@ -12,11 +13,10 @@ const Mainpage = () => {
         <div className={st.roundedButton}>
           <div>Explore</div>
           <div className={st.exploreIcon}><BsChevronDown/></div>
-          
         </div>
-
       </div>
       <Aboutus/>
+      <FantasticFalina/>
       <Footer/>
     </div>
   )

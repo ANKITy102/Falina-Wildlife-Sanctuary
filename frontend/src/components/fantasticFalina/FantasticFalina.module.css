@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Geologica:wght@100;200&family=Poppins:wght@300;500&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Courgette&family=Geologica:wght@100;200&family=Passion+One&family=Poppins:wght@300;500&display=swap'); */
+.qouteStyle{
+    font-family: 'Courgette', cursive;
+    /* font-size: 3px; */
+    /* font-family: 'Passion One', cursive; */
+}
+.slidingCardCont{
+    position: relative;
+    overflow-x: hidden;
+}
+.slidingCard1{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* box-shadow:10px 5px 5px red; */
+    /* margin: 10px; */
+    /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 0 10px 2px #0000001a; */
+    position: absolute;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); */
+    transition: all 1.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transform-origin:left;
+    
+}
+.slidingCardInactive{
+
+}
+.image1,.image2, .image3{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 0 10px 2px rgba(0, 0, 0, 0.1); */
+}
+.image1{
+    background-image: url("https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=327&q=80");
+}
+.image2{
+    background-image: url("https://images.unsplash.com/photo-1455218873509-8097305ee378?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80");
+}
+.image3{
+    background-image: url("https://images.unsplash.com/photo-1603483080228-04f2313d9f10?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=465&q=80");
+}
