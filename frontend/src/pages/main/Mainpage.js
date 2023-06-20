@@ -5,6 +5,7 @@ import Aboutus from '../../components/mainpageAboutus/Aboutus'
 import {BsChevronDown} from "react-icons/bs"
 import st from "./Mainpage.module.css"
 import FantasticFalina from '../../components/fantasticFalina/FantasticFalina'
+import TripPlan from '../../components/tripPlanSection/TripPlan'
 const Mainpage = () => {
   return (
     <div>
@@ -17,6 +18,7 @@ const Mainpage = () => {
       </div>
       <Aboutus/>
       <FantasticFalina/>
+      <TripPlan/>
       <Footer/>
     </div>
   )

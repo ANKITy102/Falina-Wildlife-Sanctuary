@@ -17,7 +17,7 @@ import com.webdproject.backend.users.services.UserService;
 @RestController
 @RequestMapping("/user")
 public class UserControllers {
-     @Autowired
+    @Autowired
     private UserService userService;
     private APIReturnModel apiReturnModel;
     private Vector<UserModel> userVec;
@@ -32,12 +32,13 @@ public class UserControllers {
     public ResponseEntity<APIReturnModel> createUser(@RequestBody UserModel userModel) {
         apiReturnModel = new APIReturnModel();
         userVec = new Vector<>();
+        System.out.println("hello");
         try {
             UserModel user = this.userService.createUser(userModel);
             userVec.add(user);
             apiReturnModel.setData(userVec);
             apiReturnModel.setStatus("Success");
-            apiReturnModel.setMessage("All users");
+            apiReturnModel.setMessage("Your data");
             apiReturnModel.setCount(userVec.size());
         } catch (Exception e) {
             e.printStackTrace();
