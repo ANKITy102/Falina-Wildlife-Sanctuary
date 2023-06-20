@@ -53,7 +53,7 @@ const HeroSection = () => {
         </div>
         <div className={st.navLinks}>
             <ul>
-              <li><Link to="/">Home</Link></li>
+              <li><Link to="/home">Home</Link></li>
               <li><Link to="/packages">Packages</Link></li>
               <li><Link to="/gallery">Gallery</Link></li>
               <li><Link to="/contactus">Contact Us</Link></li>
