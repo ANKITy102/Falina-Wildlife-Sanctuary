@@ -6,6 +6,7 @@ import {BsChevronDown} from "react-icons/bs"
 import st from "./Mainpage.module.css"
 import FantasticFalina from '../../components/fantasticFalina/FantasticFalina'
 import TripPlan from '../../components/tripPlanSection/TripPlan'
+import TourFalina from '../../components/tourFalinaSection/TourFalina'
 const Mainpage = () => {
   return (
     <div>
@@ -19,6 +20,7 @@ const Mainpage = () => {
       <Aboutus/>
       <FantasticFalina/>
       <TripPlan/>
+      <TourFalina/>
       <Footer/>
     </div>
   )
