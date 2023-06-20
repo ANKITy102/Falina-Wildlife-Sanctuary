@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.webdproject.backend.users.apimodels.APIReturnModel;
+import com.webdproject.backend.users.models.LoginModel;
 import com.webdproject.backend.users.models.UserModel;
 import com.webdproject.backend.users.services.UserService;
 
@@ -28,7 +29,7 @@ public class UserControllers {
         return s;
     }
 
-    @PostMapping("/")
+    @PostMapping("/signup")
     public ResponseEntity<APIReturnModel> createUser(@RequestBody UserModel userModel) {
         apiReturnModel = new APIReturnModel();
         userVec = new Vector<>();
@@ -43,7 +44,29 @@ public class UserControllers {
         } catch (Exception e) {
             e.printStackTrace();
             apiReturnModel.setStatus("fail");
-            apiReturnModel.setMessage("Something went Wrong !!");
+            apiReturnModel.setMessage(e.getMessage());
+            apiReturnModel.setCount(0);
+        }
+        return ResponseEntity.ok(apiReturnModel);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<APIReturnModel> loginUser(@RequestBody LoginModel loginModel) {
+
+        apiReturnModel = new APIReturnModel();
+        userVec = new Vector<>();
+        System.out.println("hello");
+        try {
+            UserModel user = this.userService.loginUser(loginModel);
+            userVec.add(user);
+            apiReturnModel.setData(userVec);
+            apiReturnModel.setStatus("Success");
+            apiReturnModel.setMessage("Your data");
+            apiReturnModel.setCount(userVec.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+            apiReturnModel.setStatus("fail");
+            apiReturnModel.setMessage(e.getMessage());
             apiReturnModel.setCount(0);
         }
         return ResponseEntity.ok(apiReturnModel);
