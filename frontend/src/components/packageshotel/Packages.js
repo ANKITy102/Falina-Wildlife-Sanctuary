@@ -13,10 +13,8 @@ export default function Packages() {
       <nav className={st.navbar}>
         <div className={st.navLinks1}>
             <ul>
-              <li><Link to="/">Home</Link></li>
+              <li><Link to="/home">Home</Link></li>
               <li><Link to="/gallery">Gallery</Link></li>
-              {/* <li><Link to="/contactus">Contact Us</Link></li>
-              <li><Link to="/aboutus">About Us</Link></li> */}
             </ul>
         </div>
               <div className={st.logo}>
@@ -25,8 +23,6 @@ export default function Packages() {
               </div>
         <div className={st.navLinks2}>
             <ul>
-              {/* <li><Link to="/">Home</Link></li>
-              <li><Link to="/gallery">Gallery</Link></li> */}
               <li><Link to="/contactus">Contact Us</Link></li>
               <li><Link to="/aboutus">About Us</Link></li>
             </ul>
@@ -89,7 +85,7 @@ export default function Packages() {
                 <div className={st.textbox}>/Per Adult</div>
             </div>
             <div className={st.box}>
-                <div className={st.dprc}>₹1100</div>
+                <div className={st.dprc}>₹2000</div>
                 <div className={st.textbox}>/Per Child</div>
             </div><br></br>
             <hr className={st.dlinepckg}/><br></br>

@@ -2,8 +2,8 @@ import React from 'react'
 import {BrowserRouter, Route, Routes} from "react-router-dom"
 import Mainpage from './pages/main/Mainpage'
 import Packages from './components/packageshotel/Packages'
-import Contactus from "./pages/ContactUs/ContactUs"
-import Signup from "./pages/signup/Signup"
+import Signup from './pages/signup/Signup'
+import Contactus from './pages/ContactUs/ContactUs'
 const App = () => {
   return (
     <BrowserRouter>

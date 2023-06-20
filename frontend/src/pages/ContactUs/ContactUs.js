@@ -38,7 +38,7 @@ function contactus (){
                         <input className={sks.sname} type='text'/>
                         </div>
                         <div className={sks.number}><label>Phone Number</label></div>
-                        <input className={sks.fields} type="number"/>
+                        <input className={sks.fields} type="tel"/>
                         <div className={sks.email}><label>Email</label></div>
                         <input className={sks.fields} type="email"/>
                         <div className={sks.query}><label>Your Query</label></div>

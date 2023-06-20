@@ -26,8 +26,8 @@ const Signup = () => {
       </div>
       <div className={st.signup_heading}>Create Account</div>
       <div className={st.signup_login}>
-        <button className={st.signup_login__buttons} ><FaGoogle id={st.google_icon} size={20}/>Sign up with Google</button>
-        <button className={st.signup_login__buttons}><FaFacebook id={st.facebook_icon} size={20}/>Sign up with Facebook</button>
+        <button className={st.signup_login__buttons1} ><FaGoogle id={st.google_icon} size={20}/>Sign up with Google</button>
+        <button className={st.signup_login__buttons2}><FaFacebook id={st.facebook_icon} size={20}/>Sign up with Facebook</button>
       </div>
       <hr className={st.signup_line}/>
       <div className={st.signup_form}>
@@ -40,7 +40,7 @@ const Signup = () => {
           <input type='email' className={st.signup_form__type2} value={email} onChange={(e) => setemail(e.target.value)} placeholder='Enter your email' required/>
         </div>
         <div className={st.signup_form__line}>
-          <input type='password' pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]){8,}$" className={st.signup_form__type2} value={pass} onChange={(e) => setpass(e.target.value)} placeholder='Enter your password' required/>
+          <input type='password' className={st.signup_form__type2} value={pass} onChange={(e) => setpass(e.target.value)} placeholder='Enter your password' required/>
         </div>
         <div className={st.signup_form__line}>
           <input type='tel' pattern="[0-9]{10}" className={st.signup_form__type2} value={no} onChange={(e) => setno(e.target.value)} placeholder='Enter your phone number' required/>
