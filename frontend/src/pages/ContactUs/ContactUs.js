@@ -42,7 +42,7 @@ function Contactus (){
                         <input className={sks.fields} type="email"/>
                         <div className={sks.query}><label>Your Query</label></div>
                         <input className={sks.fieldsquery} type="text"/>
-                        <div><button>Send Query</button></div>
+                        <div><button className={sks.button}>Send Query</button></div>
                     </form>
                 </div>
             </div>

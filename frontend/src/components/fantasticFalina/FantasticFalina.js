@@ -22,7 +22,7 @@ const FantasticFalina = () => {
         ref3.current.style.transform = "rotateY(" + 60 + "deg)";
     }, [])
     const forwordMove = () => {
-        if (activeCard == 1) {
+        if (activeCard === 1) {
             ref2.current.style.left = "20vw";
             ref2.current.style.scale = "1";
             ref2.current.style.transform = "rotateY(" + 0 + "deg)";
@@ -34,7 +34,7 @@ const FantasticFalina = () => {
             ref3.current.style.transform = "rotateY(" + -45 + "deg)";
             setActiveCard(2);
         }
-        else if (activeCard == 2) {
+        else if (activeCard === 2) {
             ref3.current.style.left = "20vw";
             ref3.current.style.scale = "1";
             ref3.current.style.transform = "rotateY(" + 0 + "deg)";
@@ -46,15 +46,15 @@ const FantasticFalina = () => {
             ref2.current.style.transform = "rotateY(" + -45 + "deg)";
             setActiveCard(3);
         }
-        else if (activeCard == 3) {
+        else if (activeCard === 3) {
 
         }
     }
     const moveBackward =()=>{
-        if(activeCard==1){
+        if(activeCard===1){
 
         }
-        else if(activeCard==2){
+        else if(activeCard===2){
             ref1.current.style.left = "20vw";
             ref1.current.style.scale = "1";
             ref1.current.style.transform = "rotateY(" + 0 + "deg)";
@@ -69,7 +69,7 @@ const FantasticFalina = () => {
             ref3.current.style.transform = "rotateY(" + 60 + "deg)";
             setActiveCard(1)
         }
-        else if(activeCard==3){
+        else if(activeCard===3){
             ref2.current.style.left = "20vw";
             ref2.current.style.scale = "1";
             ref2.current.style.transform = "rotateY(" + 0 + "deg)";
@@ -93,7 +93,7 @@ const FantasticFalina = () => {
                     <div className={`w-1/3 h-full ${st.image1}`}></div>
                     <div className={`w-2/3 flex flex-col px-9 pb-16 gap-5 justify-end h-full `}>
                         <div className="text-2xl font-bold">Tigers of Falina</div>
-                        <div className="cardContent text-sm text-gray-500">Tigers of Falina
+                        <div className="cardContent text-sm text-gray-500">Tigers of
 
                             Falina is also one of the oldest Tiger reserves in the country. It has been ever expanding and in 1991, a buffer zone was added and post  that, it became one of the largest wildlife sanctuaries in India. Due to the healthy population of the wild today, Falina is one of the best-preserved parks with 164 numbers of tigers and over 600 elephants.</div>
                     </div>
@@ -101,19 +101,20 @@ const FantasticFalina = () => {
                 <div className={`flex h-[95%] w-3/5 ${st.slidingCard1}`} ref={ref2}>
                     <div className={`w-1/3 h-full ${st.image2}`}></div>
                     <div className={`w-2/3 flex flex-col px-9 pb-16 gap-5 justify-end h-full `}>
-                        <div className="text-2xl font-bold">Tigers of Falina</div>
-                        <div className="cardContent text-sm text-gray-500">Tigers of Falina
+                        <div className="text-2xl font-bold">History of Falina</div>
+                        <div className="cardContent text-sm text-gray-500">
 
-                            Falina is also one of the oldest Tiger reserves in the country. It has been ever expanding and in 1991, a buffer zone was added and post  that, it became one of the largest wildlife sanctuaries in India. Due to the healthy population of the wild today, Falina is one of the best-preserved parks with 164 numbers of tigers and over 600 elephants.</div>
+                        History of Falina It was named as Hailey National Park when founded way back in 1936. William Malcom Hailey was the governor of the united province and it was after him that it was named. In the decade of the 50's, it was known as Ramganga. Later the name was changed to Falina Wildlife Sanctuary.</div>
                     </div>
                 </div>
                 <div className={`flex h-[95%] w-3/5 ${st.slidingCard1}`} ref={ref3}>
                     <div className={`w-1/3 h-full ${st.image3}`}></div>
                     <div className={`w-2/3 flex flex-col px-9 pb-16 gap-5 justify-end h-full `}>
-                        <div className="text-2xl font-bold">Tigers of Falina</div>
-                        <div className="cardContent text-sm text-gray-500">Tigers of Falina
+                        <div className="text-2xl font-bold">Fauna of Falina</div>
+                        <div className="cardContent text-sm text-gray-500">
 
-                            Falina is also one of the oldest Tiger reserves in the country. It has been ever expanding and in 1991, a buffer zone was added and post  that, it became one of the largest wildlife sanctuaries in India. Due to the healthy population of the wild today, Falina is one of the best-preserved parks with 164 numbers of tigers and over 600 elephants.</div>
+
+Falina Wildilife Sanctuary is an ideal home for many majestic animals like the Royal Bengal Tiger, Asiatic Elephant and many other wild animals. Some of the other known mammal species residing in Falina include Asiatic Black Bear, Hog Deer, Walking Deer, Sambhar, Sloth Beer, Yellow-throated marten, etc. </div>
                     </div>
                 </div>
 
