@@ -1,6 +1,6 @@
 import sks from './ContactUs.module.css';
 
-function contactus (){
+function Contactus (){
     return(
         <>
         <div className={sks.container}>
@@ -51,4 +51,4 @@ function contactus (){
     );
 }
 
-export default contactus;
+export default Contactus;
