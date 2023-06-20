@@ -1,6 +1,7 @@
+import React from 'react'
 import sks from './ContactUs.module.css';
 
-function Contactus (){
+function contactus (){
     return(
         <>
         <div className={sks.container}>
@@ -51,4 +52,4 @@ function Contactus (){
     );
 }
 
-export default Contactus;
+export default contactus;
