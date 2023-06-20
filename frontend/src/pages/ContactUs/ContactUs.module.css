@@ -118,10 +118,10 @@
 .name{
   position: relative;
   top:9px;
-  right:70px;
-  height:30px;
+  right:73px;
+  height:50px;
   border-radius: 7px;
-  width:44%;
+  width:45%;
   padding:12px;
   font-size: large;
   border: 2px solid black;
@@ -130,19 +130,19 @@
   position: relative;
   top:8.3px;
   right:67px;
-  height:30px;
+  height:50px;
   border-radius: 7px;
-  width:46%;
+  width:45%;
   border: 2px solid black;
   padding:12px;
   font-size: large;
 }
 .fields{
-  width:89.5%;
+  width:92.48%;
   padding:12px;
   border: 2px solid black;
   border-radius: 7px;
-  height:30px;
+  height:50px;
   font-size: large;
 }
 .number{
@@ -185,7 +185,7 @@
   font-size: small;
 }
 .fieldsquery{
-  width:89.5%;
+  width:92.48%;
   padding:12px;
   border: 2px solid black;
   border-radius: 7px;
