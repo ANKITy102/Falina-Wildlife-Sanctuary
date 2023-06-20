@@ -8,12 +8,12 @@
 .container{
   /* border: 2px solid red; */
   width:100%;
-  height:105vh;
+  height:100vh;
 }
 .nav{
   position: relative;
   /* border:2px solid red; */
-  height:11%;
+  height:8.5%;
   display:flex;
 }
 .item{
@@ -184,7 +184,7 @@
   width:9%;
   font-size: small;
 }
-.fields-query{
+.fieldsquery{
   width:89.5%;
   padding:12px;
   border: 2px solid black;
