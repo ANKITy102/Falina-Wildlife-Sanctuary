@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import st from "./HeroSection.module.css"
 import logo from "../../assets/images/logo.svg"
 import {Link} from "react-router-dom"
-const image3 = "https://images.unsplash.com/photo-1603483080228-04f2313d9f10?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80";
+const image3 = "https://images.unsplash.com/photo-1569449047196-cebeecbc6b6b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA2fHx3aWxkbGlmZXxlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60";
 const image2 = "https://images.unsplash.com/photo-1571953358806-85dbbe9f6870?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80";
 const image1 = "https://images.unsplash.com/photo-1504173010664-32509aeebb62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=827&q=80";
 const HeroSection = () => {
