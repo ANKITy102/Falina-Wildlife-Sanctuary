@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+*{
+  font-weight: 100px;
+  font-family: 'Poppins';
+  padding:0;
+  margin:0;
+}
+.container{
+  /* border: 2px solid red; */
+  width:100%;
+  height:120vh;
+}
+.nav{
+  position: relative;
+  /* border:2px solid red; */
+  height:8.5%;
+  display:flex;
+}
+.item{
+  position: relative;
+  /* border: 2px solid red; */
+  width:20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size:large;
+  text-decoration: none;
+}
+.banner{
+  overflow: hidden;
+  font-size: 70px;
+  justify-content:center;
+  display: flex;
+  align-items: center;
+  /* border: 2px solid red; */
+  height:28%;
+  color: #252525;
+  font-weight:bolder;
+  background-image: url("../../assets/images/mountains.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+}
+.main{
+  /* border: 0.5px solid black; */
+  justify-content:center;
+  display: flex;
+  width:99.9%;
+  height:82%;
+}
+.title{
+  /* border: 1px solid red; */
+  width:20%;
+  display: flex;
+  flex-direction: column;
+}
+.mtitle{
+  /* border: 0.5px solid blue; */
+  width:100%;
+  height:33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.num{
+  color:gray;
+  font-weight: bolder;
+  position: relative;
+  right:59px;
+}
+.num1{
+  right:64px;
+}
+.num2{
+  right:57px;
+}
+.details{
+  font-weight:bolder;
+}
+.form{
+  width:50%;
+  /* border:1px solid blue; */
+}
+.naam{
+  display: flex;
+  width:100%;
+  height:120px;
+  position: relative;
+  /* border:1px solid green; */
+}
+.naam2{
+  display: flex;
+  width:100%;
+  height:120px;
+  position: relative;
+  /* border:1px solid green; */
+}
+.name{
+  color: gray;
+  position: relative;
+  height:20px;
+  left:40px;
+  top:20px;
+  width:75px;
+  z-index: 1;
+  font-size:small;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+.phone{
+  color: gray;
+  position: relative;
+  height:10px;
+  left:50px;
+  top:25px;
+  width:75px;
+  z-index: 1;
+  font-size:small;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+.fname{
+  position: relative;
+  top:30px;
+  right:35px;
+  height: 20px;
+  width:60%;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding:12px;
+  font-size: large;
+}
+.fname:focus{
+  border: 1px solid gray;
+  outline:none !important;
+}
+.number{
+  position: relative;
+  top:30px;
+  right:43px;
+  height: 20px;
+  width:60%;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding:12px;
+  font-size: large;
+}
+.number:focus{
+  border: 1px solid gray;
+  outline:none !important;
+}
+.email{
+  color: gray;
+  position: relative;
+  height:20px;
+  left:35px;
+  top:20px;
+  width:50px;
+  z-index: 1;
+  font-size:small;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+.mail{
+  position: relative;
+  top:30px;
+  right:35px;
+  height: 20px;
+  width:88.9%;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding:12px;
+  font-size: large;
+}
+.mail:focus{
+  border: 1px solid gray;
+  outline:none !important;
+}
+.pin{
+  color: gray;
+  position: relative;
+  height:20px;
+  left:44px;
+  top:20px;
+  width:102px;
+  z-index: 1;
+  font-size:small;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+.code{
+  position: relative;
+  top:30px;
+  right:50px;
+  height: 20px;
+  width:60%;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding:12px;
+  font-size: large;
+}
+.code:focus{
+  border: 1px solid gray;
+  outline:none !important;
+}
+.country{
+  color: gray;
+  position: relative;
+  height:10px;
+  left:55px;
+  top:25px;
+  width:90px;
+  z-index: 1;
+  font-size:small;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+.desh{
+  position: relative;
+  top:30px;
+  right:43px;
+  height: 20px;
+  width:60%;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding:12px;
+  font-size: large; 
+}
+.desh:focus{
+  border: 1px solid gray;
+  outline:none !important;
+}
+.add{
+  color: gray;
+  position: relative;
+  height:20px;
+  left:45px;
+  top:20px;
+  width: 65px;
+  z-index: 1;
+  font-size:small;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+.address{
+  position: relative;
+  top:30px;
+  right:42px;
+  height: 20px;
+  width:100%;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding:12px;
+  font-size: large;
+}
+.address:focus{
+  border: 1px solid gray;
+  outline:none !important;
+}
+.amt{
+  color: gray;
+  position: relative;
+  height:20px;
+  left:45px;
+  top:20px;
+  width: 65px;
+  z-index: 1;
+  font-size:small;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+.paisa{
+  position: relative;
+  top:30px;
+  right:42px;
+  height: 20px;
+  width:100%;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding:12px;
+  font-size: large;
+}
+.paisa:focus{
+  border: 1px solid gray;
+  outline:none !important;
+}
+.pack{
+  color: gray;
+  position: relative;
+  height:20px;
+  left:45px;
+  top:20px;
+  width: 68px;
+  z-index: 1;
+  font-size:small;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+.package{
+  position: relative;
+  top:30px;
+  right:43px;
+  height: 20px;
+  width:100%;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding:12px;
+  font-size: large;
+}
+.package:focus{
+  border: 1px solid gray;
+  outline:none !important;
+}
+.button{
+  display: flex;
+  justify-content: space-around;
+  height:150px;
+}
+.btn{
+  background-color: black;
+  color: aliceblue;
+  width:43%;
+  position: relative;
+  font-size: larger;
+  border-radius: 7px;
+  height:45px;
+  right:12px;
+  cursor: pointer;
+}
