@@ -7,11 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.webdproject.backend.users.apimodels.APIReturnModel;
 import com.webdproject.backend.users.models.LoginModel;
+import com.webdproject.backend.users.models.UserInfoModel;
 import com.webdproject.backend.users.models.UserModel;
 import com.webdproject.backend.users.services.UserService;
 
@@ -21,7 +23,7 @@ public class UserControllers {
     @Autowired
     private UserService userService;
     private APIReturnModel apiReturnModel;
-    private Vector<UserModel> userVec;
+    private Vector<UserInfoModel> userVec;
 
     @GetMapping("/test")
     public String giveMessage() {
@@ -35,7 +37,7 @@ public class UserControllers {
         userVec = new Vector<>();
         System.out.println("hello");
         try {
-            UserModel user = this.userService.createUser(userModel);
+            UserInfoModel user = this.userService.createUser(userModel);
             userVec.add(user);
             apiReturnModel.setData(userVec);
             apiReturnModel.setStatus("Success");
@@ -57,7 +59,29 @@ public class UserControllers {
         userVec = new Vector<>();
         System.out.println("hello");
         try {
-            UserModel user = this.userService.loginUser(loginModel);
+            UserInfoModel user = this.userService.loginUser(loginModel);
+            userVec.add(user);
+            apiReturnModel.setData(userVec);
+            apiReturnModel.setStatus("Success");
+            apiReturnModel.setMessage("Your data");
+            apiReturnModel.setCount(userVec.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+            apiReturnModel.setStatus("fail");
+            apiReturnModel.setMessage(e.getMessage());
+            apiReturnModel.setCount(0);
+        }
+        return ResponseEntity.ok(apiReturnModel);
+    }
+
+    @GetMapping("/getuser")
+    public ResponseEntity<APIReturnModel> getUserInfo(@RequestHeader("token") String token) {
+
+        apiReturnModel = new APIReturnModel();
+        userVec = new Vector<>();
+        System.out.println("hello");
+        try {
+            UserInfoModel user = this.userService.getUser(token);
             userVec.add(user);
             apiReturnModel.setData(userVec);
             apiReturnModel.setStatus("Success");

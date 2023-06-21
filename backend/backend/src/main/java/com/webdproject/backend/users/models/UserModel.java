@@ -29,9 +29,6 @@ public class UserModel {
     @Column(nullable = false)
     private String phoneNumber;
 
-    // Constructors, getters, and setters
-    private String authToken;
-
     public UserModel() {
     }
 
@@ -89,14 +86,6 @@ public class UserModel {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public void setToken(String token) {
-        this.authToken = token;
-    }
-
-    public String getToken() {
-        return authToken;
     }
 
 }
