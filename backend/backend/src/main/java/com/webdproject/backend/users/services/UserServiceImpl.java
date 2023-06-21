@@ -3,6 +3,7 @@ package com.webdproject.backend.users.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.webdproject.backend.users.authtoken.JwtUtil;
 import com.webdproject.backend.users.exceptionHandlers.InvalidCredentialsException;
 import com.webdproject.backend.users.models.LoginModel;
 import com.webdproject.backend.users.models.UserModel;
@@ -20,10 +21,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserModel createUser(UserModel userModel) {
 
-        if(userModel.getFirstName()==null || userModel.getLastName()==null || userModel.getPassword()==null || userModel.getEmail()==null || userModel.getPhoneNumber()==null){
+        if (userModel.getFirstName() == null || userModel.getLastName() == null || userModel.getPassword() == null
+                || userModel.getEmail() == null || userModel.getPhoneNumber() == null) {
             throw new InvalidCredentialsException("Please fill in all the fields");
         }
-         if (userRepository.existsByEmail(userModel.getEmail())) {
+        if (userRepository.existsByEmail(userModel.getEmail())) {
             throw new InvalidCredentialsException("Email already exists");
         }
 
@@ -34,7 +36,13 @@ public class UserServiceImpl implements UserService {
         String hashedPassword = passwordEncoder.encode(userModel.getPassword());
         // System.out.println(hashedPassword);
         userModel.setPassword(hashedPassword);
-        return this.userRepository.save(userModel);
+        UserModel savedUser = this.userRepository.save(userModel);
+
+        String token = JwtUtil.generateToken(savedUser.getPhoneNumber());
+
+        savedUser.setToken(token);
+        return savedUser;
+
     }
 
     @Override
