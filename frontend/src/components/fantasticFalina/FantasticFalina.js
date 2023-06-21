@@ -83,7 +83,7 @@ const FantasticFalina = () => {
         }
     }
     return (
-        <div className="w-full h-[105vh] pt-20 flex flex-col items-center justify-center">
+        <div className="w-full h-[105vh] pt-20 max-h-[750px] flex flex-col items-center justify-center" >
             <h1 className="text-7xl text-center font-semibold"><span className={`${st.qouteStyle}`}>"</span> Fantastic Falina /</h1>
 
 

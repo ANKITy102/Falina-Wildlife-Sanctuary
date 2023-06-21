@@ -138,7 +138,7 @@ const TripPlan = () => {
         }
     }
     return (
-        <div className="h-screen mt-4 flex flex-col 0 pt-14 justify-between">
+        <div className="h-screen mt-4 flex flex-col 0 pt-14 justify-between max-h-[714px]">
             <h1 className="text-8xl font-bold text-center">Trip Plan</h1>
             <div className="flex h-3/4  pb-5" >
                 <div className="h-full flex flex-col  w-2/5 pl-32 py-4">

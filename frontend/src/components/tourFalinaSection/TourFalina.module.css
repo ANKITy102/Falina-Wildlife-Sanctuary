@@ -1,0 +1,28 @@
+
+.tourMainCont{
+    position: relative;
+    overflow-x: hidden;
+}
+
+.tourCard{
+    position: absolute;
+    top:7.5rem;
+    transition:opacity 0.8s ease-in-out;
+   
+}
+.image_1,.image_2,.image_3{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    box-shadow: 5px 5px 15px black;
+}
+.image_1{
+    background-image: url("https://images.unsplash.com/photo-1641236247205-f1b1feb30f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80");
+}
+.image_2{
+    background-image: url("https://images.unsplash.com/photo-1602491453439-8f207298a202?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80");
+}
+.image_3{
+ background-image: url("https://images.unsplash.com/photo-1605211713889-080f454cc6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTV8fHxlbnwwfHx8fHw%3D&w=1000&q=80");
+}

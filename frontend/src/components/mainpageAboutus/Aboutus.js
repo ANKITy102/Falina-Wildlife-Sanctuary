@@ -1,8 +1,9 @@
 import React from 'react'
 
 const Aboutus = () => {
+  
   return (
-    <div className="h-[118vh] flex flex-col items-center">
+    <div className="h-[118vh] flex flex-col items-center max-h-[842px]" >
       <div className="text-8xl text-center mt-14 mb-9 font-bold">About</div>
       <div className="flex flex-row w-full justify-center gap-5 h-4/5">
         <div className=" text-[230px] w-[12%] flex items-start font-normal"><div className="text-white image__1 w-full  h-[64%]  flex justify-center items-center">F</div></div>
