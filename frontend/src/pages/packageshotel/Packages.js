@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import HeroSection from "../heroSection/HeroSection";
 import logo from "../../assets/images/logo.svg";
 import st from "./Packages.module.css";
-import Footer from "../footer/Footer";
+import Footer from "../../components/footer/Footer";
 
 
 export default function Packages() {
