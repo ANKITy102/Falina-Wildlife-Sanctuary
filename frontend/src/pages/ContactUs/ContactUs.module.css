@@ -28,6 +28,7 @@
 }
 .banner{
   overflow: hidden;
+  margin-top: 2rem;
   font-size: 70px;
   justify-content:center;
   display: flex;
