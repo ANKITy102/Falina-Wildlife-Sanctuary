@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { getUserInfo } from './services/authServices'
 import { useDispatch } from 'react-redux'
 import { SET_LOGIN, SET_USER } from './redux/auth/authSlice'
+import AboutUs from './pages/AboutUs/AboutUs'
 // import axios from "axios";
 const App = () => {
   const dispatch =useDispatch();
@@ -52,6 +53,7 @@ const App = () => {
         <Route path="/" element={<Mainpage />} />
         <Route path="/contactus" element={<Contactus />} />
         <Route path="/packages" element={<Packages />} />
+        <Route path='/aboutus' element={<AboutUs/>}/>
       </Routes>
 
     </BrowserRouter>

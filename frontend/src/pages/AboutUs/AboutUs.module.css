@@ -1,0 +1,65 @@
+.container{
+    margin:0px;
+    padding:0px;
+}
+.navbar{
+    margin:0px;
+    padding:0px;
+}
+.banner{
+    margin-top: 2rem;
+    font-size: 100px;
+    justify-content:center;
+    display: flex;
+    margin-left: 0px;
+    margin-right: 0px;
+    align-items: center;
+    height:22rem;
+    color: aliceblue;
+    font-weight: bolder;
+    background-image: url("../../assets/images/mountains.svg");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+  }
+.text1{
+    margin-top:80px;
+    font-size: 70px;
+    font-weight: bolder;
+    margin-left:194px;
+}
+.text2{
+    margin-top:60px;
+    font-size:20px;
+    display:flex;
+    /* height:45vh; */
+    margin-left:160px;
+    font-weight: bolder;
+    margin-right: 160px;
+    margin-bottom:70px;
+    justify-content: space-around;
+}
+.para{
+    width:50%;
+}
+.imagecontainer{
+    display: flex;
+    justify-content: flex-start;
+    /* margin-top: -70px; */
+    display: flex;
+    margin-left: 50px;
+}
+#img1{
+    border-radius: 1000px;
+    border:2px solid black;
+    height:172px;
+    background-color: black;
+}
+#img2{
+    margin-left: -40px;
+    border-radius: 1000px;
+    -webkit-filter: invert(1);
+    /* background-color: black; */
+    height:172px;
+    filter: invert(1);
+}
