@@ -11,7 +11,7 @@ function contactus (){
         <nav className={st.navbar}>
         <div className={st.navLinks1}>
             <ul>
-              <li><Link to="/home">Home</Link></li>
+              <li><Link to="/">Home</Link></li>
               <li><Link to="/gallery">Gallery</Link></li>
             </ul>
         </div>
