@@ -184,13 +184,9 @@ margin-left: 20px;
 .active{
     background-color: white;
     color: black;
-
- 
-    font-weight: bold;
 }
 .line{
     width: 2px;
     background-color: white;
     height: 70px;
-
 }
