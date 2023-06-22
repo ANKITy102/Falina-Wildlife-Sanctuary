@@ -7,17 +7,59 @@ import {
   FaGoogle
 } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
+import { registerUser, validateEmail } from '../../services/authServices'
+import { toast } from 'react-toastify';
+import {useDispatch} from "react-redux";
+import {SET_LOGIN, SET_USER} from "../../redux/auth/authSlice"
+const initialState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  phoneNumber:""
+}
 const Signup = () => {
-  const [fname,setfname]=useState('')
-  const [lname,setlname]=useState('')
-  const [email,setemail]=useState('')
-  const [pass,setpass]=useState('')
-  const [no,setno]=useState('')
+  const [formData, setFormData] = useState(initialState);
+  const dispatch = useDispatch()
   const navigate=useNavigate();
-  const submit=(e)=>{
+  const onChangeHandler = (e) =>{
+    const {name,value} = e.target;
+    setFormData({...formData, [name]:value});
+  }
+  const submitHandler=async(e)=>{
     e.preventDefault();
-    console.log(fname);
-    navigate('/home')
+    const {firstName,lastName,email,password, phoneNumber} = formData;
+    if(!firstName || !lastName || !email || !password || !phoneNumber){
+      return toast.error("All fields are required");
+    }
+    if(!lastName.match(/^(?! )\w{2,}$/) || !firstName.match(/^(?! )\w{2,}$/)){
+      return toast.error("Please give valid name");
+    }
+    if(!validateEmail(email)){
+      return toast.error("Please provide correct email.");
+    }
+    if(!phoneNumber.match(/^\d{10}$/)){
+      return toast.error("Please provide correct number")
+    }
+    if(password.length<8){
+      return toast.error("Passwords length must be up to 8 characters");
+    }
+    const response = await registerUser(formData);
+    if(response.status==='fail'){
+      return toast.error(response.message);
+    }
+    if(response.status==="Success"){
+      const token  = response.data[0].token;
+      console.log(token)
+      localStorage.setItem("token", token);
+      // console.log(response);
+      // console.log(response.data[0]);
+      dispatch(SET_LOGIN(true))
+      dispatch(SET_USER(response.data[0]));
+      navigate('/')
+    }
+    
+
   }
   return (
     <div className={st.signup_background}>
@@ -31,22 +73,22 @@ const Signup = () => {
       </div>
       <hr className={st.signup_line}/>
       <div className={st.signup_form}>
-        <form onSubmit={submit}>
+        <form onSubmit={submitHandler}>
         <div className={st.signup_form__line1}>
-        <input type="text" pattern="^[a-zA-Z]{2,}" className={st.signup_form__type1} value={fname} onChange={(e) => setfname(e.target.value)} placeholder='Enter your first name' required/>
-        <input type="text" pattern="^[a-zA-Z]{2,}" className={st.signup_form__type1}  value={lname} onChange={(e) => setlname(e.target.value)} placeholder='Enter your last name' required/>
+        <input type="text"  className={st.signup_form__type1} name="firstName" value={formData.firstName} onChange={(e)=>{onChangeHandler(e)}} placeholder='Enter your first name'/>
+        <input type="text"  className={st.signup_form__type1} name="lastName"  value={formData.lastName} onChange={(e)=>{onChangeHandler(e)}} placeholder='Enter your last name' />
         </div>
         <div className={st.signup_form__line}>
-          <input type='email' className={st.signup_form__type2} value={email} onChange={(e) => setemail(e.target.value)} placeholder='Enter your email' required/>
+          <input type='text' className={st.signup_form__type2} name="email" value={formData.email} onChange={(e)=>{onChangeHandler(e)}} placeholder='Enter your email' />
         </div>
         <div className={st.signup_form__line}>
-          <input type='password' className={st.signup_form__type2} value={pass} onChange={(e) => setpass(e.target.value)} placeholder='Enter your password' required/>
+          <input type='password' className={st.signup_form__type2} name="password" value={formData.password} onChange={(e)=>{onChangeHandler(e)}} placeholder='Enter your password' />
         </div>
         <div className={st.signup_form__line}>
-          <input type='tel' pattern="[0-9]{10}" className={st.signup_form__type2} value={no} onChange={(e) => setno(e.target.value)} placeholder='Enter your phone number' required/>
+          <input type='text' className={st.signup_form__type2} name="phoneNumber" value={formData.phoneNumber} onChange={(e)=>{onChangeHandler(e)}} placeholder='Enter your phone number' />
         </div>
         <div className={st.signup_form__line2}>
-          <input type='checkbox' className={st.signup_checkbox} required/><span className={st.signup_form__checkbox} >I agree to the <a className='form_green__text'>Terms of Services</a > and <a className='form_green__text'>Privacy Statement</a></span>
+          <input type='checkbox' className={st.signup_checkbox}/><span className={st.signup_form__checkbox} >I agree to the <a className='form_green__text'>Terms of Services</a > and <a className='form_green__text'>Privacy Statement</a></span>
         </div>
         <div className={st.signup_form__line2}>
           <input type='checkbox'  className={st.signup_checkbox} /><span className={st.signup_form__checkbox}>Send me updates via email</span>

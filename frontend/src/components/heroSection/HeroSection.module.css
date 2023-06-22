@@ -42,7 +42,7 @@
 .navbar {
     height: 8rem;
     display: flex;
-
+    width: 100vw;
     /* background-color: red; */
 }
 
@@ -59,17 +59,17 @@
 .navLinks {
     width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: center;
     /* padding-left: 30px; */
 }
 
 .navLinks ul {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     margin-top: 20px;
-    margin-right: 25px;
     gap: 50px;
-
+    width: 100%;
 }
 
 .navLinks ul li {
@@ -87,6 +87,39 @@
     line-height: 38px;
     text-align: center;
     color: white;
+}
+.authButtonli{
+    /* margin-left: 6vw; */
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    right: 0px;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-right: 10px;
+    margin-top: -10px;
+    
+}
+.signUPLink{
+     /* background-color: wheat; */
+     
+    padding: 4px 15px;
+    border-radius: 10px;
+    background: linear-gradient(95.92deg, rgba(8, 32, 249, 0.94) 61.72%, #e9ad16 101.27%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    border: 1px solid blueviolet;
+}
+.loginLink{
+    background: linear-gradient(95.92deg, rgba(252, 7, 232, 0.94) 61.72%, rgb(22, 125, 251) 101.27%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    padding: 4px 15px;
+    border-radius: 10px;
+    border: 1px solid pink;
+   
 }
 
 .information {
@@ -132,6 +165,16 @@
     color: #FFFFFF;
 
     mix-blend-mode: normal;
+}
+.userName{
+    font-size: 30px;
+    font-weight: 700;
+    padding: 5px 13px;
+    font-family: cursive;
+}
+.hi{
+    font-weight: 700;
+    font-family: cursive;
 }
 
 .info {
