@@ -1,0 +1,54 @@
+toast.info('🦄 Wow so easy!', {
+position: "top-right",
+autoClose: 2000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "dark",
+});
+
+toast.success('🦄 Wow so easy!', {
+position: "top-right",
+autoClose: 2000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "dark",
+});
+
+toast.warn('🦄 Wow so easy!', {
+position: "top-right",
+autoClose: 2000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "dark",
+});
+
+toast.error('🦄 Wow so easy!', {
+position: "top-right",
+autoClose: 2000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "dark",
+});
+
+toast('🦄 Wow so easy!', {
+position: "top-right",
+autoClose: 2000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "dark",
+});

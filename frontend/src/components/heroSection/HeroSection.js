@@ -5,13 +5,17 @@ import { Link } from "react-router-dom";
 import image2 from "../../assets/images/MPimg1.jpg"
 import image1 from "../../assets/images/MPimg2.jpg"
 import image3 from "../../assets/images/MPimg3.jpg"
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn, selectName } from "../../redux/auth/authSlice";
 
 const HeroSection = () => {
   const [activeImage, setActive] = useState(1);
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
-
+  const isLoggedIn = useSelector(selectIsLoggedIn)
+  // const isLoggedIn = true;
+  const userName = useSelector(selectName);
   const imageChanger = (num) => {
     if (activeImage === num) {
       return;
@@ -64,14 +68,14 @@ const HeroSection = () => {
           activeImage === 3 ? st.mainBackground : st.backgroundInactive
         } ${st.contImage} ${st.img}`}
       />
-      <nav className={st.navbar}>
         <div className={st.logo}>
           <img src={logo} alt="logo" />
         </div>
+      <nav className={st.navbar}>
         <div className={st.navLinks}>
           <ul>
             <li>
-              <Link to="/home">Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <Link to="/packages">Packages</Link>
@@ -84,6 +88,19 @@ const HeroSection = () => {
             </li>
             <li>
               <Link to="/aboutus">About Us</Link>
+            </li>
+            <li className={st.authButtonli}>
+             {isLoggedIn?(<div className={st.userName}><span className={st.hi}>Hi,</span> {userName}</div>):(<> <Link to="/login" className={`${st.signUPLink}`} style={{
+                color:"#205fec",
+                fontSize:"25px",
+                fontWeight:"600"
+              }}>Login</Link>
+              <Link to="/signup" className={`${st.loginLink}`} style={{
+                color:"orangered",
+                fontSize:"25px",
+                fontWeight:"600"
+              }}>Sign Up</Link>
+              </>)}
             </li>
           </ul>
         </div>

@@ -36,3 +36,7 @@
   background-image: url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80");
 
 }
+.Toastify__toast{
+  font-size: 15px;
+  font-weight: 200;
+}
