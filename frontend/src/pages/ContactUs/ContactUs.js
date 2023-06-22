@@ -3,29 +3,30 @@ import sks from './ContactUs.module.css';
 import st from '../packageshotel/Packages.module.css'
 import { Link } from 'react-router-dom';
 import logo from "../../assets/images/logo.svg";
+import Footer from '../../components/footer/Footer';
 
 function contactus (){
     return(
         <>
         <div className={sks.container}>
-        <nav className={st.navbar}>
-        <div className={st.navLinks1}>
-            <ul>
-              <li><Link to="/home">Home</Link></li>
-              <li><Link to="/gallery">Gallery</Link></li>
-            </ul>
-        </div>
-              <div className={st.logo}>
-                  <img src={logo} alt="logo" />
-                  
-              </div>
-        <div className={st.navLinks2}>
-            <ul>
-              <li><Link to="/contactus">Contact Us</Link></li>
-              <li><Link to="/aboutus">About Us</Link></li>
-            </ul>
-        </div>
-      </nav>
+            <nav className={st.navbar}>
+            <div className={st.navLinks1}>
+                <ul>
+                <li><Link to="/home">Home</Link></li>
+                <li><Link to="/gallery">Gallery</Link></li>
+                </ul>
+            </div>
+                <div className={st.logo}>
+                    <img src={logo} alt="logo" />
+                    
+                </div>
+            <div className={st.navLinks2}>
+                <ul>
+                <li><Link to="/packages">Packages</Link></li>
+                <li><Link to="/aboutus">About Us</Link></li>
+                </ul>
+            </div>
+            </nav>
             <div className={sks.banner}>
                 <p>Contact Us</p>
             </div>
@@ -61,7 +62,9 @@ function contactus (){
                     </form>
                 </div>
             </div>
+            <hr className={st.line}/>
         </div>
+        <Footer className="my-13"/>
         </>
     );
 }

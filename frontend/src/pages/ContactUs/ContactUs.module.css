@@ -7,6 +7,7 @@
 }
 .container{
   /* border: 2px solid red; */
+  margin-bottom: 2rem;
   width:100%;
   height:100vh;
 }
@@ -44,6 +45,7 @@
 }
 .main{
   display:flex;
+  margin-bottom: 3rem;
   /* border: 2px solid red; */
   height: 61%;
   align-items: center;

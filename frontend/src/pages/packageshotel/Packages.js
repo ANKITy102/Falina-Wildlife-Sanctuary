@@ -102,7 +102,61 @@ export default function Packages() {
             <Link to="/contactus" className={st.dcontact}>Contact Us</Link>
         </div>
       </div>
-      <div className={st.fare}></div>
+      <div className={st.fare}>
+        <div className={st.form}>
+        <p>Book Now</p><br></br><br></br>
+          <form>
+            <div className={st.nameinputs}>
+            <div className={st.label_fname}>First Name</div>
+            <input type="text" className={st.inputbox_fname}></input>
+            <div className={st.label_lname}>Last Name</div>
+            <input type="text" className={st.inputbox_lname}></input>
+            </div>
+            <div className={st.email}>Email Address</div>
+            <input type="text" className={st.inputbox}></input>
+            <div className={st.nameinputs}>
+            <div className={st.label_adult}>Adults</div>
+            <input type="text" className={st.inputbox_adult}></input>
+            <div className={st.label_child}>Children</div>
+            <input type="text" className={st.inputbox_child}></input>
+            </div>
+            <div className={st.nameinputs}>
+            <div className={st.label_adult}>Start</div>
+            <input type="date" className={st.inputbox_adult}></input>
+            <div className={st.label_child}>End</div>
+            <input type="date" className={st.inputbox_child}></input>
+            </div>
+            <div className={st.nameinputs}>
+            <div className={st.label_adult}>Number Of Rooms</div>
+            <select className={st.inputbox_rooms}>
+              <option className={st.rooms}>---No. of Rooms---</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+            <div className={st.label_child}>Number of Days</div>
+            <input type="text" className={st.inputbox_child}></input>
+            </div>
+          </form>
+          <button className={`btn btn-dark ${st.bttn2} my-7`}>Book Trip</button>
+        </div>  
+        <div className={st.calcfare}>
+          <p>Calculate Fare</p>
+          <h6>Enter the number of adult or children you will travel<br></br> with to find fare.</h6>
+          <div className={st.calcinputs}>
+            <div className={st.label_calcadult}>Adults</div>
+            <input type="text" className={st.inputbox_calcadult}></input>
+            <div className={st.label_calcchild}>Childs</div>
+            <input type="text" className={st.inputbox_calcchild}></input>
+            </div>
+            <button className={`btn btn-light ${st.calcbttn}`}>Calculate</button>
+        </div> 
+      </div>
       <hr className={st.line}/>
       </div>
       
