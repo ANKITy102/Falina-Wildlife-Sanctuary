@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Geologica:wght@100;200&family=Poppins:wght@300;500&display=swap");
+
+.navbar {
+  height: 8rem;
+  display: flex;
+
+  /* background-color: red; */
+}
+
+
+.logo img {
+  margin-left: 6.4rem;
+  height: 180px;
+  margin-top: -0.7rem;
+  -webkit-filter: invert(1);
+  filter: invert(1);
+  /* position: relative; */
+}
+
+.navLinks1 {
+  /* width: 100%; */
+  display: flex;
+  justify-content: start;
+  margin-top: 2.5rem;
+  /* padding-left: 30px; */
+}
+
+.navLinks1 ul {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-left: 13rem;
+  gap: 11rem;
+}
+
+.navLinks1 ul li {
+  list-style: none;
+  /* margin-left: 20px; */
+}
+
+.navLinks1 ul li a {
+  list-style: none;
+  text-decoration: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 100;
+  font-size: 25.1197px;
+  line-height: 38px;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.navLinks2 {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  margin-top: 2.5rem;
+  /* padding-left: 30px; */
+}
+
+.navLinks2 ul {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-left: 12rem;
+  gap: 11rem;
+}
+
+.navLinks2 ul li {
+  list-style: none;
+  /* margin-left: 20px; */
+}
+
+.navLinks2 ul li a {
+  list-style: none;
+  text-decoration: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 100;
+  font-size: 25.1197px;
+  line-height: 38px;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.plans{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    background-color: rgb(212, 211, 211);
+    color: black;
+    height: 22rem;
+    width: 100%;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.plans h1{
+    font-size: 5.5rem;
+    font-weight: bold;
+    
+}
+
+.plans p{
+    font-size:1.15rem;
+    font-weight: 100;
+}
+
+.packages{
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 2rem; */
+    background-color: rgb(255, 255, 255);
+    color: black;
+    height: 70rem;
+    width: 100%;
+    gap: 5rem;
+    /* border-top: 2px solid black; */
+    border-bottom: 2px solid black;
+}
+
+.silver{
+    display: flex;
+    flex-direction: column;
+    width: 22rem;
+    height: 43rem;
+    margin-top: -15rem;
+    background-color: rgb(224, 223, 223);
+    box-shadow: 0px 0px 8px 8px rgb(205, 202, 202);
+}
+.gold{
+    display: flex;
+    flex-direction: column;
+    width: 22rem;
+    height: 47rem;
+    margin-top: -11.3rem; 
+    background-color: rgb(247, 234, 160);
+    box-shadow: 0px 0px 8px 8px rgb(205, 202, 202);
+}
+.diamond{
+    display: flex;
+    flex-direction: column;
+    width: 22rem;
+    height: 55rem;
+    margin-top: -3.6rem; 
+    background-color: black;
+    box-shadow: 0px 0px 8px 8px rgb(205, 202, 202);
+}
+
+.silverbkmrk{
+    /* background-color: aquamarine; */
+    margin-left: 1rem;
+    height: 50px;
+    width: 50px;
+    background-image: url('../../assets/images/silverbkmrk.png');
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+
+.text{
+    margin-left:4rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.dtext{
+    margin-left:4rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+}
+.text3{
+    margin-left:4rem;
+    font-size: 1.5rem;
+    font-weight: 550;
+}
+.dtext3{
+    margin-left:4rem;
+    font-size: 1.5rem;
+    font-weight: 550;
+    color: white;
+}
+.text1{
+    margin-top: -0.5rem;
+    margin-left:4rem;
+    font-size: 1rem;
+    font-weight: 100;
+    color: grey;
+}
+.box{
+    display: flex;
+    flex-direction: row;
+}
+
+.prc{
+    margin-left:4rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+.dprc{
+    margin-left:4rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.textbox{
+    margin-top: 1.5rem;
+    margin-left:0.5rem;
+    font-size: 1rem;
+    font-weight: 100;
+    color: grey;
+}
+
+.linepckg{
+    margin-left: 2rem;
+    border-width: 2px;
+    width: 80%;
+    color: rgb(0, 0, 0);
+}
+
+.dlinepckg{
+    margin-left: 2rem;
+    border-width: 2px;
+    width: 80%;
+    background-color: rgb(255, 255, 255);
+}
+
+.text4{
+    display: flex;
+    margin-left: 4rem;
+    margin-bottom: 0.5rem;
+}
+.dtext4{
+    display: flex;
+    margin-left: 4rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.check{
+    margin-left:4rem;
+}
+
+.bttn{
+    width: 17rem;
+    height: 3.5rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.contact{
+    margin-top: -2.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+.dcontact{
+    margin-top: -2.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: white;
+}
+.goldbkmrk{
+    /* background-color: aquamarine; */
+    margin-left: 1rem;
+    height: 50px;
+    width: 50px;
+    background-image: url('../../assets/images/goldbkmrk.png');
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+.diamondbkmrk{
+    /* background-color: aquamarine; */
+    margin-left: 1rem;
+    height: 50px;
+    width: 50px;
+    background-image: url('../../assets/images/diamondbkmrk.png');
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+
+.fare{
+    display: flex;
+    height: 50rem;
+
+}
+
+.line{
+    margin-left: 6rem;
+    width: 88%;
+    background-color: black;
+}

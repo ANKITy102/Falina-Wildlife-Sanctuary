@@ -1,7 +1,7 @@
 import React from 'react'
 import {BrowserRouter, Route, Routes} from "react-router-dom"
 import Mainpage from './pages/main/Mainpage'
-import Packages from './components/packageshotel/Packages'
+import Packages from './pages/packageshotel/Packages'
 import Signup from './pages/signup/Signup'
 import Contactus from './pages/ContactUs/ContactUs'
 const App = () => {
