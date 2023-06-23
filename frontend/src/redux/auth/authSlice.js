@@ -6,6 +6,7 @@ const initialState = {
         name:"",
         email:"",
         phone:"",
+        profilePic:"",
     },
     userID:""
 }
@@ -21,7 +22,8 @@ const authSlice = createSlice({
             const profile = action.payload;
             state.user.name = profile.firstName;
             state.user.email = profile.email;
-            state.user.phone = profile.phoneNumber;
+            state.user.phone = profile?.phoneNumber;
+            state.user.profilePic = profile?.profilePicture;
         }
     }
 })

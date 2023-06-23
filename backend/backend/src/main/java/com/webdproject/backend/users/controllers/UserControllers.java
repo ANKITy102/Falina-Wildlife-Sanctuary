@@ -3,7 +3,6 @@ package com.webdproject.backend.users.controllers;
 import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -109,10 +108,11 @@ public class UserControllers {
         return ResponseEntity.ok(apiReturnModel);
     }
 
-    @PostMapping("/google-login")
+    @GetMapping("/google-login")
     public ResponseEntity<APIReturnModel> handleGoogleLogin(@RequestHeader String idTokenString) {
         apiReturnModel = new APIReturnModel();
         userVec = new Vector<>();
+        System.out.println(idTokenString);
         try {
             // Verify the Google credentials token
             System.out.println(idTokenString);

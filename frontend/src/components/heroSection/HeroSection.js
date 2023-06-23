@@ -7,7 +7,7 @@ import image1 from "../../assets/images/MPimg2.jpg"
 import image3 from "../../assets/images/MPimg3.jpg"
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn, selectName } from "../../redux/auth/authSlice";
-
+import Google from '../../services/google';
 const HeroSection = () => {
   const [activeImage, setActive] = useState(1);
   const ref1 = useRef(null);
@@ -44,7 +44,9 @@ const HeroSection = () => {
     ref3.current.style.left = "200vw";
   }, []);
   return (
+
     <div className={`${st.container}`}>
+      {!isLoggedIn && (<div className={st.googleLoginButton}><Google/></div>)}
       <img
         src={image1}
         ref={ref1}
