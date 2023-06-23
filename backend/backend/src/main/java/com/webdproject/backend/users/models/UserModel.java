@@ -23,13 +23,23 @@ public class UserModel {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String phoneNumber;
 
+    @Column(nullable = true)
+    private String profilePicture;
+    
     public UserModel() {
+    }
+
+    public UserModel(String firstName, String lastName, String email, String profilePicture) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.profilePicture = profilePicture;
     }
 
     public UserModel(String firstName, String lastName, String email, String password, String phoneNumber) {
@@ -86,6 +96,14 @@ public class UserModel {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 
 }

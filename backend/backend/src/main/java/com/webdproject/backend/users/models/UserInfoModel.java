@@ -6,6 +6,15 @@ public class UserInfoModel {
     private String email;
     private String phoneNumber;
     private String token;
+    private String profilePicture;
+
+    
+    public UserInfoModel(String firstName, String lastName, String email, String profilePicture) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.profilePicture = profilePicture;
+    }
     public UserInfoModel(String firstName, String lastName, String email, String phoneNumber, String token) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -42,6 +51,12 @@ public class UserInfoModel {
     }
     public void setToken(String token) {
         this.token = token;
+    }
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
     
 }

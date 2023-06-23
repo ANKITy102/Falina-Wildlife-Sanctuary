@@ -104,4 +104,17 @@ public class UserServiceImpl implements UserService {
                 savedUser.getEmail(), savedUser.getPhoneNumber(), senToken);
         return userInfo;
     }
+
+    @Override
+    public UserInfoModel googleLogin(String fname, String lname, String email, String profilePicture) {
+
+        UserModel userModel = new UserModel(fname, lname, email, profilePicture);
+        UserModel isExist = this.userRepository.findByEmail(email);
+        if (isExist == null || isExist.getFirstName() == null || isExist.getLastName() == null
+                || isExist.getProfilePicture() == null) {
+            this.userRepository.save(userModel);
+        }
+        UserInfoModel userInfo = new UserInfoModel(fname, lname, email, profilePicture);
+        return userInfo;
+    }
 }

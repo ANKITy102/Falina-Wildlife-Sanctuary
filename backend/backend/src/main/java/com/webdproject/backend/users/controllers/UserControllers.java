@@ -110,8 +110,9 @@ public class UserControllers {
     }
 
     @PostMapping("/google-login")
-    public String handleGoogleLogin(@RequestHeader String idTokenString) {
-
+    public ResponseEntity<APIReturnModel> handleGoogleLogin(@RequestHeader String idTokenString) {
+        apiReturnModel = new APIReturnModel();
+        userVec = new Vector<>();
         try {
             // Verify the Google credentials token
             System.out.println(idTokenString);
@@ -125,33 +126,27 @@ public class UserControllers {
                     .build();
             GoogleIdToken idToken = verifier.verify(idTokenString);
 
-            if (idToken != null) {
-                Payload payload = idToken.getPayload();
+            Payload payload = idToken.getPayload();
 
-                String email = payload.getEmail();
-                String fname = (String) payload.get("given_name");
-                String lname = (String) payload.get("family_name")
-                String pictureUrl = (String) payload.get("picture");
+            String email = payload.getEmail();
+            String fname = (String) payload.get("given_name");
+            String lname = (String) payload.get("family_name");
+            String pictureUrl = (String) payload.get("picture");
+            UserInfoModel user = this.userService.googleLogin(fname, lname, email, pictureUrl);
+            userVec.add(user);
+            apiReturnModel.setData(userVec);
+            apiReturnModel.setStatus("Success");
+            apiReturnModel.setMessage("Your data");
+            apiReturnModel.setCount(userVec.size());
 
-                System.out.println(email);
-                System.out.println(fname);
-                System.out.println(lname);
-                System.out.println(pictureUrl);
-
-                String response = email + " " + fname + " ";
-                return response;
-            } else {
-                // Invalid token
-                // Handle the error appropriately
-                String res = "Something went wrong";
-                return res;
-            }
         } catch (Exception e) {
             // Error occurred during token verification
             // Handle the error appropriately
-            System.out.println(e.getMessage());
-            String res = "Something went wrong";
-            return res;
+            e.printStackTrace();
+            apiReturnModel.setStatus("fail");
+            apiReturnModel.setMessage(e.getMessage());
+            apiReturnModel.setCount(0);
         }
+        return ResponseEntity.ok(apiReturnModel);
     }
 }
