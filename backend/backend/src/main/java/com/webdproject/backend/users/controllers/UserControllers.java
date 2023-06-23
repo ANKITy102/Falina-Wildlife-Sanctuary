@@ -3,6 +3,7 @@ package com.webdproject.backend.users.controllers;
 import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,17 +12,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.webdproject.backend.users.apimodels.APIReturnModel;
 import com.webdproject.backend.users.models.LoginModel;
 import com.webdproject.backend.users.models.UserInfoModel;
 import com.webdproject.backend.users.models.UserModel;
 import com.webdproject.backend.users.services.UserService;
+import com.google.api.client.http.javanet.NetHttpTransport;
+// import io.jsonwebtoken.lang.Collections;
+
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.gson.GsonFactory;
+import java.util.Collections;
+import java.util.List;
 
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/user")
 public class UserControllers {
+
     @Autowired
     private UserService userService;
     private APIReturnModel apiReturnModel;
@@ -96,5 +107,51 @@ public class UserControllers {
             apiReturnModel.setCount(0);
         }
         return ResponseEntity.ok(apiReturnModel);
+    }
+
+    @PostMapping("/google-login")
+    public String handleGoogleLogin(@RequestHeader String idTokenString) {
+
+        try {
+            // Verify the Google credentials token
+            System.out.println(idTokenString);
+            String CLIENT_ID = "163953454111-bb8n07nucej8pue99g24kcfu4120ltc2.apps.googleusercontent.com";
+            List<String> audience = Collections.singletonList(CLIENT_ID);
+            NetHttpTransport transport = new NetHttpTransport();
+            JsonFactory jsonFactory = new GsonFactory();
+
+            GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(transport, jsonFactory)
+                    .setAudience(audience)
+                    .build();
+            GoogleIdToken idToken = verifier.verify(idTokenString);
+
+            if (idToken != null) {
+                Payload payload = idToken.getPayload();
+
+                String email = payload.getEmail();
+                String fname = (String) payload.get("given_name");
+                String lname = (String) payload.get("family_name")
+                String pictureUrl = (String) payload.get("picture");
+
+                System.out.println(email);
+                System.out.println(fname);
+                System.out.println(lname);
+                System.out.println(pictureUrl);
+
+                String response = email + " " + fname + " ";
+                return response;
+            } else {
+                // Invalid token
+                // Handle the error appropriately
+                String res = "Something went wrong";
+                return res;
+            }
+        } catch (Exception e) {
+            // Error occurred during token verification
+            // Handle the error appropriately
+            System.out.println(e.getMessage());
+            String res = "Something went wrong";
+            return res;
+        }
     }
 }

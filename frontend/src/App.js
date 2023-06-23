@@ -12,33 +12,34 @@ import { SET_LOGIN, SET_USER } from './redux/auth/authSlice'
 import AboutUs from './pages/AboutUs/AboutUs'
 // import axios from "axios";
 const App = () => {
-  const dispatch =useDispatch();
-  const getUser = async()=>{
-    try{
+  const dispatch = useDispatch();
+  const getUser = async () => {
+    try {
 
-      const data= await getUserInfo();
+      const data = await getUserInfo();
       console.log(data)
-      if(!data || !data.status){
-       return;
+      if (!data || !data.status) {
+        return;
       }
-       if(data.status==="Success"){
-           dispatch(SET_LOGIN(true));
-           dispatch(SET_USER(data.data[0]));
-       }
-      
+      if (data.status === "Success") {
+        dispatch(SET_LOGIN(true));
+        dispatch(SET_USER(data.data[0]));
+      }
 
-    }catch(err){
+
+    } catch (err) {
       toast.error("Something went wrong");
     }
   }
-  useEffect(()=>{
-      getUser()
-  },[])
+  useEffect(() => {
+    getUser()
+    // eslint-disable-next-line
+  }, [])
   return (
     <BrowserRouter>
       <ToastContainer
-        position="top-right"
-        autoClose={2000}
+        position="bottom-right"
+        autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -46,14 +47,14 @@ const App = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark"
+        theme="light"
       />
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<Mainpage />} />
         <Route path="/contactus" element={<Contactus />} />
         <Route path="/packages" element={<Packages />} />
-        <Route path='/aboutus' element={<AboutUs/>}/>
+        <Route path='/aboutus' element={<AboutUs />} />
       </Routes>
 
     </BrowserRouter>

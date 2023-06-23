@@ -3,8 +3,6 @@ import sp from './AboutUs.module.css'
 import st from '../packageshotel/Packages.module.css'
 import {Link} from 'react-router-dom';
 import logo from "../../assets/images/logo.svg";
-import mountain from "../../assets/images/mountains.svg"
-import circlelogo from "../../assets/images/circlelogo.png"
 
 const AboutUs = () => {
   return (
@@ -32,7 +30,7 @@ const AboutUs = () => {
       <div className={sp.text1}>
         <h1>Our Vision</h1>
       </div>
-      <div className={sp.text2}><div className={sp.para}>We as a team are very responsible and clear with our vision. Our mission, purpose, goals and values involved the creation of our vision. We want to deliver exceptional experience to the customers who visit our website and they must feel like home.</div><div className={sp.imagecontainer}><img id={sp.img1} src={logo}/><img id={sp.img2} src={logo}/></div></div>
+      <div className={sp.text2}><div className={sp.para}>We as a team are very responsible and clear with our vision. Our mission, purpose, goals and values involved the creation of our vision. We want to deliver exceptional experience to the customers who visit our website and they must feel like home.</div><div className={sp.imagecontainer}><img id={sp.img1} src={logo} alt="logo"/><img id={sp.img2} src={logo} alt="logo"/></div></div>
     </div>
   )
 }

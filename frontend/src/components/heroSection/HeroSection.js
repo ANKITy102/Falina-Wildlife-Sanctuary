@@ -51,6 +51,7 @@ const HeroSection = () => {
         className={`${
           activeImage === 1 ? st.mainBackground : st.backgroundInactive
         } ${st.contImage} ${st.img}`}
+        alt="tiger in forest"
       />
       <img
         src={image2}

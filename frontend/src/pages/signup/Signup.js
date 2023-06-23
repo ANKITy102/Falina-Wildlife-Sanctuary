@@ -2,15 +2,13 @@ import React from 'react'
 import st from './Signup.module.css'
 import logo from "../../assets/images/logo.svg"
 import { useState } from 'react'
-import {
-  FaFacebook,
-  FaGoogle
-} from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { registerUser, validateEmail } from '../../services/authServices'
 import { toast } from 'react-toastify';
 import {useDispatch} from "react-redux";
 import {SET_LOGIN, SET_USER} from "../../redux/auth/authSlice"
+import Google from '../../services/google';
+
 const initialState = {
   firstName: "",
   lastName: "",
@@ -68,8 +66,7 @@ const Signup = () => {
       </div>
       <div className={st.signup_heading}>Create Account</div>
       <div className={st.signup_login}>
-        <button className={st.signup_login__buttons1} ><FaGoogle id={st.google_icon} size={20}/>Sign up with Google</button>
-        <button className={st.signup_login__buttons2}><FaFacebook id={st.facebook_icon} size={20}/>Sign up with Facebook</button>
+          <Google className={st.signup_login__buttons1}/>
       </div>
       <hr className={st.signup_line}/>
       <div className={st.signup_form}>
@@ -88,7 +85,7 @@ const Signup = () => {
           <input type='text' className={st.signup_form__type2} name="phoneNumber" value={formData.phoneNumber} onChange={(e)=>{onChangeHandler(e)}} placeholder='Enter your phone number' />
         </div>
         <div className={st.signup_form__line2}>
-          <input type='checkbox' className={st.signup_checkbox}/><span className={st.signup_form__checkbox} >I agree to the <a className='form_green__text'>Terms of Services</a > and <a className='form_green__text'>Privacy Statement</a></span>
+          <input type='checkbox' id="termsandcondition" className={st.signup_checkbox}/><label className={st.signup_form__checkbox} htmlFor="termsandcondition">I agree to the <a href="/" className='form_green__text'>Terms of Services</a > and <a href="/" className='form_green__text'>Privacy Statement</a></label>
         </div>
         <div className={st.signup_form__line2}>
           <input type='checkbox'  className={st.signup_checkbox} /><span className={st.signup_form__checkbox}>Send me updates via email</span>
