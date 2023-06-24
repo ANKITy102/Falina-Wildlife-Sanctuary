@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom'
 import st from"./Navbar.module.css"
 import { selectIsLoggedIn } from '../../redux/auth/authSlice'
 import { useSelector } from 'react-redux'
-const Navbar = () => {
+const Navbar = (props) => {
     const isLogin = useSelector( selectIsLoggedIn);
   return (
-    <nav className="flex  bg-black px-5 justify-between items-center">
+    <nav className={`flex   px-5 justify-between items-center ${props.transparent?"bg-transparent":"bg-black"}`}>
         <div className="logo">
             <img src={logo} alt="logo" width="100px" />
         </div>
         <div className="links flex">
-            <ul className="flex gap-24 text-2xl text-slate-400 items-center">
+            <ul className="flex gap-24 text-2xl text-white items-center">
                 <li><Link className='hover:text-orange-300' style={{
                     textDecoration:"none"
                 }}  to="/">Home</Link></li>

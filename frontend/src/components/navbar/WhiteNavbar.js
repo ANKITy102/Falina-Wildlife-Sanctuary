@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom'
 import st from"./Navbar.module.css"
 import { useSelector } from 'react-redux'
 import { selectIsLoggedIn } from '../../redux/auth/authSlice'
-const WhiteNavbar = () => {
+const WhiteNavbar = (props) => {
     const isLogin = useSelector( selectIsLoggedIn);
 
   return (
-    <nav className="flex  bg-white px-5 justify-between items-center">
+    <nav className={`flex ${props.transparent?"bg-transparent":"bg-white"}  px-5 justify-between items-center`}>
         <div className="logo">
             <img src={logo} alt="logo" width="100px" />
         </div>
@@ -36,7 +36,7 @@ const WhiteNavbar = () => {
             {(isLogin?(<div className="flex items-center gap-4 text-1xl text-slate-600">
                 <img src={avatar} alt="avatar" width="40px"/>
                 Mayank
-            </div>): (<div className="buttons border-2 border-white px-3 py-2 text-slate-700">
+            </div>): (<div className="buttons border-2 border-black px-3 py-2 text-slate-700">
                 <Link style={{
                     textDecoration:"none"
                 }}  to="/login" className="hover:text-orange-400">login</Link> / <Link style={{
