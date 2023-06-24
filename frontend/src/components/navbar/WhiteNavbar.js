@@ -3,8 +3,11 @@ import logo from "../../assets/images/logo_footer.png"
 import avatar from "../../assets/images/defaultAvatar.png"
 import { Link } from 'react-router-dom'
 import st from"./Navbar.module.css"
+import { useSelector } from 'react-redux'
+import { selectIsLoggedIn } from '../../redux/auth/authSlice'
 const WhiteNavbar = () => {
-    const isLogin = true;
+    const isLogin = useSelector( selectIsLoggedIn);
+
   return (
     <nav className="flex  bg-white px-5 justify-between items-center">
         <div className="logo">
