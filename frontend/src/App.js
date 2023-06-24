@@ -10,6 +10,8 @@ import { ToastContainer } from "react-toastify";
 // import { useDispatch } from 'react-redux'
 // import { SET_LOGIN, SET_USER } from './redux/auth/authSlice'
 import AboutUs from './pages/AboutUs/AboutUs'
+import Navbar from './components/navbar/Navbar'
+import WhiteNavbar from './components/navbar/WhiteNavbar'
 // import axios from "axios";
 const App = () => {
   // const dispatch = useDispatch();
@@ -55,6 +57,7 @@ const App = () => {
         <Route path="/contactus" element={<Contactus />} />
         <Route path="/packages" element={<Packages />} />
         <Route path='/aboutus' element={<AboutUs />} />
+        <Route path='/navbar' element={<WhiteNavbar />} />
       </Routes>
 
     </BrowserRouter>
