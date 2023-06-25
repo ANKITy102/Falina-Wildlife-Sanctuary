@@ -41,3 +41,6 @@
   font-weight: 200;
 }
 
+.shadow__Nav{
+  box-shadow: 0px 0px 10px black;
+}

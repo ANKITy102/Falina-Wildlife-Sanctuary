@@ -1,14 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import st from "./HeroSection.module.css";
-import logo from "../../assets/images/logo.svg";
-import { Link } from "react-router-dom";
 import image2 from "../../assets/images/MPimg1.jpg"
 import image3 from "../../assets/images/MPimg2.jpg"
 import image1 from "../../assets/images/MPimg3.jpg"
 import { useSelector } from "react-redux";
-import { selectIsLoggedIn, selectName } from "../../redux/auth/authSlice";
+import { selectIsLoggedIn } from "../../redux/auth/authSlice";
 import Google from '../../services/google';
-import WhiteNavbar from "../navbar/WhiteNavbar";
 import Navbar from "../navbar/Navbar";
 const HeroSection = () => {
   const [activeImage, setActive] = useState(1);

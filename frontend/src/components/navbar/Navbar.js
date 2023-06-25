@@ -2,7 +2,7 @@ import React from 'react'
 import logo from "../../assets/images/logo_footer.png"
 import avatar from "../../assets/images/defaultAvatar.png"
 import { Link } from 'react-router-dom'
-import { selectIsLoggedIn, selectName, selectProfilePic, selectUser } from '../../redux/auth/authSlice'
+import { selectIsLoggedIn, selectName, selectProfilePic } from '../../redux/auth/authSlice'
 import { useSelector } from 'react-redux'
 import { capitalizeFirstLetter } from '../../services/CapitalizeWord'
 

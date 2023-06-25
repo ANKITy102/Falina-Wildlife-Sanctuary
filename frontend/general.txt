@@ -52,3 +52,8 @@ draggable: true,
 progress: undefined,
 theme: "dark",
 });
+
+
+focus:border-white focus:border-2 focus:bg-blue-900 hover:no-underline 
+focus:border-white focus:border-2 focus:bg-blue-900 hover:no-underline 
+focus:border-white focus:border-2 focus:bg-blue-900 hover:no-underline 

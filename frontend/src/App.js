@@ -10,9 +10,9 @@ import { ToastContainer } from "react-toastify";
 // import { useDispatch } from 'react-redux'
 // import { SET_LOGIN, SET_USER } from './redux/auth/authSlice'
 import AboutUs from './pages/AboutUs/AboutUs'
-import Navbar from './components/navbar/Navbar'
-import WhiteNavbar from './components/navbar/WhiteNavbar'
-import Loader from './components/loader/Loader'
+import Dashboard from './pages/dashboard/Dashboard'
+import DashboardComponent from './components/dashboardComp/DashboardComponent'
+import Users from './components/users/Users'
 // import axios from "axios";
 const App = () => {
   // const dispatch = useDispatch();
@@ -58,7 +58,21 @@ const App = () => {
         <Route path="/contactus" element={<Contactus />} />
         <Route path="/packages" element={<Packages />} />
         <Route path="/aboutus" element={<AboutUs />} />
-
+        <Route path="/dashboard" element={
+         <Dashboard>
+          <DashboardComponent/>
+         </Dashboard>
+        }/>
+        <Route path="/users" element={
+         <Dashboard>
+          <Users/>
+         </Dashboard>
+        }/>
+        <Route path="/settings" element={
+         <Dashboard>
+          <Users/>
+         </Dashboard>
+        }/>
       </Routes>
 
     </BrowserRouter>
