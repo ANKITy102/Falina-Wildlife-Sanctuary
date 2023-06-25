@@ -1,5 +1,6 @@
 import React from 'react'
 import StatsCard from '../statscard/StatsCard'
+import TotalBookings from '../../graphs/TotalBookings'
 
 const DashboardComponent = () => {
   return (
@@ -13,6 +14,9 @@ const DashboardComponent = () => {
         <StatsCard title={"Total Users"}    stats={"3,990"} active={false} logo={"fa-solid fa-user-group text-2xl"}/>
         <StatsCard title={"Total Admins"}   stats={"9"} active={false} logo={"fa-solid fa-user-tie text-2xl"}/>
       </div>
+      </div>
+      <div className="graph h-[200px] w-full">
+        <TotalBookings/>
       </div>
     </div>
   )
