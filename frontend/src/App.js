@@ -12,6 +12,7 @@ import { ToastContainer } from "react-toastify";
 import AboutUs from './pages/AboutUs/AboutUs'
 import Navbar from './components/navbar/Navbar'
 import WhiteNavbar from './components/navbar/WhiteNavbar'
+import Loader from './components/loader/Loader'
 // import axios from "axios";
 const App = () => {
   // const dispatch = useDispatch();
@@ -56,6 +57,7 @@ const App = () => {
         <Route path="/" element={<Mainpage />} />
         <Route path="/contactus" element={<Contactus />} />
         <Route path="/packages" element={<Packages />} />
+        <Route path="/loader" element={<Loader/>}/>
       </Routes>
 
     </BrowserRouter>

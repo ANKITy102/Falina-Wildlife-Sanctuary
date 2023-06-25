@@ -17,7 +17,6 @@ const HeroSection = () => {
   const ref3 = useRef(null);
   const isLoggedIn = useSelector(selectIsLoggedIn)
   // const isLoggedIn = true;
-  const userName = useSelector(selectName);
   const imageChanger = (num) => {
     if (activeImage === num) {
       return;
@@ -38,12 +37,17 @@ const HeroSection = () => {
       ref2.current.style.left = "-100vw";
     }
     setActive(num);
+   
   };
   useEffect(() => {
     // console.log("hello")
     ref1.current.style.left = "0px";
     ref2.current.style.left = "100vw";
     ref3.current.style.left = "200vw";
+    
+
+    
+   
   }, []);
   return (
 

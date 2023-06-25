@@ -2,11 +2,14 @@ import React from 'react'
 import logo from "../../assets/images/logo_footer.png"
 import avatar from "../../assets/images/defaultAvatar.png"
 import { Link } from 'react-router-dom'
-import st from"./Navbar.module.css"
-import { selectIsLoggedIn } from '../../redux/auth/authSlice'
+import { selectIsLoggedIn, selectName, selectProfilePic, selectUser } from '../../redux/auth/authSlice'
 import { useSelector } from 'react-redux'
+import { capitalizeFirstLetter } from '../../services/CapitalizeWord'
+
 const Navbar = (props) => {
     const isLogin = useSelector( selectIsLoggedIn);
+    const name = useSelector(selectName);
+    const profilePic = useSelector(selectProfilePic)
   return (
     <nav className={`flex   px-5 justify-between items-center ${props.transparent?"bg-transparent":"bg-black"}`}>
         <div className="logo">
@@ -32,9 +35,11 @@ const Navbar = (props) => {
             </ul>
         </div>
         <div className="loginSignup flex items-center">
-            {(isLogin?(<div className="flex items-center gap-4 text-1xl text-white">
-                <img src={avatar} alt="avatar" width="40px"/>
-                Mayank
+            {(isLogin?(<div className="flex items-center gap-4 text-[20px] text-white">
+                <img src={(profilePic?profilePic:avatar)} alt="avatar" className='hover:cursor-pointer' width="40px" style={{
+                    borderRadius:"50%"
+                }} />
+                {capitalizeFirstLetter(name)}
             </div>): (<div className="buttons border-2 border-white px-3 py-2 text-white">
                 <Link style={{
                     textDecoration:"none"

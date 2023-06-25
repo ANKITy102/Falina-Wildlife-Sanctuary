@@ -5,9 +5,10 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { registerUser, validateEmail } from '../../services/authServices'
 import { toast } from 'react-toastify';
-import {useDispatch} from "react-redux";
-import {SET_LOGIN, SET_USER} from "../../redux/auth/authSlice"
+import {useDispatch, useSelector} from "react-redux";
+import {SET_LOADING, SET_LOGIN, SET_USER, selectIsLoggedIn, selectLoading} from "../../redux/auth/authSlice"
 import Google from '../../services/google';
+import Loader from '../../components/loader/Loader'
 
 const initialState = {
   firstName: "",
@@ -18,6 +19,8 @@ const initialState = {
 }
 const Signup = () => {
   const [formData, setFormData] = useState(initialState);
+  const isLoading = useSelector(selectLoading);
+  const isLogged = useSelector(selectIsLoggedIn)
   const dispatch = useDispatch()
   const navigate=useNavigate();
   const onChangeHandler = (e) =>{
@@ -54,6 +57,7 @@ const Signup = () => {
       // console.log(response.data[0]);
       dispatch(SET_LOGIN(true))
       dispatch(SET_USER(response.data[0]));
+      dispatch(SET_LOADING(false))
       navigate('/')
     }
     
@@ -61,12 +65,13 @@ const Signup = () => {
   }
   return (
     <div className={st.signup_background}>
+      {isLoading && <Loader/>}
       <div className={st.signup_logo}>
             <img className={st.signup_logo__img} src={logo} alt="logo" />
       </div>
       <div className={st.signup_heading}>Create Account</div>
       <div className={st.signup_login}>
-          <Google className={st.signup_login__buttons1}/>
+          {(isLogged ?(<div >Already LoggedIn</div>): <Google className={st.signup_login__buttons1}/>)}
       </div>
       <hr className={st.signup_line}/>
       <div className={st.signup_form}>
