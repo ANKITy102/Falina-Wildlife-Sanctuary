@@ -112,10 +112,7 @@ public class UserControllers {
     public ResponseEntity<APIReturnModel> handleGoogleLogin(@RequestHeader String idTokenString) {
         apiReturnModel = new APIReturnModel();
         userVec = new Vector<>();
-        System.out.println(idTokenString);
         try {
-            // Verify the Google credentials token
-            System.out.println(idTokenString);
             String CLIENT_ID = "163953454111-bb8n07nucej8pue99g24kcfu4120ltc2.apps.googleusercontent.com";
             List<String> audience = Collections.singletonList(CLIENT_ID);
             NetHttpTransport transport = new NetHttpTransport();

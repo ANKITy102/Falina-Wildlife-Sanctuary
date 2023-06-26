@@ -31,7 +31,10 @@ public class UserModel {
 
     @Column(nullable = true)
     private String profilePicture;
-    
+
+    @Column(nullable = false, columnDefinition = "boolean default false")
+    private boolean admin;
+
     public UserModel() {
     }
 
@@ -48,6 +51,14 @@ public class UserModel {
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     public long getUserId() {

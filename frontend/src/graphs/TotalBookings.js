@@ -4,25 +4,25 @@ import {
   CategoryScale,
   LinearScale,
   BarElement,
-  // LineElement,
-  // PointElement,
+  LineElement,
+  PointElement,
   Title,
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-// import { Line } from 'react-chartjs-2';
+// import { Bar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 
 
-// ChartJS.register(
-//   CategoryScale,
-//   LinearScale,
-//   LineElement,
-//   PointElement,
-//   Title,
-//   Tooltip,
-//   Legend
-// );
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
+  Legend
+);
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -52,7 +52,7 @@ export const data = {
   labels,
   datasets: [
     {
-      label: 'Dataset 1',
+      label: 'Total Bookings',
       data: labels.map((elem, ind) => {
         console.log(ind)
         return (100*ind*ind)}),
@@ -75,7 +75,7 @@ const TotalBookings = () => {
 
   return (
     <div >
-      <Bar options={options} data={data} height={500}/>
+      <Line options={options} data={data} height={500}/>
     </div>
   );
 }
