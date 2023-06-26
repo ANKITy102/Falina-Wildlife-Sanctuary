@@ -1,5 +1,7 @@
 package com.webdproject.backend.users.models;
 
+import java.time.LocalDate;
+
 public class UserInfoModel {
     private String firstName;
     private String lastName;
@@ -8,9 +10,15 @@ public class UserInfoModel {
     private String token;
     private String profilePicture;
     private boolean admin;
-    
+    private LocalDate date;
     public boolean isAdmin() {
         return admin;
+    }
+    public LocalDate getDate() {
+        return date;
+    }
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
     public void setAdmin(boolean admin) {
         this.admin = admin;
@@ -30,6 +38,13 @@ public class UserInfoModel {
         this.token = token;
         this.profilePicture=profilePic;
         this.admin= admin;
+    }
+    public UserInfoModel(String firstName, String lastName, String email, LocalDate date) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+       
+        this.date = date;
     }
     public String getFirstName() {
         return firstName;

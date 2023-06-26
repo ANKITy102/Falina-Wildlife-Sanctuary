@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -35,7 +35,7 @@ ChartJS.register(
 // );
 
 
-const TotalBookings = () => {
+const TotalUsers = () => {
 
   const UserFreq = useSelector(selectUserFreq);
 
@@ -118,4 +118,4 @@ const TotalBookings = () => {
   );
 }
 
-export default TotalBookings
+export default TotalUsers

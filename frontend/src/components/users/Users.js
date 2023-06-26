@@ -1,9 +1,10 @@
 import React from 'react'
+import TotalUsers from '../../graphs/TotalUsers'
 
 const Users = () => {
   return (
-    <div>
-      <h1 className="text-4xl">users</h1>
+    <div className="h-full">
+      <TotalUsers/>
     </div>
   )
 }

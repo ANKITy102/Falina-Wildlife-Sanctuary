@@ -1,8 +1,11 @@
 import React from 'react'
 import StatsCard from '../statscard/StatsCard'
 import TotalBookings from '../../graphs/TotalBookings'
+import { useSelector } from 'react-redux'
+import { totalUser } from '../../redux/stats/statsSlice'
 
-const DashboardComponent = () => {
+const DashboardComponent = ({children}) => {
+  const selectTotalUser = useSelector(totalUser);
   return (
     <div className="h-full w-5/6 px-3 py-2 flex flex-col">
       <div>
@@ -11,12 +14,12 @@ const DashboardComponent = () => {
       <div className="flex gap-10">
         <StatsCard title={"Total Bookings"} stats={"45,039"} active={true}  logo={"fa-solid fa-ticket text-2xl"}/>
         <StatsCard title={"Total Revenue"}  stats={"3,230,349"} active={false} logo={"fa-solid fa-indian-rupee-sign text-2xl"}/>
-        <StatsCard title={"Total Users"}    stats={"3,990"} active={false} logo={"fa-solid fa-user-group text-2xl"}/>
+        <StatsCard title={"Total Users"}    stats={selectTotalUser} active={false} logo={"fa-solid fa-user-group text-2xl"}/>
         <StatsCard title={"Total Admins"}   stats={"9"} active={false} logo={"fa-solid fa-user-tie text-2xl"}/>
       </div>
       </div>
       <div className="graph h-[200px] w-full">
-        <TotalBookings/>
+        {children}
       </div>
     </div>
   )

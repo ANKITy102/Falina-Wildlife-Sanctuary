@@ -1,6 +1,8 @@
 package com.webdproject.backend.users.services;
 
 import java.security.Key;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -113,6 +115,7 @@ public class UserServiceImpl implements UserService {
     public UserInfoModel googleLogin(String fname, String lname, String email, String profilePicture) {
         UserInfoModel userInfo;
         UserModel userModel = new UserModel(fname, lname, email, profilePicture);
+        userModel.setCreationDate();
         UserModel isExist = this.userRepository.findByEmail(email);
         if (isExist == null || isExist.getFirstName() == null || isExist.getLastName() == null
                 || isExist.getProfilePicture() == null) {
@@ -151,5 +154,17 @@ public class UserServiceImpl implements UserService {
                 savedUser.getEmail(), savedUser.getPhoneNumber(), savedUser.getProfilePicture(),
                 savedUser.getProfilePicture(), savedUser.isAdmin());
         return userInfo;
+    }
+
+    @Override
+    public List<UserInfoModel> getAllUser() {
+        List<UserModel> listUser = this.userRepository.findAll();
+        List<UserInfoModel> listOfUser = new ArrayList<>();
+        ;
+        for (UserModel userModel : listUser) {
+            listOfUser.add(new UserInfoModel(userModel.getFirstName(), userModel.getLastName(), userModel.getEmail(),
+                    userModel.getCreationDate()));
+        }
+        return listOfUser;
     }
 }

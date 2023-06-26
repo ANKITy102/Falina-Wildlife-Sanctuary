@@ -10,10 +10,12 @@ import { ToastContainer } from "react-toastify";
 // import { useDispatch } from 'react-redux'
 // import { SET_LOGIN, SET_USER } from './redux/auth/authSlice'
 import AboutUs from './pages/AboutUs/AboutUs'
-import Gallery from './pages/Gallery/Gallery'
 import Dashboard from './pages/dashboard/Dashboard'
 import DashboardComponent from './components/dashboardComp/DashboardComponent'
 import Users from './components/users/Users'
+import TotalBookings from './graphs/TotalBookings'
+import Gallery from "./pages/gallery/Gallery"
+import TotalUsers from './graphs/TotalUsers'
 // import axios from "axios";
 const App = () => {
   // const dispatch = useDispatch();
@@ -58,16 +60,19 @@ const App = () => {
         <Route path="/" element={<Mainpage />} />
         <Route path="/contactus" element={<Contactus />} />
         <Route path="/packages" element={<Packages />} />
-        <Route path="/gallery" element={<Gallery />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/dashboard" element={
          <Dashboard>
-          <DashboardComponent/>
+          <DashboardComponent>
+            <TotalBookings/>
+          </DashboardComponent>
          </Dashboard>
         }/>
         <Route path="/users" element={
          <Dashboard>
-          <Users/>
+           <DashboardComponent>
+            <Users/>
+          </DashboardComponent>
          </Dashboard>
         }/>
         <Route path="/settings" element={
@@ -75,6 +80,7 @@ const App = () => {
           <Users/>
          </Dashboard>
         }/>
+        <Route path="/gallery" element={<Gallery/>}/>
       </Routes>
 
     </BrowserRouter>

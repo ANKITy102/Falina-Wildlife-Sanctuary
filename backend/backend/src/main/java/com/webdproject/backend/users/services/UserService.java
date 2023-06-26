@@ -1,5 +1,8 @@
 package com.webdproject.backend.users.services;
 
+
+import java.util.List;
+
 import com.webdproject.backend.users.exceptionHandlers.InvalidCredentialsException;
 import com.webdproject.backend.users.models.LoginModel;
 import com.webdproject.backend.users.models.UserInfoModel;
@@ -17,4 +20,7 @@ public interface UserService {
             throws InvalidCredentialsException;
 
     public UserInfoModel addUserAdmin(String email, String email2) throws InvalidCredentialsException;
+
+    public List<UserInfoModel> getAllUser() throws InvalidCredentialsException;
+
 }

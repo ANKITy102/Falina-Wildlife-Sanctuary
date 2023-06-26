@@ -1,5 +1,7 @@
 package com.webdproject.backend.users.models;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,7 +37,11 @@ public class UserModel {
     @Column(nullable = false, columnDefinition = "boolean default false")
     private boolean admin;
 
+    @Column(nullable = false)
+    private LocalDate creationDate;
+
     public UserModel() {
+        this.creationDate = LocalDate.now();
     }
 
     public UserModel(String firstName, String lastName, String email, String profilePicture) {
@@ -103,6 +109,15 @@ public class UserModel {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate() {
+        if (this.creationDate == null)
+            this.creationDate = LocalDate.now();
     }
 
     public void setPhoneNumber(String phoneNumber) {
