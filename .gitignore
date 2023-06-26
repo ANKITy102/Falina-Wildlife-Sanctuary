@@ -4,3 +4,5 @@
 **/src/main/resources/application.properties
 /backend/backend/src/main/resources/application.properties
 **/application.properties
+/backend/backend/src/main/java/com/webdproject/backend/users/models/MyVariables.java
+**/MyVariables.java

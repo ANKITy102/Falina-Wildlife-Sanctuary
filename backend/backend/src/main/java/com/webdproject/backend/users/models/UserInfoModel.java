@@ -7,20 +7,29 @@ public class UserInfoModel {
     private String phoneNumber;
     private String token;
     private String profilePicture;
-
+    private boolean admin;
     
-    public UserInfoModel(String firstName, String lastName, String email, String profilePicture) {
+    public boolean isAdmin() {
+        return admin;
+    }
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+    public UserInfoModel(String firstName, String lastName, String email, String profilePicture,boolean admin) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.profilePicture = profilePicture;
+        this.admin=admin;
     }
-    public UserInfoModel(String firstName, String lastName, String email, String phoneNumber, String token) {
+    public UserInfoModel(String firstName, String lastName, String email, String phoneNumber, String token,String profilePic ,boolean admin) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.token = token;
+        this.profilePicture=profilePic;
+        this.admin= admin;
     }
     public String getFirstName() {
         return firstName;

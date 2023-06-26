@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.webdproject.backend.users.apimodels.APIReturnModel;
+import com.webdproject.backend.users.models.EmailDto;
 import com.webdproject.backend.users.models.LoginModel;
+import com.webdproject.backend.users.models.MyVariables;
 import com.webdproject.backend.users.models.UserInfoModel;
 import com.webdproject.backend.users.models.UserModel;
 import com.webdproject.backend.users.services.UserService;
@@ -91,9 +93,46 @@ public class UserControllers {
 
         apiReturnModel = new APIReturnModel();
         userVec = new Vector<>();
-        System.out.println("hello");
         try {
             UserInfoModel user = this.userService.getUser(token);
+            userVec.add(user);
+            apiReturnModel.setData(userVec);
+            apiReturnModel.setStatus("Success");
+            apiReturnModel.setMessage("Your data");
+            apiReturnModel.setCount(userVec.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+            apiReturnModel.setStatus("fail");
+            apiReturnModel.setMessage(e.getMessage());
+            apiReturnModel.setCount(0);
+        }
+        return ResponseEntity.ok(apiReturnModel);
+    }
+
+    @PostMapping("/addadmin")
+    public ResponseEntity<APIReturnModel> addAdmin(@RequestHeader String idTokenString,
+            @RequestBody EmailDto userEmail) {
+
+        apiReturnModel = new APIReturnModel();
+        userVec = new Vector<>();
+        MyVariables variables = new MyVariables();
+        try {
+
+            String CLIENT_ID = variables.getClient_id();
+            List<String> audience = Collections.singletonList(CLIENT_ID);
+            NetHttpTransport transport = new NetHttpTransport();
+            JsonFactory jsonFactory = new GsonFactory();
+
+            GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(transport, jsonFactory)
+                    .setAudience(audience)
+                    .build();
+            GoogleIdToken idToken = verifier.verify(idTokenString);
+
+            Payload payload = idToken.getPayload();
+
+            String email = payload.getEmail();
+            String email2 = userEmail.getUserEmail();
+            UserInfoModel user = this.userService.addUserAdmin(email, email2);
             userVec.add(user);
             apiReturnModel.setData(userVec);
             apiReturnModel.setStatus("Success");
@@ -112,8 +151,10 @@ public class UserControllers {
     public ResponseEntity<APIReturnModel> handleGoogleLogin(@RequestHeader String idTokenString) {
         apiReturnModel = new APIReturnModel();
         userVec = new Vector<>();
+        MyVariables variables = new MyVariables();
         try {
-            String CLIENT_ID = "163953454111-bb8n07nucej8pue99g24kcfu4120ltc2.apps.googleusercontent.com";
+            String CLIENT_ID = variables.getClient_id();
+            System.out.println(CLIENT_ID);
             List<String> audience = Collections.singletonList(CLIENT_ID);
             NetHttpTransport transport = new NetHttpTransport();
             JsonFactory jsonFactory = new GsonFactory();

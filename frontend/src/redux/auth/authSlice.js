@@ -8,6 +8,7 @@ const initialState = {
         phone:"",
         profilePic:"",
     },
+    isAdmin:false,
     userID:"",
     isLoading:false
 }
@@ -25,6 +26,7 @@ const authSlice = createSlice({
             state.user.email = profile.email;
             state.user.phone = profile?.phoneNumber;
             state.user.profilePic = profile?.profilePicture;
+            state.isAdmin = profile?.admin;
         },
         SET_LOADING(state,action){
             state.isLoading = action.payload
@@ -38,4 +40,5 @@ export const selectUser = (state) => state.auth.user;
 export const selectName = (state) => state.auth.user.name;
 export const selectProfilePic = (state)=>state.auth.user.profilePic;
 export const selectLoading = (state) => state.auth.isLoading;
+export const selectAdmin = (state)=>state.auth.isAdmin
 export default authSlice.reducer

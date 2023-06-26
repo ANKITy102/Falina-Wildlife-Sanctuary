@@ -13,5 +13,8 @@ public interface UserService {
 
     public UserInfoModel getUser(String token) throws InvalidCredentialsException;
 
-    public UserInfoModel googleLogin(String fname, String lname, String profilePicture, String email) throws InvalidCredentialsException;
+    public UserInfoModel googleLogin(String fname, String lname, String profilePicture, String email)
+            throws InvalidCredentialsException;
+
+    public UserInfoModel addUserAdmin(String email, String email2) throws InvalidCredentialsException;
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.webdproject.backend.users.authtoken.JwtUtil;
 import com.webdproject.backend.users.exceptionHandlers.InvalidCredentialsException;
 import com.webdproject.backend.users.models.LoginModel;
+import com.webdproject.backend.users.models.MyVariables;
 import com.webdproject.backend.users.models.UserInfoModel;
 import com.webdproject.backend.users.models.UserModel;
 import com.webdproject.backend.users.repository.UserRepository;
@@ -52,7 +53,8 @@ public class UserServiceImpl implements UserService {
 
         // savedUser.setToken(token);
         UserInfoModel userInfo = new UserInfoModel(savedUser.getFirstName(), savedUser.getLastName(),
-                savedUser.getEmail(), savedUser.getPhoneNumber(), token);
+                savedUser.getEmail(), savedUser.getPhoneNumber(), token, savedUser.getProfilePicture(),
+                savedUser.isAdmin());
         return userInfo;
 
     }
@@ -65,7 +67,8 @@ public class UserServiceImpl implements UserService {
             // Password matches, user is authenticated
             String token = JwtUtil.generateToken(savedUser.getEmail());
             UserInfoModel userInfo = new UserInfoModel(savedUser.getFirstName(), savedUser.getLastName(),
-                    savedUser.getEmail(), savedUser.getPhoneNumber(), token);
+                    savedUser.getEmail(), savedUser.getPhoneNumber(), token, savedUser.getProfilePicture(),
+                    savedUser.isAdmin());
             return userInfo;
         } else {
             // Invalid credentials
@@ -101,20 +104,52 @@ public class UserServiceImpl implements UserService {
         }
         String senToken = "";
         UserInfoModel userInfo = new UserInfoModel(savedUser.getFirstName(), savedUser.getLastName(),
-                savedUser.getEmail(), savedUser.getPhoneNumber(), senToken);
+                savedUser.getEmail(), savedUser.getPhoneNumber(), senToken, savedUser.getProfilePicture(),
+                savedUser.isAdmin());
         return userInfo;
     }
 
     @Override
     public UserInfoModel googleLogin(String fname, String lname, String email, String profilePicture) {
-
+        UserInfoModel userInfo;
         UserModel userModel = new UserModel(fname, lname, email, profilePicture);
         UserModel isExist = this.userRepository.findByEmail(email);
         if (isExist == null || isExist.getFirstName() == null || isExist.getLastName() == null
                 || isExist.getProfilePicture() == null) {
-            this.userRepository.save(userModel);
+            UserModel savedUser = this.userRepository.save(userModel);
+            userInfo = new UserInfoModel(savedUser.getFirstName(), savedUser.getLastName(),
+                    savedUser.getEmail(), savedUser.getPhoneNumber(), "",
+                    savedUser.getProfilePicture(), savedUser.isAdmin());
+        } else {
+
+            userInfo = new UserInfoModel(fname, lname, email, isExist.getPhoneNumber(), "", profilePicture,
+                    isExist.isAdmin());
         }
-        UserInfoModel userInfo = new UserInfoModel(fname, lname, email, profilePicture);
+        return userInfo;
+    }
+
+    @Override
+    public UserInfoModel addUserAdmin(String email, String email2) {
+        MyVariables variable = new MyVariables();
+        String adminEmail = variable.getEmail();
+        System.out.println(adminEmail);
+        System.out.println(email2);
+
+        if (!(adminEmail.equals(email))) {
+            throw new InvalidCredentialsException("Only Admin can make the user admin.");
+
+        }
+        UserModel isExist = this.userRepository.findByEmail(email2);
+        System.out.println(isExist);
+        if (isExist == null) {
+            throw new InvalidCredentialsException("User Email not found.");
+
+        }
+        isExist.setAdmin(true);
+        UserModel savedUser = this.userRepository.save(isExist);
+        UserInfoModel userInfo = new UserInfoModel(savedUser.getFirstName(), savedUser.getLastName(),
+                savedUser.getEmail(), savedUser.getPhoneNumber(), savedUser.getProfilePicture(),
+                savedUser.getProfilePicture(), savedUser.isAdmin());
         return userInfo;
     }
 }
