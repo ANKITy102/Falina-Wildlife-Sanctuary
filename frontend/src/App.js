@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 // import { useDispatch } from 'react-redux'
 // import { SET_LOGIN, SET_USER } from './redux/auth/authSlice'
 import AboutUs from './pages/AboutUs/AboutUs'
+import Gallery from './pages/Gallery/Gallery'
 import Dashboard from './pages/dashboard/Dashboard'
 import DashboardComponent from './components/dashboardComp/DashboardComponent'
 import Users from './components/users/Users'
@@ -57,6 +58,7 @@ const App = () => {
         <Route path="/" element={<Mainpage />} />
         <Route path="/contactus" element={<Contactus />} />
         <Route path="/packages" element={<Packages />} />
+        <Route path="/gallery" element={<Gallery />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/dashboard" element={
          <Dashboard>
