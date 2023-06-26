@@ -2,3 +2,5 @@
 /.env
 .env
 **/src/main/resources/application.properties
+/backend/backend/src/main/resources/application.properties
+**/application.properties
