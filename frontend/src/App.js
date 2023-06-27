@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Mainpage from './pages/main/Mainpage'
 import Packages from './pages/packageshotel/Packages'
 import Signup from './pages/signup/Signup'
+import Login from './pages/login/Login'
 import Contactus from './pages/ContactUs/ContactUs'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
@@ -14,7 +15,7 @@ import Dashboard from './pages/dashboard/Dashboard'
 import DashboardComponent from './components/dashboardComp/DashboardComponent'
 import Users from './components/users/Users'
 import TotalBookings from './graphs/TotalBookings'
-import Gallery from "./pages/gallery/Gallery"
+import Gallery from "./pages/Gallery/Gallery"
 import TotalUsers from './graphs/TotalUsers'
 // import axios from "axios";
 const App = () => {
@@ -60,6 +61,7 @@ const App = () => {
         <Route path="/" element={<Mainpage />} />
         <Route path="/contactus" element={<Contactus />} />
         <Route path="/packages" element={<Packages />} />
+        <Route path='/login' element={<Login/>}/>
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/dashboard" element={
          <Dashboard>
