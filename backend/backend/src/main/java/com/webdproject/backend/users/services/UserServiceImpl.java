@@ -119,13 +119,15 @@ public class UserServiceImpl implements UserService {
         UserModel isExist = this.userRepository.findByEmail(email);
         if (isExist == null || isExist.getFirstName() == null || isExist.getLastName() == null
                 || isExist.getProfilePicture() == null) {
-            UserModel savedUser = this.userRepository.save(userModel);
+                    UserModel savedUser = this.userRepository.save(userModel);
+                    String token = JwtUtil.generateToken(savedUser.getEmail());
             userInfo = new UserInfoModel(savedUser.getFirstName(), savedUser.getLastName(),
-                    savedUser.getEmail(), savedUser.getPhoneNumber(), "",
+                    savedUser.getEmail(), savedUser.getPhoneNumber(), token,
                     savedUser.getProfilePicture(), savedUser.isAdmin());
+            
         } else {
-
-            userInfo = new UserInfoModel(fname, lname, email, isExist.getPhoneNumber(), "", profilePicture,
+            String token = JwtUtil.generateToken(isExist.getEmail());
+            userInfo = new UserInfoModel(fname, lname, email, isExist.getPhoneNumber(), token, profilePicture,
                     isExist.isAdmin());
         }
         return userInfo;

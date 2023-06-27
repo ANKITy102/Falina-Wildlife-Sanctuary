@@ -16,6 +16,7 @@ import DashboardComponent from './components/dashboardComp/DashboardComponent'
 import Users from './components/users/Users'
 import TotalBookings from './graphs/TotalBookings'
 import Gallery from "./pages/gallery/Gallery"
+import UserQueries from './components/userQueries/UserQueries'
 // import axios from "axios";
 const App = () => {
   // const dispatch = useDispatch();
@@ -79,6 +80,11 @@ const App = () => {
         <Route path="/settings" element={
          <Dashboard>
           <Users/>
+         </Dashboard>
+        }/>
+        <Route path="/dashboard/queries" element={
+         <Dashboard>
+          <UserQueries/>
          </Dashboard>
         }/>
         <Route path="/gallery" element={<Gallery/>}/>

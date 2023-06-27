@@ -14,6 +14,9 @@ const Google = () => {
       const response =   await  googleLogin(token);
       dispatch( SET_LOADING(false))
         if(response && response.data && response.status==="Success"){
+          const token  = response.data[0].token;
+          console.log(token)
+          localStorage.setItem("token", token);
           dispatch(SET_LOGIN(true));
           dispatch(SET_USER(response.data[0]));
           navigate("/")

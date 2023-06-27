@@ -21,8 +21,9 @@ const DashNavbar = () => {
     <input type="text" className={st.input} id="search-bar" placeholder="Search  Email or Account..."/>
     <button type="submit"><img className={st.searchicon} src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png" alt="search logo"/></button>
   </form>
-  <i className="fa-regular fa-bell text-[27px]"></i>
-  <i class="fa-regular fa-message text-[23px]"></i>
+  <Link to="/dashboard/queries"><i className="fa-regular fa-bell text-[27px]"></i></Link> 
+  <Link to="/dashboard/queries"><i class="fa-regular fa-message text-[23px]"></i></Link> 
+  
       </div>
     </nav>
   )

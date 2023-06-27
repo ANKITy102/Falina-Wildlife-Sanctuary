@@ -4,6 +4,7 @@ const initialState = {
     AllUsers: [],
     AdminCount: 0,
     isLoading: false,
+    queries:[]
 }
 
 const statsSlice = createSlice({
@@ -22,6 +23,9 @@ const statsSlice = createSlice({
         },
         SET_LOADING(state,action){
             state.isLoading=action.payload;
+        },
+        SET_QUERIES(state,action){
+            state.queries = action.payload;
         }
 
     }
@@ -43,5 +47,6 @@ export const NoofAdmin = (state) => {
     return state.stats.AdminCount;
 }
 export const isLoading = (state)=> state.stats.isLoading;
-export const { SET_ALLUSERS } = statsSlice.actions;
+export const selectQueries = (state)=> state.stats.queries;
+export const { SET_ALLUSERS, SET_QUERIES, SET_LOADING } = statsSlice.actions;
 export default statsSlice.reducer;
