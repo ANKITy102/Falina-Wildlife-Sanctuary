@@ -1,11 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import sks from './ContactUs.module.css';
 import st from '../packageshotel/Packages.module.css'
 import { Link } from 'react-router-dom';
 import logo from "../../assets/images/logo.svg";
 import Footer from '../../components/footer/Footer';
+import { toast } from 'react-toastify';
 
-function contactus (){
+const initialState = {
+    name:"",
+    email:"",
+    query:""
+}
+const  Contactus= ()=>{
+
+   const [formData, setFormData] = useState(initialState)
+
+    const changeHandler= (e)=>{
+        const {name,value} = e.target;
+        setFormData({...formData, [name]:value});
+    }
+    const submitHandler=(e)=>{
+        e.preventDefault();
+        const {name,email, query} = formData;
+        if(!name || !email || !query){
+            return toast.error("All fields are required.");
+        }
+        console.log(formData);
+    }
     return(
         <>
         <div className={sks.container}>
@@ -45,20 +66,20 @@ function contactus (){
                     <div className={sks.text}><p><strong>Social Media</strong></p></div>
                 </div>
                 <div className={sks.form}>
-                    <form>
+                    <form onSubmit={submitHandler}>
                         <div className={sks.naam}>
                         <div className={sks.fname}><label>First Name</label></div>
-                        <input className={sks.name} type='text'/>
+                        <input className={sks.name} type='text' name='name' value={formData.name} onChange={changeHandler}/>
                         <div className={sks.lname}><label>Last Name</label></div>
                         <input className={sks.sname} type='text'/>
                         </div>
                         <div className={sks.number}><label>Phone Number</label></div>
                         <input className={sks.fields} type="tel"/>
                         <div className={sks.email}><label>Email</label></div>
-                        <input className={sks.fields} type="email"/>
+                        <input className={sks.fields} type="email" name='email' value={formData.email} onChange={changeHandler}/>
                         <div className={sks.query}><label>Your Query</label></div>
-                        <input className={sks.fieldsquery} type="text"/>
-                        <div><button className={sks.button}>Send Query</button></div>
+                        <input className={sks.fieldsquery} type="text" name='query' value={formData.query} onChange={changeHandler}/>
+                        <div><button className={sks.button} type="submit">Send Query</button></div>
                     </form>
                 </div>
             </div>
@@ -69,4 +90,4 @@ function contactus (){
     );
 }
 
-export default contactus;
+export default Contactus;

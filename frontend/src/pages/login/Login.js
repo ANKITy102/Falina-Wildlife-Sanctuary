@@ -6,7 +6,7 @@ import Google from '../../services/google';
 import logo from "../../assets/images/logo.svg"
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
-import { loginUser } from '../../services/authServices';
+import { loginUser, validateEmail } from '../../services/authServices';
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_LOADING, SET_LOGIN, SET_USER, selectLoading } from '../../redux/auth/authSlice';
 import Loader from '../../components/loader/Loader';
@@ -30,9 +30,11 @@ function Login() {
     if(!email || !password){
       return toast.error("All fields are required.");
     }
-    
+    if(!validateEmail(email)){
+      return toast.error("Please provide correct credentials.");
+    }
     if(password.length<7){
-      return toast.error("Password length must be upto 8 characters.");
+      return toast.error("Please provide correct credentials.");
     }
     dispatch(SET_LOADING(true));
     const response = await loginUser(formData);
