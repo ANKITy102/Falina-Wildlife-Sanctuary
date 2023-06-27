@@ -18,12 +18,25 @@ console.log("-----")
     try{
         const response = await axios.post(`${BACKEND_URL}/user/signup`, formData);
         if(response.status==="Success"){
-            toast.success("User Registerd Successfully");
+            toast.success("Registerd Successfully");
         }
         return response.data;
         
     }
     catch(err){
+        const message = err.message;
+        toast.error(message);
+    }
+}
+
+export const loginUser = async(formData)=>{
+    try{
+        const response = await axios.post(`${BACKEND_URL}/user/login`, formData);
+        if(response.status==="Success"){
+            toast.success("Logged in Successfully");
+        }
+        return response.data
+    }catch(err){
         const message = err.message;
         toast.error(message);
     }

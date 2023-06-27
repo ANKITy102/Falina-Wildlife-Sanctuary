@@ -3,7 +3,6 @@ package com.webdproject.backend.users.controllers;
 import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +28,6 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.gson.GsonFactory;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin("*")
 @RestController

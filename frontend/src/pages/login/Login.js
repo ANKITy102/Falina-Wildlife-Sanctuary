@@ -5,24 +5,53 @@ import st from '../signup/Signup.module.css'
 import Google from '../../services/google';
 import logo from "../../assets/images/logo.svg"
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
+import { loginUser } from '../../services/authServices';
+import { useDispatch, useSelector } from 'react-redux';
+import { SET_LOADING, SET_LOGIN, SET_USER, selectLoading } from '../../redux/auth/authSlice';
+import Loader from '../../components/loader/Loader';
 
 function Login() {
   const navigate=useNavigate();
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectLoading);
   const initialState = {
     email: "",
     password: "",
-  }
-  const submitHandler=(e)=>{
-    e.preventDefault();
-    navigate('/')
   }
   const [formData, setFormData] = useState(initialState);
   const onChangeHandler = (e) =>{
     const {name,value} = e.target;
     setFormData({...formData, [name]:value});
   }
+  const submitHandler=async(e)=>{
+    e.preventDefault();
+    const {email, password} = formData;
+    if(!email || !password){
+      return toast.error("All fields are required.");
+    }
+    
+    if(password.length<7){
+      return toast.error("Password length must be upto 8 characters.");
+    }
+    dispatch(SET_LOADING(true));
+    const response = await loginUser(formData);
+    dispatch(SET_LOADING(false));
+    if(response.status==="fail"){
+
+      return toast.error(response.message);
+
+    }
+    if(response.status==="Success"){
+      dispatch(SET_USER(response.data[0]));
+      dispatch(SET_LOGIN(true))
+      navigate('/')
+    }
+  }
+
   return (
     <div className={sg.background}>
+      {isLoading && <Loader/>}
       <div className={sg.container}>
         <div className={st.signup_logo}>
           <img className={st.signup_logo__img} src={logo} alt="logo" />

@@ -14,6 +14,8 @@ const HeroSection = () => {
   const ref2 = useRef(null);
   const ref3 = useRef(null);
   const isLoggedIn = useSelector(selectIsLoggedIn)
+  const isLoading = useSelector(selectLoading);
+  // const isLoading = true;
   // const isLoggedIn = true;
   const imageChanger = (num) => {
     if (activeImage === num) {
@@ -47,7 +49,6 @@ const HeroSection = () => {
     
    
   }, []);
-  const isLoading = useSelector(selectLoading);
   return (
 
     <div className={`${st.container}`}>
