@@ -17,7 +17,7 @@ export const registerUser =async (formData) =>{
 console.log("-----")
     try{
         const response = await axios.post(`${BACKEND_URL}/user/signup`, formData);
-        if(response.status==="Success"){
+        if(response.data.status==="Success"){
             toast.success("Registerd Successfully");
         }
         return response.data;
@@ -32,7 +32,7 @@ console.log("-----")
 export const loginUser = async(formData)=>{
     try{
         const response = await axios.post(`${BACKEND_URL}/user/login`, formData);
-        if(response.status==="Success"){
+        if(response.data.status==="Success"){
             toast.success("Logged in Successfully");
         }
         return response.data
@@ -85,6 +85,19 @@ export const googleLogin = async (token)=>{
             return toast.err(response.data.message)
         }
         return response.data;
+    }catch(err){
+        const message = err.message;
+        toast.error(message);
+    }
+}
+
+export const saveQuery = async(formData)=>{
+    try{
+        const response = await axios.post(`${BACKEND_URL}/contact/`, formData);
+        if(response.data.status==="Success"){
+            toast.success("Your message has been sent.");
+        }
+        return response.data
     }catch(err){
         const message = err.message;
         toast.error(message);

@@ -40,13 +40,14 @@ function Login() {
     const response = await loginUser(formData);
     dispatch(SET_LOADING(false));
     if(response.status==="fail"){
-
+      
       return toast.error(response.message);
-
+      
     }
     if(response.status==="Success"){
       dispatch(SET_USER(response.data[0]));
       dispatch(SET_LOGIN(true))
+      setFormData(initialState)
       navigate('/')
     }
   }

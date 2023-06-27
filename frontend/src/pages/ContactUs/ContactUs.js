@@ -5,87 +5,107 @@ import { Link } from 'react-router-dom';
 import logo from "../../assets/images/logo.svg";
 import Footer from '../../components/footer/Footer';
 import { toast } from 'react-toastify';
+import { saveQuery, validateEmail } from '../../services/authServices';
+import { useDispatch, useSelector } from 'react-redux';
+import { SET_LOADING, selectLoading } from '../../redux/auth/authSlice';
+import Loader from '../../components/loader/Loader';
 
 const initialState = {
-    name:"",
-    email:"",
-    query:""
+    name: "",
+    email: "",
+    query: ""
 }
-const  Contactus= ()=>{
+const Contactus = () => {
 
-   const [formData, setFormData] = useState(initialState)
-
-    const changeHandler= (e)=>{
-        const {name,value} = e.target;
-        setFormData({...formData, [name]:value});
+    const [formData, setFormData] = useState(initialState)
+    const isLoading = useSelector(selectLoading);
+    const dispatch =  useDispatch();
+    const changeHandler = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
     }
-    const submitHandler=(e)=>{
+    const submitHandler =async (e) => {
         e.preventDefault();
-        const {name,email, query} = formData;
-        if(!name || !email || !query){
+        const { name, email, query } = formData;
+        if (!name || !email || !query) {
             return toast.error("All fields are required.");
         }
-        console.log(formData);
+        if (!name.match(/^(?! )\w{2,}$/)) {
+            return toast.error("Please give valid name");
+        }
+        if (!validateEmail(email)) {
+            return toast.error("Please give valid email.");
+        }
+        dispatch(SET_LOADING(true));
+
+        const response = await saveQuery(formData);
+        dispatch(SET_LOADING(false));
+        if(response.status==='fail'){
+            toast.error(response.message);
+        }
+        console.log(response);
+        setFormData(initialState)
     }
-    return(
+    return (
         <>
-        <div className={sks.container}>
-            <nav className={st.navbar}>
-            <div className={st.navLinks1}>
-                <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/gallery">Gallery</Link></li>
-                </ul>
-            </div>
-                <div className={st.logo}>
-                    <img src={logo} alt="logo" />
-                    
+            <div className={sks.container}>
+                {isLoading && <Loader/>}
+                <nav className={st.navbar}>
+                    <div className={st.navLinks1}>
+                        <ul>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/gallery">Gallery</Link></li>
+                        </ul>
+                    </div>
+                    <div className={st.logo}>
+                        <img src={logo} alt="logo" />
+
+                    </div>
+                    <div className={st.navLinks2}>
+                        <ul>
+                            <li><Link to="/packages">Packages</Link></li>
+                            <li><Link to="/aboutus">About Us</Link></li>
+                        </ul>
+                    </div>
+                </nav>
+                <div className={sks.banner}>
+                    <p>Contact Us</p>
                 </div>
-            <div className={st.navLinks2}>
-                <ul>
-                <li><Link to="/packages">Packages</Link></li>
-                <li><Link to="/aboutus">About Us</Link></li>
-                </ul>
-            </div>
-            </nav>
-            <div className={sks.banner}>
-                <p>Contact Us</p>
-            </div>
-            <div className={sks.main}>
-                <div className={sks.touch}>
-                    <div className={sks.text}><p><strong>Get in touch</strong></p></div>
-                    <div className={sks.text}><p><strong>Visit us</strong><br/>Come say hello toour office HQ.<br/>
-                    <strong>Jungle Safari India, Lucknow-324005</strong>
-                    </p></div>
-                    <div className={sks.text}><p><strong>Chat to us</strong><br/>Our friendly team is here to help.<br/>
-                    <strong>falinawildlife69@gmail.com</strong>
-                    </p></div>
-                    <div className={sks.text}><p><strong>Call us</strong><br/>Mon-Sat from 8am to 6pm<br/>
-                    <strong>(+91)-8527518718</strong>
-                    </p></div>
-                    <div className={sks.text}><p><strong>Social Media</strong></p></div>
+                <div className={sks.main}>
+                    <div className={sks.touch}>
+                        <div className={sks.text}><p><strong>Get in touch</strong></p></div>
+                        <div className={sks.text}><p><strong>Visit us</strong><br />Come say hello toour office HQ.<br />
+                            <strong>Jungle Safari India, Lucknow-324005</strong>
+                        </p></div>
+                        <div className={sks.text}><p><strong>Chat to us</strong><br />Our friendly team is here to help.<br />
+                            <strong>falinawildlife69@gmail.com</strong>
+                        </p></div>
+                        <div className={sks.text}><p><strong>Call us</strong><br />Mon-Sat from 8am to 6pm<br />
+                            <strong>(+91)-8527518718</strong>
+                        </p></div>
+                        <div className={sks.text}><p><strong>Social Media</strong></p></div>
+                    </div>
+                    <div className={sks.form}>
+                        <form onSubmit={submitHandler}>
+                            <div className={sks.naam}>
+                                <div className={sks.fname}><label>First Name</label></div>
+                                <input className={sks.name} type='text' name='name' value={formData.name} onChange={changeHandler} />
+                                <div className={sks.lname}><label>Last Name</label></div>
+                                <input className={sks.sname} type='text' />
+                            </div>
+                            <div className={sks.number}><label>Phone Number</label></div>
+                            <input className={sks.fields} type="tel" />
+                            <div className={sks.email}><label>Email</label></div>
+                            <input className={sks.fields} type="email" name='email' value={formData.email} onChange={changeHandler} />
+                            <div className={sks.query}><label>Your Query</label></div>
+                            <input className={sks.fieldsquery} type="text" name='query' value={formData.query} onChange={changeHandler} />
+                            <div><button className={sks.button} type="submit">Send Query</button></div>
+                        </form>
+                    </div>
                 </div>
-                <div className={sks.form}>
-                    <form onSubmit={submitHandler}>
-                        <div className={sks.naam}>
-                        <div className={sks.fname}><label>First Name</label></div>
-                        <input className={sks.name} type='text' name='name' value={formData.name} onChange={changeHandler}/>
-                        <div className={sks.lname}><label>Last Name</label></div>
-                        <input className={sks.sname} type='text'/>
-                        </div>
-                        <div className={sks.number}><label>Phone Number</label></div>
-                        <input className={sks.fields} type="tel"/>
-                        <div className={sks.email}><label>Email</label></div>
-                        <input className={sks.fields} type="email" name='email' value={formData.email} onChange={changeHandler}/>
-                        <div className={sks.query}><label>Your Query</label></div>
-                        <input className={sks.fieldsquery} type="text" name='query' value={formData.query} onChange={changeHandler}/>
-                        <div><button className={sks.button} type="submit">Send Query</button></div>
-                    </form>
-                </div>
+                <hr className={st.line} />
             </div>
-            <hr className={st.line}/>
-        </div>
-        <Footer className="my-13"/>
+            <Footer className="my-13" />
         </>
     );
 }

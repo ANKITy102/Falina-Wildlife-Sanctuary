@@ -58,6 +58,7 @@ const Signup = () => {
       dispatch(SET_LOGIN(true))
       dispatch(SET_USER(response.data[0]));
       dispatch(SET_LOADING(false))
+      setFormData(initialState);
       navigate('/')
     }
     
