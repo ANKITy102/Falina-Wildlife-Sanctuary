@@ -4,9 +4,10 @@ import image2 from "../../assets/images/MPimg1.jpg"
 import image3 from "../../assets/images/MPimg2.jpg"
 import image1 from "../../assets/images/MPimg3.jpg"
 import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "../../redux/auth/authSlice";
+import { selectIsLoggedIn, selectLoading } from "../../redux/auth/authSlice";
 import Google from '../../services/google';
 import Navbar from "../navbar/Navbar";
+import Loader from "../loader/Loader";
 const HeroSection = () => {
   const [activeImage, setActive] = useState(1);
   const ref1 = useRef(null);
@@ -46,9 +47,11 @@ const HeroSection = () => {
     
    
   }, []);
+  const isLoading = useSelector(selectLoading);
   return (
 
     <div className={`${st.container}`}>
+      {isLoading && <Loader/>}
       <Navbar transparent={true}/>
       {!isLoggedIn && (<div className={st.googleLoginButton}><Google/></div>)}
       <img

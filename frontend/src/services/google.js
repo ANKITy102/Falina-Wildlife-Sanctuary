@@ -12,8 +12,7 @@ const Google = () => {
     const loginUserByGoogle =async (token) =>{
       
       const response =   await  googleLogin(token);
-      console.log(response);
-     dispatch( SET_LOADING(false))
+      dispatch( SET_LOADING(false))
         if(response && response.data && response.status==="Success"){
           dispatch(SET_LOGIN(true));
           dispatch(SET_USER(response.data[0]));

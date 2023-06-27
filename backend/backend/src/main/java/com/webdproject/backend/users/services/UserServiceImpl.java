@@ -163,7 +163,7 @@ public class UserServiceImpl implements UserService {
         ;
         for (UserModel userModel : listUser) {
             listOfUser.add(new UserInfoModel(userModel.getFirstName(), userModel.getLastName(), userModel.getEmail(),
-                    userModel.getCreationDate()));
+                    userModel.getCreationDate(), userModel.isAdmin()));
         }
         return listOfUser;
     }

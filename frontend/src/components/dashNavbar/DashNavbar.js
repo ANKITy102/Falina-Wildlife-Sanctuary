@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from "../../assets/images/balck.png"
 import st from "./DashNavbar.module.css"
+import { Link } from 'react-router-dom'
 const DashNavbar = () => {
   const submitHandle=(e)=>{
     e.preventDefault();
@@ -9,9 +10,11 @@ const DashNavbar = () => {
   return (
     <nav className="flex bg-transparent shadow__Nav px-5 justify-between items-center">
       <div className="logo">
+       <Link to="/">
         <img src={logo} alt="Logo" width="122px" style={{
           marginTop:"-30px"
         }} />
+        </Link> 
       </div>
       <div className="flex justify-center items-center gap-8">
       <form className={st.searchcontainer} onSubmit={submitHandle}>

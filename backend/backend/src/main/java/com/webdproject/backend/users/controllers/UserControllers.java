@@ -190,17 +190,16 @@ public class UserControllers {
         return ResponseEntity.ok(apiReturnModel);
     }
 
-
     @GetMapping("/getallusers")
-    public ResponseEntity<List<UserInfoModel>> getallUser(){
-         apiReturnModel = new APIReturnModel();
+    public ResponseEntity<List<UserInfoModel>> getallUser() {
+        apiReturnModel = new APIReturnModel();
         userVec = new Vector<>();
         List<UserInfoModel> userList = null;
-        try{
-             userList = this.userService.getAllUser();
-        }catch(Exception e){
+        try {
+            userList = this.userService.getAllUser();
+        } catch (Exception e) {
             ResponseEntity.internalServerError();
         }
-        return ResponseEntity.ok( userList);
+        return ResponseEntity.ok(userList);
     }
 }
