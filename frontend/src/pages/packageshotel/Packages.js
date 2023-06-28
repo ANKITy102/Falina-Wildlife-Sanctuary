@@ -5,6 +5,7 @@ import st from "./Packages.module.css";
 import Footer from "../../components/footer/Footer";
 import { toast } from 'react-toastify';
 import { registerUser, validateEmail } from '../../services/authServices'
+import WhiteNavbar from "../../components/navbar/WhiteNavbar"
 // const Showmssg = ({message})=>{
 //   return <ul className={st.errormssg}>{message}
 //   </ul>
@@ -66,24 +67,7 @@ const Packages = () => {
   return (
     <>
     <div className={st.container}>
-      <nav className={st.navbar}>
-        <div className={st.navLinks1}>
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/gallery">Gallery</Link></li>
-            </ul>
-        </div>
-              <div className={st.logo}>
-                  <img src={logo} alt="logo" />
-                  
-              </div>
-        <div className={st.navLinks2}>
-            <ul>
-              <li><Link to="/contactus">Contact Us</Link></li>
-              <li><Link to="/aboutus">About Us</Link></li>
-            </ul>
-        </div>
-      </nav>
+      <WhiteNavbar/>
       <div className={st.plans}>
         <h1>Packages Plans</h1><br></br><br></br>
         <p>We have designed our plans to be affordable, flexible and tailored</p>
