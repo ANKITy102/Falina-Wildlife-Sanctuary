@@ -1,6 +1,5 @@
 package com.webdproject.backend.users.controllers;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
@@ -10,37 +9,44 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.google.protobuf.Api;
 import com.webdproject.backend.users.apimodels.APIReturnModel;
-import com.webdproject.backend.users.models.ContactModel;
-import com.webdproject.backend.users.services.ContactService;
+import com.webdproject.backend.users.models.EmailDto;
+import com.webdproject.backend.users.models.PackageModel;
+import com.webdproject.backend.users.models.UserInfoModel;
+import com.webdproject.backend.users.services.PackageServiceImpl;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/contact")
-public class ContactController {
+@RequestMapping("/package")
+public class PackageController {
 
     @Autowired
-    private ContactService contactService;
+    private PackageServiceImpl packageService;
+    private PackageModel packageModel;
     private APIReturnModel apiReturnModel;
-    private Vector<Boolean> contactVec;
-    private Vector<List<ContactModel>> queryLists;
+    private Vector<PackageModel> packageVec;
+    private Vector<List<PackageModel>> ticketList;
+
+    @GetMapping("/")
+    public String testFunc() {
+        return "hi working";
+    }
 
     @PostMapping("/")
-    public ResponseEntity<APIReturnModel> saveQuery(@RequestBody ContactModel contactModel) {
+    public ResponseEntity<APIReturnModel> savedTicket(@RequestBody PackageModel packageInfo) {
         apiReturnModel = new APIReturnModel();
-        contactVec = new Vector<>();
+        packageVec = new Vector<>();
         try {
-            boolean respon = this.contactService.saveQuery(contactModel);
-            contactVec.add(respon);
-            apiReturnModel.setData(contactVec);
+            PackageModel savedTicket = this.packageService.bookTicket(packageInfo);
+            packageVec.add(savedTicket);
+            apiReturnModel.setData(packageVec);
             apiReturnModel.setStatus("Success");
             apiReturnModel.setMessage("Your data");
-            apiReturnModel.setCount(contactVec.size());
+            apiReturnModel.setCount(packageVec.size());
         } catch (Exception e) {
             e.printStackTrace();
             apiReturnModel.setStatus("fail");
@@ -48,31 +54,25 @@ public class ContactController {
             apiReturnModel.setCount(0);
         }
         return ResponseEntity.ok(apiReturnModel);
-
     }
 
-    @GetMapping("/getqueries")
-    public ResponseEntity<APIReturnModel> getAllQueries(@RequestHeader String token) {
-        List<ContactModel> queryList = null;
+    @GetMapping("/bookedtickets")
+    public ResponseEntity<APIReturnModel> userTicket(@RequestBody EmailDto userEmail) {
         apiReturnModel = new APIReturnModel();
-        queryLists = new Vector<>();
+        ticketList = new Vector<>();
         try {
-            System.out.println("now in get qurei");
-            queryList = this.contactService.getAllQueries(token);
-            queryLists.add(queryList);
-            apiReturnModel.setData(queryLists);
+            List<PackageModel> savedTicket = this.packageService.getUserTicket(userEmail);
+            ticketList.add(savedTicket);
+            apiReturnModel.setData(packageVec);
             apiReturnModel.setStatus("Success");
             apiReturnModel.setMessage("Your data");
-            // apiReturnModel.setCount(contactVec.size());
+            apiReturnModel.setCount(packageVec.size());
         } catch (Exception e) {
-            // TODO: handle exception
             e.printStackTrace();
             apiReturnModel.setStatus("fail");
             apiReturnModel.setMessage(e.getMessage());
             apiReturnModel.setCount(0);
         }
         return ResponseEntity.ok(apiReturnModel);
-
     }
-
 }
