@@ -2,10 +2,7 @@ import React from 'react'
 import st from './Signup.module.css'
 import logo from "../../assets/images/logo.svg"
 import { useState } from 'react'
-import {
-  FaFacebook,
-  FaGoogle
-} from 'react-icons/fa'
+import {FaFacebook,FaGoogle} from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { registerUser, validateEmail } from '../../services/authServices'
 import { toast } from 'react-toastify';
@@ -52,8 +49,6 @@ const Signup = () => {
       const token  = response.data[0].token;
       console.log(token)
       localStorage.setItem("token", token);
-      // console.log(response);
-      // console.log(response.data[0]);
       dispatch(SET_LOGIN(true))
       dispatch(SET_USER(response.data[0]));
       navigate('/')

@@ -286,6 +286,7 @@
     display: flex;
     flex-direction: row;
     height: 50rem;
+    margin-bottom: 12rem;
 }
 
 .line{
@@ -307,7 +308,7 @@
 .form{
     display: flex;
     flex-direction: column;
-    margin-top: -2rem;
+    margin-top: -4rem;
     margin-left: 3rem;
 }
 
@@ -504,6 +505,17 @@
     padding: 0.2rem;
     /* background-color: blue; */
 }
+.inputbox_pck{
+    /* z-index: -1; */
+    margin: 3rem;
+    margin-top: -1rem;
+    width: 43rem;
+    height: 3rem;
+    border: 1.5px solid black;
+    border-radius: 10px;
+    padding: 0.2rem;
+    /* background-color: blue; */
+}
 
 .inputbox_child{
     /* z-index: -1; */
@@ -525,6 +537,7 @@
     border-radius: 6px;
     font-size: 1.3rem;
     font-weight: bolder;
+    background-color: black;
 }
 
 .calcfare{
@@ -532,8 +545,9 @@
     flex-direction: column;
     /* justify-content: center; */
     /* align-items: center; */
-    margin-top: 16rem;
-    margin-left: 6rem;
+    margin-top: 20rem;
+    /* margin-left: 6rem; */
+    margin-right:6rem ;
     border: 2px solid rgb(0, 0, 0);
     box-shadow: 8px 8px 8px 0px rgb(186, 185, 185);
     border-radius: 20px;
@@ -564,4 +578,15 @@
     width:23rem;
     margin-left: 3rem;
     margin-top: -0.5rem;
+}
+
+.errormssg{
+    display: inline-block;
+    color: red;
+    font-weight: 100;
+    font-size: .7rem;
+    margin-left: 4rem;
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
+    list-style-type: disc;
 }

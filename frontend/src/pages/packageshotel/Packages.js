@@ -3,9 +3,67 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import st from "./Packages.module.css";
 import Footer from "../../components/footer/Footer";
+import { toast } from 'react-toastify';
+import { useState,useNavigate } from 'react';
+import { registerUser, validateEmail } from '../../services/authServices'
+// const Showmssg = ({message})=>{
+//   return <ul className={st.errormssg}>{message}
+//   </ul>
+// }
+const initialState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  phoneNumber:"",
+  package_tour:"",
+  adults:"",
+  childs:"",
+  start_date:"",
+  end_date:"",
+  no_of_rooms:"",
+  no_of_days:""
+}
 
+const Packages = () => {
+  const [formData, setFormData] = useState(initialState);
+  // const dispatch = useDispatch()
+  // const navigate=useNavigate();
+  const onChangeHandler = (e) =>{
+    const {name,value} = e.target;
+    setFormData({...formData, [name]:value});
+  }
+  const submitHandler=async(e)=>{
 
-export default function Packages() {
+    e.preventDefault();
+    const {firstName,lastName,email,phoneNumber,package_tour, adults,childs,start_date,end_date,no_of_rooms,no_of_days} = formData;
+    if(!firstName || !lastName || !email ||!phoneNumber|| !package_tour || !adults|| !childs|| !start_date|| !end_date|| !no_of_rooms|| !no_of_days){
+      return toast.error("All fields are required");
+    }
+    if(!lastName.match(/^(?! )\w{2,}$/) || !firstName.match(/^(?! )\w{2,}$/)){
+      return toast.error("Please give valid name");
+    }
+    if(!validateEmail(email)){
+      return toast.error("Please provide correct email.");
+    }
+    if(!phoneNumber.match(/^\d{10}$/)){
+      return toast.error("Please provide correct number")
+    }
+    console.log(formData);
+    // const response = await registerUser(formData);
+    // if(response.status==='fail'){
+    //   return toast.error(response.message);
+    // }
+    // if(response.status==="Success"){
+    //   const token  = response.data[0].token;
+    //   console.log(token)
+    //   localStorage.setItem("token", token);
+    //   dispatch(SET_LOGIN(true))
+    //   dispatch(SET_USER(response.data[0]));
+    //   navigate('/')
+    // }
+    
+
+  }
   return (
     <>
     <div className={st.container}>
@@ -56,7 +114,7 @@ export default function Packages() {
         <div className={st.gold}>
         <div className={st.goldbkmrk}></div><br></br>
             <div className={st.text}>Gold</div>
-            <div className={st.text1}>Our most wanted trip</div><br></br>
+            <div className={st.text1}>Most wanted trip</div><br></br>
             <div className={st.box}>
                 <div className={st.prc}>₹2500</div>
                 <div className={st.textbox}>/Per Adult</div>
@@ -105,30 +163,40 @@ export default function Packages() {
       <div className={st.fare}>
         <div className={st.form}>
         <p>Book Now</p><br></br><br></br>
-          <form>
+          <form onSubmit={submitHandler}>
+            {/* <Showmssg message={message}/> */}
             <div className={st.nameinputs}>
-            <div className={st.label_fname}>First Name</div>
-            <input type="text" className={st.inputbox_fname}></input>
+            <div className={st.label_fname}>First Name *</div>
+            <input type="text" className={st.inputbox_fname} name="firstName" value={formData.firstName} onChange={(e)=>{onChangeHandler(e)}}></input>
             <div className={st.label_lname}>Last Name</div>
-            <input type="text" className={st.inputbox_lname}></input>
+            <input type="text" className={st.inputbox_lname} name="lastName" value={formData.lastName} onChange={(e)=>{onChangeHandler(e)}}></input>
             </div>
-            <div className={st.email}>Email Address</div>
-            <input type="text" className={st.inputbox}></input>
+            <div className={st.email}>Email Address *</div>
+            <input type="text" className={st.inputbox} name="email" value={formData.email} onChange={(e)=>{onChangeHandler(e)}}></input>
+            <div className={st.email}>Phone Number *</div>
+            <input type="tel" className={st.inputbox} name="phoneNumber" value={formData.phoneNumber} onChange={(e)=>{onChangeHandler(e)}}></input>
+            <div className={st.label_adult}>Package *</div>
+            <select className={st.inputbox_pck} name="package_tour" value={formData.package_tour} onChange={(e)=>{onChangeHandler(e)}}>
+              <option className={st.pack}>---Select Package---</option>
+              <option value="Silver">Silver</option>
+              <option value="Gold">Gold</option>
+              <option value="Diamond">Diamond</option>
+            </select>
             <div className={st.nameinputs}>
-            <div className={st.label_adult}>Adults</div>
-            <input type="text" className={st.inputbox_adult}></input>
-            <div className={st.label_child}>Children</div>
-            <input type="text" className={st.inputbox_child}></input>
+            <div className={st.label_adult}>Adults *</div>
+            <input type="text" className={st.inputbox_adult} name="adults" value={formData.adults} onChange={(e)=>{onChangeHandler(e)}}></input>
+            <div className={st.label_child}>Children *</div>
+            <input type="text" className={st.inputbox_child} name="childs" value={formData.childs} onChange={(e)=>{onChangeHandler(e)}}></input>
             </div>
             <div className={st.nameinputs}>
-            <div className={st.label_adult}>Start</div>
-            <input type="date" className={st.inputbox_adult}></input>
-            <div className={st.label_child}>End</div>
-            <input type="date" className={st.inputbox_child}></input>
+            <div className={st.label_adult}>Start *</div>
+            <input type="date" className={st.inputbox_adult} name="start_date" value={formData.start_date} onChange={(e)=>{onChangeHandler(e)}}></input>
+            <div className={st.label_child}>End *</div>
+            <input type="date" className={st.inputbox_child} name="end_date" value={formData.end_date} onChange={(e)=>{onChangeHandler(e)}}></input>
             </div>
             <div className={st.nameinputs}>
-            <div className={st.label_adult}>Number Of Rooms</div>
-            <select className={st.inputbox_rooms}>
+            <div className={st.label_adult}>Number Of Rooms *</div>
+            <select className={st.inputbox_rooms} name="no_of_rooms" value={formData.no_of_rooms} onChange={(e)=>{onChangeHandler(e)}}>
               <option className={st.rooms}>---No. of Rooms---</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -139,11 +207,11 @@ export default function Packages() {
               <option value="7">7</option>
               <option value="8">8</option>
             </select>
-            <div className={st.label_child}>Number of Days</div>
-            <input type="text" className={st.inputbox_child}></input>
+            <div className={st.label_child}>Number of Days *</div>
+            <input type="text" className={st.inputbox_child} name="no_of_days" value={formData.no_of_days} onChange={(e)=>{onChangeHandler(e)}}></input>
             </div>
+          <button className={`btn btn-dark ${st.bttn2} my-7`} type="submit">Book Trip</button>
           </form>
-          <button className={`btn btn-dark ${st.bttn2} my-7`}>Book Trip</button>
         </div>  
         <div className={st.calcfare}>
           <p>Calculate Fare</p>
@@ -164,3 +232,5 @@ export default function Packages() {
     </>
   );
 }
+
+export default Packages
