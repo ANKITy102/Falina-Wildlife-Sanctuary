@@ -88,7 +88,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     background-color: rgb(212, 211, 211);
     color: black;
     height: 22rem;

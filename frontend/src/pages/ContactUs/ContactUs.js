@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import logo from "../../assets/images/logo.svg";
 import Footer from '../../components/footer/Footer';
 import WhiteNavbar from '../../components/navbar/WhiteNavbar';
+import Navbar from '../../components/navbar/Navbar';
 import { toast } from 'react-toastify';
 import { saveQuery, validateEmail } from '../../services/authServices';
 import { useDispatch, useSelector } from 'react-redux';

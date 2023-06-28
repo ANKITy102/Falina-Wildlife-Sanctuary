@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.protobuf.Api;
 import com.webdproject.backend.users.apimodels.APIReturnModel;
 import com.webdproject.backend.users.models.EmailDto;
 import com.webdproject.backend.users.models.PackageModel;
-import com.webdproject.backend.users.models.UserInfoModel;
 import com.webdproject.backend.users.services.PackageServiceImpl;
 
 @CrossOrigin("*")
@@ -26,7 +24,6 @@ public class PackageController {
 
     @Autowired
     private PackageServiceImpl packageService;
-    private PackageModel packageModel;
     private APIReturnModel apiReturnModel;
     private Vector<PackageModel> packageVec;
     private Vector<List<PackageModel>> ticketList;

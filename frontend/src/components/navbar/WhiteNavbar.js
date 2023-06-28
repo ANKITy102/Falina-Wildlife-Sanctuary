@@ -21,7 +21,7 @@ const WhiteNavbar = (props) => {
         }
     }
   return (
-    <nav className={`flex ${props.transparent?"bg-transparent":"bg-white"}  px-5 justify-between items-center ${props.shadowNav?"shadow__Nav":""} my-10`}>
+    <nav className={`flex ${props.transparent?"bg-transparent":"bg-white"}  px-5 justify-between items-center ${props.shadowNav?"shadow__Nav":""} my-3`}>
         <div className="logo">
             <img src={logo} alt="logo" width="122px" style={{
                 marginTop:"-30px"
@@ -47,12 +47,12 @@ const WhiteNavbar = (props) => {
             </ul>
         </div>
         <div className="loginSignup flex items-center">
-            {(isLogin?(<div className="flex items-center gap-4 text-[20px] text-white">
+            {(isLogin?(<div className="flex items-center gap-4 text-[20px] text-black">
                 <img src={(profilePic?profilePic:avatar)} alt="avatar" className='hover:cursor-pointer' width="40px" style={{
                     borderRadius:"50%"
                 }} onClick={showDashboardFun}/>
                 {capitalizeFirstLetter(name)}
-                {showDashboard && (<div className='absolute top-[84px] right-4 bg-slate-600 px-3 py-2 rounded-md'>
+                {showDashboard && (<div className='absolute top-[95px] right-4 bg-slate-600 px-3 py-2 rounded-md'>
                 <i class="fa-solid fa-caret-up absolute bottom-8 left-[18px] text-slate-600 text-3xl"></i>
                     <Link to="/dashboard" className="hover:no-underline hover:text-orange-200">Dashboard</Link>
                 </div>)}
