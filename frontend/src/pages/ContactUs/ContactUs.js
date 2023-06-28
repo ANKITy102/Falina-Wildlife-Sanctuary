@@ -4,6 +4,7 @@ import st from '../packageshotel/Packages.module.css'
 import { Link } from 'react-router-dom';
 import logo from "../../assets/images/logo.svg";
 import Footer from '../../components/footer/Footer';
+import WhiteNavbar from '../../components/navbar/WhiteNavbar';
 import { toast } from 'react-toastify';
 import { saveQuery, validateEmail } from '../../services/authServices';
 import { useDispatch, useSelector } from 'react-redux';
@@ -50,24 +51,7 @@ const Contactus = () => {
         <>
             <div className={sks.container}>
                 {isLoading && <Loader/>}
-                <nav className={st.navbar}>
-                    <div className={st.navLinks1}>
-                        <ul>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/gallery">Gallery</Link></li>
-                        </ul>
-                    </div>
-                    <div className={st.logo}>
-                        <img src={logo} alt="logo" />
-
-                    </div>
-                    <div className={st.navLinks2}>
-                        <ul>
-                            <li><Link to="/packages">Packages</Link></li>
-                            <li><Link to="/aboutus">About Us</Link></li>
-                        </ul>
-                    </div>
-                </nav>
+                <WhiteNavbar/>
                 <div className={sks.banner}>
                     <p>Contact Us</p>
                 </div>

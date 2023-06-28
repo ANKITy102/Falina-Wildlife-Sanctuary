@@ -5,6 +5,7 @@ import st from "./Packages.module.css";
 import Footer from "../../components/footer/Footer";
 import { toast } from 'react-toastify';
 import { registerUser, validateEmail } from '../../services/authServices'
+import WhiteNavbar from "../../components/navbar/WhiteNavbar"
 // const Showmssg = ({message})=>{
 //   return <ul className={st.errormssg}>{message}
 //   </ul>

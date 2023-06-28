@@ -17,6 +17,7 @@ import Users from './components/users/Users'
 import TotalBookings from './graphs/TotalBookings'
 import Gallery from "./pages/Gallery/Gallery"
 import UserQueries from './components/userQueries/UserQueries'
+import Payment from './pages/Payment/paymnet'
 // import axios from "axios";
 const App = () => {
   // const dispatch = useDispatch();
@@ -88,6 +89,7 @@ const App = () => {
          </Dashboard>
         }/>
         <Route path="/gallery" element={<Gallery/>}/>
+        <Route path='/payment' element={<Payment/>}/>
       </Routes>
 
     </BrowserRouter>

@@ -3,30 +3,13 @@ import sp from './AboutUs.module.css'
 import st from '../packageshotel/Packages.module.css'
 import {Link} from 'react-router-dom';
 import logo from "../../assets/images/logo.svg";
+import WhiteNavbar from '../../components/navbar/WhiteNavbar';
 import Footer from "../../components/footer/Footer";
 
 const AboutUs = () => {
   return (
     <div className={sp.container}>
-        <nav className={st.navbar}>
-        <div className={st.navLinks1}>
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/gallery">Gallery</Link></li>
-            </ul>
-        </div>
-              <div className={st.logo}>
-                  <img src={logo} alt="logo" />
-                  
-              </div>
-        <div className={st.navLinks2}>
-            <ul>
-              <li><Link to="/packages">Packages</Link></li>
-              <li><Link to="/contactus">Contact Us</Link></li>
-            </ul>
-        </div>
-      </nav>
-
+        <WhiteNavbar/>
       <div className={sp.banner}><h1>ABOUT US</h1></div>
       <div className={sp.text1}>
         <h1>Our Vision</h1>

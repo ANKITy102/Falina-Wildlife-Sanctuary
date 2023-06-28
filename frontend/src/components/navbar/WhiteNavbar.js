@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from "../../assets/images/balck.png"
 import avatar from "../../assets/images/defaultAvatar.png"
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectAdmin, selectIsLoggedIn, selectName, selectProfilePic } from '../../redux/auth/authSlice'
@@ -20,7 +21,7 @@ const WhiteNavbar = (props) => {
         }
     }
   return (
-    <nav className={`flex ${props.transparent?"bg-transparent":"bg-white"}  px-5 justify-between items-center ${props.shadowNav?"shadow__Nav":""}`}>
+    <nav className={`flex ${props.transparent?"bg-transparent":"bg-white"}  px-5 justify-between items-center ${props.shadowNav?"shadow__Nav":""} my-10`}>
         <div className="logo">
             <img src={logo} alt="logo" width="122px" style={{
                 marginTop:"-30px"
