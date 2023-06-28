@@ -4,7 +4,6 @@ import logo from "../../assets/images/logo.svg";
 import st from "./Packages.module.css";
 import Footer from "../../components/footer/Footer";
 import { toast } from 'react-toastify';
-import { useState,useNavigate } from 'react';
 import { registerUser, validateEmail } from '../../services/authServices'
 // const Showmssg = ({message})=>{
 //   return <ul className={st.errormssg}>{message}
