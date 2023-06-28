@@ -21,8 +21,8 @@ const AboutUs = () => {
               </div>
         <div className={st.navLinks2}>
             <ul>
+              <li><Link to="/packages">Packages</Link></li>
               <li><Link to="/contactus">Contact Us</Link></li>
-              <li><Link to="/aboutus">About Us</Link></li>
             </ul>
         </div>
       </nav>

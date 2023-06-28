@@ -53,8 +53,6 @@ const Signup = () => {
       const token  = response.data[0].token;
       console.log(token)
       localStorage.setItem("token", token);
-      // console.log(response);
-      // console.log(response.data[0]);
       dispatch(SET_LOGIN(true))
       dispatch(SET_USER(response.data[0]));
       dispatch(SET_LOADING(false))

@@ -74,12 +74,12 @@ const Contactus = () => {
                 <div className={sks.main}>
                     <div className={sks.touch}>
                         <div className={sks.text}><p><strong>Get in touch</strong></p></div>
-                        <div className={sks.text}><p><strong>Visit us</strong><br />Come say hello toour office HQ.<br />
+                        <div className={sks.text}><p><strong>Visit us</strong><br />Come say hello toour office HQ.<br /><br/>
                             <strong>Jungle Safari India, Lucknow-324005</strong>
-                        </p></div>
+                        </p></div><br></br>
                         <div className={sks.text}><p><strong>Chat to us</strong><br />Our friendly team is here to help.<br />
                             <strong>falinawildlife69@gmail.com</strong>
-                        </p></div>
+                        </p></div><br></br>
                         <div className={sks.text}><p><strong>Call us</strong><br />Mon-Sat from 8am to 6pm<br />
                             <strong>(+91)-8527518718</strong>
                         </p></div>
@@ -90,15 +90,11 @@ const Contactus = () => {
                             <div className={sks.naam}>
                                 <div className={sks.fname}><label>First Name</label></div>
                                 <input className={sks.name} type='text' name='name' value={formData.name} onChange={changeHandler} />
-                                <div className={sks.lname}><label>Last Name</label></div>
-                                <input className={sks.sname} type='text' />
                             </div>
-                            <div className={sks.number}><label>Phone Number</label></div>
-                            <input className={sks.fields} type="tel" />
                             <div className={sks.email}><label>Email</label></div>
                             <input className={sks.fields} type="email" name='email' value={formData.email} onChange={changeHandler} />
                             <div className={sks.query}><label>Your Query</label></div>
-                            <input className={sks.fieldsquery} type="text" name='query' value={formData.query} onChange={changeHandler} />
+                            <textarea className={sks.fieldsquery} type="text" name='query' value={formData.query} onChange={changeHandler} />
                             <div><button className={sks.button} type="submit">Send Query</button></div>
                         </form>
                     </div>
