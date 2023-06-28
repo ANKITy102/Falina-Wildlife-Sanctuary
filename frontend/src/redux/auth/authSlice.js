@@ -40,7 +40,12 @@ export const {SET_LOGIN, SET_USER, SET_LOADING} = authSlice.actions;
 export const selectIsLoggedIn = (state)=> state.auth.isLoggedIn;
 export const selectUser = (state) => state.auth.user;
 export const selectName = (state) => state.auth.user.name;
+export const selectFullName = (state)=>{
+    let full = state.auth.user.name + " " + state.auth.user.lname;
+    return full
+}
 export const selectProfilePic = (state)=>state.auth.user.profilePic;
 export const selectLoading = (state) => state.auth.isLoading;
 export const selectAdmin = (state)=>state.auth.isAdmin
+export const selectEmail = (state)=> state.auth.user.email;
 export default authSlice.reducer

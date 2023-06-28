@@ -24,7 +24,7 @@ const UserQueries = () => {
         getMessage();
     }, [])
     return (
-        <div className="w-full h-full">
+        <div className="w-full h-full flex-row overflow-y-auto flex flex-wrap justify-between px-14 items-start pt-8">
             {seleLoading && <Loader/>}
             {
                 queries.map((elem)=>{

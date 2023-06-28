@@ -1,11 +1,47 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import st from "./Packages.module.css";
 import Footer from "../../components/footer/Footer";
+import { useSelector } from "react-redux";
+import { selectEmail, selectFullName, selectIsLoggedIn } from "../../redux/auth/authSlice";
+import { toast } from "react-toastify";
 
 
 export default function Packages() {
+  const IsLoggedIn = useSelector(selectIsLoggedIn);
+  const navigate = useNavigate();
+  useEffect(()=>{
+    if(!IsLoggedIn){
+      toast.info("Please login to continue.");
+      navigate("/login");
+    }
+  },[])
+  const Uname = useSelector(selectFullName);
+  const Uemail = useSelector(selectEmail);
+  const initialState = {
+    name: Uname,
+    package:"",
+    email:Uemail,
+    adults:"",
+    children:"",
+    dateStart:"",
+    dateEnd:"",
+    rooms:"",
+    days:""
+  }
+
+
+  const [formData, setData]= useState(initialState);
+
+  const changeHandler = (e)=>{  
+     const {name, value} = e.target;
+     setData({...formData, [name]:value});
+  }
+  const submitHandler = (e)=>{
+    e.preventDefault();
+    console.log(formData);
+  }
   return (
     <>
     <div className={st.container}>
@@ -105,31 +141,38 @@ export default function Packages() {
       <div className={st.fare}>
         <div className={st.form}>
         <p>Book Now</p><br></br><br></br>
-          <form>
+          <form onSubmit={submitHandler}>
             <div className={st.nameinputs}>
-            <div className={st.label_fname}>First Name</div>
-            <input type="text" className={st.inputbox_fname}></input>
-            <div className={st.label_lname}>Last Name</div>
-            <input type="text" className={st.inputbox_lname}></input>
+            <div className={st.label_fname}> Name</div>
+            <input type="text" name="name"  className={st.inputbox_fname} value={formData.name} onChange={changeHandler}></input>
+            {/* <div className={st.label_lname}>Last Name</div>
+            <input type="text" className={st.inputbox_lname}></input> */}
+            <div className={st.label_lname}>Select Package</div>
+              <select className={st.inputbox_lname} name="package" value={formData.package} onChange={changeHandler}>
+              <option className={st.rooms} value="0">---Select Package---</option>
+              <option value="1">Diamond Package</option>
+              <option value="2">Gold Packgate</option>
+              <option value="3">Silver Package</option>
+            </select>
             </div>
             <div className={st.email}>Email Address</div>
-            <input type="text" className={st.inputbox}></input>
+            <input type="text" className={st.inputbox} name="email" value={formData.email} onChange={changeHandler}></input>
             <div className={st.nameinputs}>
             <div className={st.label_adult}>Adults</div>
-            <input type="text" className={st.inputbox_adult}></input>
+            <input type="text" className={st.inputbox_adult} name="adults" value={formData.adults} onChange={changeHandler}></input>
             <div className={st.label_child}>Children</div>
             <input type="text" className={st.inputbox_child}></input>
             </div>
             <div className={st.nameinputs}>
             <div className={st.label_adult}>Start</div>
-            <input type="date" className={st.inputbox_adult}></input>
+            <input type="date" className={st.inputbox_adult} name="startData" value={formData.dateStart} onChange={changeHandler}></input>
             <div className={st.label_child}>End</div>
-            <input type="date" className={st.inputbox_child}></input>
+            <input type="date" className={st.inputbox_child} name="startEnd" value={formData.dateEnd} onChange={changeHandler}></input>
             </div>
             <div className={st.nameinputs}>
             <div className={st.label_adult}>Number Of Rooms</div>
             <select className={st.inputbox_rooms}>
-              <option className={st.rooms}>---No. of Rooms---</option>
+              <option className={st.rooms} name="rooms" value={formData.rooms} onChange={changeHandler}>---No. of Rooms---</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -140,10 +183,10 @@ export default function Packages() {
               <option value="8">8</option>
             </select>
             <div className={st.label_child}>Number of Days</div>
-            <input type="text" className={st.inputbox_child}></input>
+            <input type="text" className={st.inputbox_child} name="days" value={formData.days} onChange={changeHandler}></input>
             </div>
-          </form>
           <button className={`btn btn-dark ${st.bttn2} my-7`}>Book Trip</button>
+          </form>
         </div>  
         <div className={st.calcfare}>
           <p>Calculate Fare</p>
@@ -154,7 +197,7 @@ export default function Packages() {
             <div className={st.label_calcchild}>Childs</div>
             <input type="text" className={st.inputbox_calcchild}></input>
             </div>
-            <button className={`btn btn-light ${st.calcbttn}`}>Calculate</button>
+            <button type="submit" className={`btn btn-light ${st.calcbttn}`}>Calculate</button>
         </div> 
       </div>
       <hr className={st.line}/>
