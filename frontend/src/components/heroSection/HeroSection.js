@@ -9,10 +9,13 @@ import Google from '../../services/google';
 import Navbar from "../navbar/Navbar";
 import Loader from "../loader/Loader";
 const HeroSection = () => {
-  const [activeImage, setActive] = useState(1);
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
+  const but1 = useRef(null);
+  const but2 = useRef(null);
+  const but3 = useRef(null);
+  const [activeImage, setActive] = useState(1);
   const isLoggedIn = useSelector(selectIsLoggedIn)
   const isLoading = useSelector(selectLoading);
   // const isLoading = true;
@@ -36,19 +39,45 @@ const HeroSection = () => {
       ref1.current.style.left = "-200vw";
       ref2.current.style.left = "-100vw";
     }
+    console.log(num);
     setActive(num);
+    console.log(activeImage)
    
   };
+ 
   useEffect(() => {
     // console.log("hello")
     ref1.current.style.left = "0px";
     ref2.current.style.left = "100vw";
     ref3.current.style.left = "200vw";
-    
+    const interval = setInterval(() => {
+      setActive(prevActive => {
+        if (prevActive === 1) {
+          ref2.current.style.left = "0vw";
+          ref1.current.style.left = "-100vw";
+          ref3.current.style.left = "100vw";
+          return 2;
+        } else if (prevActive === 2) {
+          ref3.current.style.left = "0vw";
+          ref1.current.style.left = "-200vw";
+          ref2.current.style.left = "-100vw";
+          return 3;
+        } else {
+          ref1.current.style.left = "0px";
+          ref2.current.style.left = "100vw";
+          ref3.current.style.left = "200vw";
+          return 1;
+        }
+      });
+  
+  }, 6000);
 
-    
+  //Clearing the interval
+  return () => clearInterval(interval);
    
   }, []);
+
+
   return (
 
     <div className={`${st.container}`}>
@@ -103,6 +132,7 @@ const HeroSection = () => {
               onClick={() => {
                 imageChanger(1);
               }}
+              ref={but1}
             >
               1
             </button>
@@ -114,6 +144,7 @@ const HeroSection = () => {
               onClick={() => {
                 imageChanger(2);
               }}
+              ref={but2}
             >
               2
             </button>
@@ -125,6 +156,7 @@ const HeroSection = () => {
               onClick={() => {
                 imageChanger(3);
               }}
+              ref={but3}
             >
               3
             </button>
