@@ -1,7 +1,7 @@
 import React from 'react';
-import py from './payment.module.css';
+import py from './paymnet.module.css';
 
-function payment(){
+function Payment(){
   return(
     <>
     <div className={py.container}>
@@ -72,4 +72,4 @@ function payment(){
   );
 }
 
-export default payment;
+export default Payment;
