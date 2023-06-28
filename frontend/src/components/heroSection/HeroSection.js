@@ -1,21 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
 import st from "./HeroSection.module.css";
-import logo from "../../assets/images/logo.svg";
-import { Link } from "react-router-dom";
 import image2 from "../../assets/images/MPimg1.jpg"
-import image1 from "../../assets/images/MPimg2.jpg"
-import image3 from "../../assets/images/MPimg3.jpg"
+import image3 from "../../assets/images/MPimg2.jpg"
+import image1 from "../../assets/images/MPimg3.jpg"
 import { useSelector } from "react-redux";
-import { selectIsLoggedIn, selectName } from "../../redux/auth/authSlice";
-
+import { selectIsLoggedIn, selectLoading } from "../../redux/auth/authSlice";
+import Google from '../../services/google';
+import Navbar from "../navbar/Navbar";
+import Loader from "../loader/Loader";
 const HeroSection = () => {
   const [activeImage, setActive] = useState(1);
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
   const isLoggedIn = useSelector(selectIsLoggedIn)
+  const isLoading = useSelector(selectLoading);
+  // const isLoading = true;
   // const isLoggedIn = true;
-  const userName = useSelector(selectName);
   const imageChanger = (num) => {
     if (activeImage === num) {
       return;
@@ -36,21 +37,31 @@ const HeroSection = () => {
       ref2.current.style.left = "-100vw";
     }
     setActive(num);
+   
   };
   useEffect(() => {
     // console.log("hello")
     ref1.current.style.left = "0px";
     ref2.current.style.left = "100vw";
     ref3.current.style.left = "200vw";
+    
+
+    
+   
   }, []);
   return (
+
     <div className={`${st.container}`}>
+      {isLoading && <Loader/>}
+      <Navbar transparent={true}/>
+      {!isLoggedIn && (<div className={st.googleLoginButton}><Google/></div>)}
       <img
         src={image1}
         ref={ref1}
         className={`${
           activeImage === 1 ? st.mainBackground : st.backgroundInactive
         } ${st.contImage} ${st.img}`}
+        alt="tiger in forest"
       />
       <img
         src={image2}
@@ -68,43 +79,8 @@ const HeroSection = () => {
           activeImage === 3 ? st.mainBackground : st.backgroundInactive
         } ${st.contImage} ${st.img}`}
       />
-        <div className={st.logo}>
-          <img src={logo} alt="logo" />
-        </div>
-      <nav className={st.navbar}>
-        <div className={st.navLinks}>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/packages">Packages</Link>
-            </li>
-            <li>
-              <Link to="/gallery">Gallery</Link>
-            </li>
-            <li>
-              <Link to="/contactus">Contact Us</Link>
-            </li>
-            <li>
-              <Link to="/aboutus">About Us</Link>
-            </li>
-            <li className={st.authButtonli}>
-             {isLoggedIn?(<div className={st.userName}><span className={st.hi}>Hi,</span> {userName}</div>):(<> <Link to="/login" className={`${st.signUPLink}`} style={{
-                color:"#205fec",
-                fontSize:"25px",
-                fontWeight:"600"
-              }}>Login</Link>
-              <Link to="/signup" className={`${st.loginLink}`} style={{
-                color:"orangered",
-                fontSize:"25px",
-                fontWeight:"600"
-              }}>Sign Up</Link>
-              </>)}
-            </li>
-          </ul>
-        </div>
-      </nav>
+ 
+      
       <div className={st.information}>
         <div className={st.firstHalf}>
           <div className={st.mainHeading}>FALINA</div>

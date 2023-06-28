@@ -1,6 +1,8 @@
 package com.webdproject.backend.users.services;
 
 import java.security.Key;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.webdproject.backend.users.authtoken.JwtUtil;
 import com.webdproject.backend.users.exceptionHandlers.InvalidCredentialsException;
 import com.webdproject.backend.users.models.LoginModel;
+import com.webdproject.backend.users.models.MyVariables;
 import com.webdproject.backend.users.models.UserInfoModel;
 import com.webdproject.backend.users.models.UserModel;
 import com.webdproject.backend.users.repository.UserRepository;
@@ -52,7 +55,8 @@ public class UserServiceImpl implements UserService {
 
         // savedUser.setToken(token);
         UserInfoModel userInfo = new UserInfoModel(savedUser.getFirstName(), savedUser.getLastName(),
-                savedUser.getEmail(), savedUser.getPhoneNumber(), token);
+                savedUser.getEmail(), savedUser.getPhoneNumber(), token, savedUser.getProfilePicture(),
+                savedUser.isAdmin());
         return userInfo;
 
     }
@@ -65,7 +69,8 @@ public class UserServiceImpl implements UserService {
             // Password matches, user is authenticated
             String token = JwtUtil.generateToken(savedUser.getEmail());
             UserInfoModel userInfo = new UserInfoModel(savedUser.getFirstName(), savedUser.getLastName(),
-                    savedUser.getEmail(), savedUser.getPhoneNumber(), token);
+                    savedUser.getEmail(), savedUser.getPhoneNumber(), token, savedUser.getProfilePicture(),
+                    savedUser.isAdmin());
             return userInfo;
         } else {
             // Invalid credentials
@@ -101,7 +106,67 @@ public class UserServiceImpl implements UserService {
         }
         String senToken = "";
         UserInfoModel userInfo = new UserInfoModel(savedUser.getFirstName(), savedUser.getLastName(),
-                savedUser.getEmail(), savedUser.getPhoneNumber(), senToken);
+                savedUser.getEmail(), savedUser.getPhoneNumber(), senToken, savedUser.getProfilePicture(),
+                savedUser.isAdmin());
         return userInfo;
+    }
+
+    @Override
+    public UserInfoModel googleLogin(String fname, String lname, String email, String profilePicture) {
+        UserInfoModel userInfo;
+        UserModel userModel = new UserModel(fname, lname, email, profilePicture);
+        userModel.setCreationDate();
+        UserModel isExist = this.userRepository.findByEmail(email);
+        if (isExist == null || isExist.getFirstName() == null || isExist.getLastName() == null
+                || isExist.getProfilePicture() == null) {
+                    UserModel savedUser = this.userRepository.save(userModel);
+                    String token = JwtUtil.generateToken(savedUser.getEmail());
+            userInfo = new UserInfoModel(savedUser.getFirstName(), savedUser.getLastName(),
+                    savedUser.getEmail(), savedUser.getPhoneNumber(), token,
+                    savedUser.getProfilePicture(), savedUser.isAdmin());
+            
+        } else {
+            String token = JwtUtil.generateToken(isExist.getEmail());
+            userInfo = new UserInfoModel(fname, lname, email, isExist.getPhoneNumber(), token, profilePicture,
+                    isExist.isAdmin());
+        }
+        return userInfo;
+    }
+
+    @Override
+    public UserInfoModel addUserAdmin(String email, String email2) {
+        MyVariables variable = new MyVariables();
+        String adminEmail = variable.getEmail();
+        System.out.println(adminEmail);
+        System.out.println(email2);
+
+        if (!(adminEmail.equals(email))) {
+            throw new InvalidCredentialsException("Only Admin can make the user admin.");
+
+        }
+        UserModel isExist = this.userRepository.findByEmail(email2);
+        System.out.println(isExist);
+        if (isExist == null) {
+            throw new InvalidCredentialsException("User Email not found.");
+
+        }
+        isExist.setAdmin(true);
+        UserModel savedUser = this.userRepository.save(isExist);
+        UserInfoModel userInfo = new UserInfoModel(savedUser.getFirstName(), savedUser.getLastName(),
+                savedUser.getEmail(), savedUser.getPhoneNumber(), savedUser.getProfilePicture(),
+                savedUser.getProfilePicture(), savedUser.isAdmin());
+        return userInfo;
+    }
+
+    @Override
+    public List<UserInfoModel> getAllUser() {
+        List<UserModel> listUser = this.userRepository.findAll();
+        List<UserInfoModel> listOfUser = new ArrayList<>();
+        ;
+        for (UserModel userModel : listUser) {
+            listOfUser.add(new UserInfoModel(userModel.getFirstName(), userModel.getLastName(), userModel.getEmail(),
+                    userModel.getCreationDate(), userModel.isAdmin()));
+        }
+        return listOfUser;
     }
 }

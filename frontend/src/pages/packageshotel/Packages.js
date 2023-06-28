@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import st from "./Packages.module.css";
 import Footer from "../../components/footer/Footer";
@@ -222,7 +222,7 @@ const Packages = () => {
             <div className={st.label_calcchild}>Childs</div>
             <input type="text" className={st.inputbox_calcchild}></input>
             </div>
-            <button className={`btn btn-light ${st.calcbttn}`}>Calculate</button>
+            <button type="submit" className={`btn btn-light ${st.calcbttn}`}>Calculate</button>
         </div> 
       </div>
       <hr className={st.line}/>

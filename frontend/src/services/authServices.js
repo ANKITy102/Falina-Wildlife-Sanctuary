@@ -17,13 +17,26 @@ export const registerUser =async (formData) =>{
 console.log("-----")
     try{
         const response = await axios.post(`${BACKEND_URL}/user/signup`, formData);
-        if(response.status==="Success"){
-            toast.success("User Registerd Successfully");
+        if(response.data.status==="Success"){
+            toast.success("Registerd Successfully");
         }
         return response.data;
         
     }
     catch(err){
+        const message = err.message;
+        toast.error(message);
+    }
+}
+
+export const loginUser = async(formData)=>{
+    try{
+        const response = await axios.post(`${BACKEND_URL}/user/login`, formData);
+        if(response.data.status==="Success"){
+            toast.success("Logged in Successfully");
+        }
+        return response.data
+    }catch(err){
         const message = err.message;
         toast.error(message);
     }
@@ -45,12 +58,48 @@ export const getUserInfo = async()=>{
             const response =await  axios.get(`${BACKEND_URL}/user/getuser`, {headers})
             // console.log(response)
             if(!response || response.data.status==="fail"){
-                return toast("Please Login");
+                return toast.info("Please Login");
             }
              return response.data;
         }
     }catch(err){
         const message = err.message;
         console.log(message);
+    }
+}
+
+export const googleLogin = async (token)=>{
+    try{
+        console.log("till here")
+        console.log(token)
+        if(!token){
+           return toast.info("Something went wrong");
+        }
+        const headers = {
+            'Content-Type': 'application/json',
+            'idTokenString': token
+        };
+        
+        const response =await axios.get(`${BACKEND_URL}/user/google-login`, {headers});
+        if(!response || response.data.status==="fail"){
+            return toast.err(response.data.message)
+        }
+        return response.data;
+    }catch(err){
+        const message = err.message;
+        toast.error(message);
+    }
+}
+
+export const saveQuery = async(formData)=>{
+    try{
+        const response = await axios.post(`${BACKEND_URL}/contact/`, formData);
+        if(response.data.status==="Success"){
+            toast.success("Your message has been sent.");
+        }
+        return response.data
+    }catch(err){
+        const message = err.message;
+        toast.error(message);
     }
 }
