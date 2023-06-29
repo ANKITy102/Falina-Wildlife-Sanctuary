@@ -9,11 +9,11 @@ const QueriesCard = ({name, message,email}) => {
         {name} <span className="text-xl font-normal text-orange-700">says</span> 
       <div className="text-sm text-gray-500">({email})</div>
       </h1>
-      <div className="m-1 bg-sky-800 p-2 rounded-lg min-h-[100px]  font-[500] text-white">
+      <div className="m-1 bg-sky-800 p-2 rounded-lg min-h-[100px] w-full  font-[500] text-white">
 
-        <span className="text-2xl"></span>{message} 
+        {message} 
       </div>
-      <button className="w-[97%] flex items-center justify-center px bg-sky-800 px-3 text-white font-[500] rounded-lg  py-1"> <i class="fa-solid fa-reply text-orange-600 mr-3"></i> Reply</button>
+      <button className="w-full flex items-center justify-center px bg-sky-800 px-3 text-white font-[500] rounded-lg  py-1"> <i class="fa-solid fa-reply text-orange-600 mr-3"></i> Reply</button>
     </div>
   )
 }

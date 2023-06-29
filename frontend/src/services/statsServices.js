@@ -38,3 +38,5 @@ export const getAllQueries = async()=>{
         console.log(message);
     }
 }
+
+

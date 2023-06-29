@@ -50,6 +50,7 @@ export const getUserInfo = async()=>{
             'Content-Type': 'application/json',
             'token': token
           };
+          
         if(!token){
             return toast("Please login");
         }

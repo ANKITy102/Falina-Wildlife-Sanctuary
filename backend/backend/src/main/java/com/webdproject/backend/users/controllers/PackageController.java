@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,11 +35,12 @@ public class PackageController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<APIReturnModel> savedTicket(@RequestBody PackageModel packageInfo) {
+    public ResponseEntity<APIReturnModel> savedTicket(@RequestBody PackageModel packageInfo,
+            @RequestHeader("token") String token) {
         apiReturnModel = new APIReturnModel();
         packageVec = new Vector<>();
         try {
-            PackageModel savedTicket = this.packageService.bookTicket(packageInfo);
+            PackageModel savedTicket = this.packageService.bookTicket(packageInfo, token);
             packageVec.add(savedTicket);
             apiReturnModel.setData(packageVec);
             apiReturnModel.setStatus("Success");
@@ -54,16 +56,36 @@ public class PackageController {
     }
 
     @GetMapping("/bookedtickets")
-    public ResponseEntity<APIReturnModel> userTicket(@RequestBody EmailDto userEmail) {
+    public ResponseEntity<APIReturnModel> userTicket(@RequestHeader("token") String token) {
         apiReturnModel = new APIReturnModel();
         ticketList = new Vector<>();
         try {
-            List<PackageModel> savedTicket = this.packageService.getUserTicket(userEmail);
+            List<PackageModel> savedTicket = this.packageService.getUserTicket(token);
             ticketList.add(savedTicket);
-            apiReturnModel.setData(packageVec);
+            apiReturnModel.setData(ticketList);
             apiReturnModel.setStatus("Success");
             apiReturnModel.setMessage("Your data");
-            apiReturnModel.setCount(packageVec.size());
+            apiReturnModel.setCount(savedTicket.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+            apiReturnModel.setStatus("fail");
+            apiReturnModel.setMessage(e.getMessage());
+            apiReturnModel.setCount(0);
+        }
+        return ResponseEntity.ok(apiReturnModel);
+    }
+
+    @GetMapping("/getalltickets")
+    public ResponseEntity<APIReturnModel> getAllTickets(@RequestHeader("token") String token) {
+        apiReturnModel = new APIReturnModel();
+        ticketList = new Vector<>();
+        try {
+            List<PackageModel> savedTicket = this.packageService.getAllTickets(token);
+            ticketList.add(savedTicket);
+            apiReturnModel.setData(ticketList);
+            apiReturnModel.setStatus("Success");
+            apiReturnModel.setMessage("Your data");
+            apiReturnModel.setCount(savedTicket.size());
         } catch (Exception e) {
             e.printStackTrace();
             apiReturnModel.setStatus("fail");

@@ -6,6 +6,7 @@ import Footer from "../../components/footer/Footer";
 import { toast } from 'react-toastify';
 import { registerUser, validateEmail } from '../../services/authServices'
 import WhiteNavbar from "../../components/navbar/WhiteNavbar"
+import { bookTickets } from "../../services/bookingServices";
 // const Showmssg = ({message})=>{
 //   return <ul className={st.errormssg}>{message}
 //   </ul>
@@ -16,8 +17,8 @@ const initialState = {
   email: "",
   phoneNumber: "",
   package_tour: "",
-  adults: "",
-  childs: "",
+  adults: "0",
+  childs: "0",
   start_date: "",
   // end_date: "",
   no_of_rooms: "",
@@ -26,15 +27,27 @@ const initialState = {
 
 const Packages = () => {
   const [formData, setFormData] = useState(initialState);
-
+  const navigate = useNavigate();
   const currentDate = new Date();
   const minStartDate = new Date();
+  const fareAdult = {
+    "Silver": 1500,
+    "Gold":2500,
+    "Diamond":4500
+  }
+  const fareChild ={
+    "Silver": 700,
+    "Gold":1100,
+    "Diamond":2000
+  }
+
   
   minStartDate.setDate(currentDate.getDate() + 1); // Set minimum start date to current date + 3 days
 
   const [endDate, setEndDate] = useState("");
   const [Nodays, setDays] = useState("");
   // const dispatch = useDispatch()
+  const [yourFare, setYourFare] = useState(0);
   // const navigate=useNavigate();
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -43,8 +56,6 @@ const Packages = () => {
         return toast.warn("Please select a package")
       }
     }
-    console.log(value)
-    console.log(name)
     if(name==="package_tour"){
       if (value === "Gold") {
         setDays("7");
@@ -61,21 +72,20 @@ const Packages = () => {
 
       if(formData.start_date){
         let incrementedDate = new Date(formData.start_date);
-        // console.log(incrementedDate)
         if (formData.package_tour === "Gold") {
           incrementedDate = new Date(incrementedDate.setDate(incrementedDate.getDate() + 7))
-          // console.log(incrementedDate)
+          
         }
         else if (formData.package_tour === "Silver") {
           incrementedDate = new Date(incrementedDate.setDate(incrementedDate.getDate() + 4))
-          // console.log(incrementedDate)
+         
         }
         else if (formData.package_tour === "Diamond") {
           incrementedDate = new Date(incrementedDate.setDate(incrementedDate.getDate() + 8))
-          // console.log(incrementedDate)
+          
         }
         const setThisDate=  incrementedDate.toISOString().split('T')[0]
-        console.log(setThisDate)
+   
         
         // setFormData({...formData, "end_date":setThisDate});
         setEndDate(setThisDate);
@@ -136,8 +146,14 @@ const Packages = () => {
       return toast.warn("Totals Rooms can only be 1 to 4.");
     }
 
-
-    
+    const noOfAdut = parseInt((formData.adults));
+    console.log(noOfAdut)
+    const noOfChild = parseInt((formData.childs));
+    console.log(noOfChild)
+    const key1 = formData.package_tour;
+    const fare1 = fareChild[key1];
+    const fare2 = fareAdult[key1];
+    const TotalFare = noOfChild*fare1 +  noOfAdut*(fare2);
 
     const packageData = {
       firstName: formData.firstName,
@@ -151,24 +167,44 @@ const Packages = () => {
       end_date: endDate,
       no_of_rooms: formData.no_of_rooms,
       no_of_days: Nodays,
-      fare:"1000"
+      fare:TotalFare
+    }
+    const response = await bookTickets(packageData);
+    console.log(response);
+    if(response.status=="Success"){
+        navigate("/")
     }
     console.log(packageData);
-    // const response = await registerUser(formData);
-    // if(response.status==='fail'){
-    //   return toast.error(response.message);
-    // }
-    // if(response.status==="Success"){
-    //   const token  = response.data[0].token;
-    //   console.log(token)
-    //   localStorage.setItem("token", token);  
-    //   dispatch(SET_LOGIN(true))
-    //   dispatch(SET_USER(response.data[0]));
-    //   navigate('/')
-    // }
-
-
+    
   }
+  const calcFare = ()=>{
+    if (!formData.package_tour || formData.package_tour === "---Select Package---") {
+      return toast.warn("Please select a package")
+    }
+    
+    const key1 = formData.package_tour;
+    const fare1 = fareChild[key1];
+    const fare2 = fareAdult[key1];
+    let noOfAdut = parseInt((formData.adults));
+    if(formData.adults==null || formData.adults==""){
+      noOfAdut=0;
+    }
+    let noOfChild = parseInt((formData.childs));
+    if(formData.childs==null || formData.childs==""){
+      noOfChild=0;
+    }
+    const TotalFare = noOfChild*fare1 +  noOfAdut*(fare2);
+    setYourFare(TotalFare);
+  }
+  useEffect(()=>{
+    if (!formData.package_tour || formData.package_tour === "---Select Package---") {
+      // return toast.warn("Please select a package")
+    }
+   
+    else{
+      calcFare();
+    }
+  },[formData.adults, formData.childs])
   return (
     <>
       <div className={st.container}>
@@ -310,7 +346,9 @@ const Packages = () => {
               <div className={st.label_calcchild}>Childs</div>
               <input type="text" className={st.inputbox_calcchild} value={formData.childs} onChange={onChangeHandler} name="childs"></input>
             </div>
-            <button type="submit" className={`btn btn-light ${st.calcbttn}`}>Calculate</button>
+            <button type="submit" onClick={calcFare} className={`btn btn-light ${st.calcbttn}`}>Calculate</button>
+            <br />
+            <h1 className="text-3xl mx-auto"> Total Fare: <span className="text-amber-500">₹{yourFare}</span></h1>
           </div>
         </div>
         <hr className={st.line} />
