@@ -52,7 +52,7 @@ const Navbar = (props) => {
                 {capitalizeFirstLetter(name)}
                 {showDashboard && (<div className='absolute top-[84px] right-4 bg-slate-600 px-3 py-2 rounded-md'>
                 <i class="fa-solid fa-caret-up absolute bottom-8 left-[18px] text-slate-600 text-3xl"></i>
-                    <Link to="/dashboard" className="hover:no-underline hover:text-orange-200">Dashboard</Link>
+                    <Link to="/bookings" className="hover:no-underline hover:text-orange-200">Dashboard</Link>
                 </div>)}
             </div>): (<div className="buttons border-2 border-white px-3 py-2 text-white">
                 <Link style={{

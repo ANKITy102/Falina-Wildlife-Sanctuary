@@ -4,48 +4,50 @@ import {
   CategoryScale,
   LinearScale,
   BarElement,
-  LineElement,
+  // LineElement,
   PointElement,
   Title,
   Tooltip,
   Legend,
 } from 'chart.js';
 // import { Bar } from 'react-chartjs-2';
-import { Line } from 'react-chartjs-2';
+import { Bar, Line } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
-import { selectUserFreq } from '../redux/stats/statsSlice';
+import { selectBookings, selectUserFreq } from '../redux/stats/statsSlice';
 
 
+// ChartJS.register(
+//   CategoryScale,
+//   LinearScale,
+//   LineElement,
+//   PointElement,
+//   Title,
+//   Tooltip,
+//   Legend
+// );
 ChartJS.register(
   CategoryScale,
   LinearScale,
-  LineElement,
+  BarElement,
   PointElement,
   Title,
   Tooltip,
   Legend
 );
-// ChartJS.register(
-//   CategoryScale,
-//   LinearScale,
-//   BarElement,
-//   Title,
-//   Tooltip,
-//   Legend
-// );
 
 
 const TotalBookings = () => {
 
-  const UserFreq = useSelector(selectUserFreq);
+  const totalBookings = useSelector(selectBookings);
 
   const [values, setValues] = useState([]);
   const [labels, setLabels] = useState([]);
   useEffect(() => {
     const dateValues = [];
     const dateData = [];
+    console.log(totalBookings)
     // Get the minimum and maximum dates from UserFreq
-    const dates = [...UserFreq.keys()]; // Convert map keys to an array
+    const dates = [...totalBookings.keys()]; // Convert map keys to an array
 
     // Convert date strings to Date objects
     const dateObjects = dates.map(dateString => new Date(dateString));
@@ -62,12 +64,12 @@ const TotalBookings = () => {
     }
 
     dateRange.forEach(date => {
-      dateValues.push(UserFreq.get(date) || 0);
+      dateValues.push(totalBookings.get(date) || 0);
       dateData.push(date);
     });
     setLabels(dateData);
     setValues(dateValues);
-  }, [UserFreq])
+  }, [totalBookings])
 
 
   const options = {
@@ -98,22 +100,29 @@ const TotalBookings = () => {
         label: 'Registered User',
         data: values,
         backgroundColor: [
-          'blue',
-          'red',
-          'black',
-          'brown',
-          'green',
-          'orange',
-          'gray'
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
         ],
-
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+        ],
+        barThickness: 40,
       }
     ],
   };
 
   return (
     <div className='pt-3'>
-      <Line options={options} data={data} height={500} />
+      <Bar options={options} data={data} height={500} />
     </div>
   );
 }

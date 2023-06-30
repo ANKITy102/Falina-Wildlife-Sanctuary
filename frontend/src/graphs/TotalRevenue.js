@@ -3,28 +3,30 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  BarElement,
+//   BarElement,
   LineElement,
   PointElement,
   Title,
   Tooltip,
   Legend,
+  Filler,
 } from 'chart.js';
 // import { Bar } from 'react-chartjs-2';
 import { Line } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
-import { selectUserFreq } from '../redux/stats/statsSlice';
+import { revenuePerDay, selectUserFreq } from '../redux/stats/statsSlice';
 
 
 ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  LineElement,
-  PointElement,
-  Title,
-  Tooltip,
-  Legend
-);
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Filler,
+    Legend
+  );
 // ChartJS.register(
 //   CategoryScale,
 //   LinearScale,
@@ -35,9 +37,9 @@ ChartJS.register(
 // );
 
 
-const TotalUsers = () => {
+const TotalRevenue = () => {
 
-  const UserFreq = useSelector(selectUserFreq);
+  const UserFreq = useSelector(revenuePerDay);
 
   const [values, setValues] = useState([]);
   const [labels, setLabels] = useState([]);
@@ -81,7 +83,7 @@ const TotalUsers = () => {
       },
       title: {
         display: true,
-        text: 'Number of User registering per day',
+        text: 'Revenue per day',
       },
     },
     maintainAspectRatio: false,
@@ -98,19 +100,11 @@ const TotalUsers = () => {
     labels,
     datasets: [
       {
+        fill:true,
         label: 'Registered User',
         data: values,
-        backgroundColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 0.3)'
-        ],
+        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        borderColor: 'rgb(53, 162, 235)',
 
       }
     ],
@@ -123,4 +117,4 @@ const TotalUsers = () => {
   );
 }
 
-export default TotalUsers
+export default TotalRevenue;

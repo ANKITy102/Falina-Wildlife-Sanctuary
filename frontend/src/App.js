@@ -18,6 +18,7 @@ import TotalBookings from './graphs/TotalBookings'
 import Gallery from "./pages/Gallery/Gallery"
 import UserQueries from './components/userQueries/UserQueries'
 import Payment from './pages/Payment/paymnet'
+import TotalRevenue from './graphs/TotalRevenue'
 // import axios from "axios";
 const App = () => {
   // const dispatch = useDispatch();
@@ -64,7 +65,7 @@ const App = () => {
         <Route path="/packages" element={<Packages />} />
         <Route path='/login' element={<Login/>}/>
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/dashboard" element={
+        <Route path="/bookings" element={
          <Dashboard>
           <DashboardComponent>
             <TotalBookings/>
@@ -75,6 +76,20 @@ const App = () => {
          <Dashboard>
            <DashboardComponent>
             <Users/>
+          </DashboardComponent>
+         </Dashboard>
+        }/>
+        <Route path="/revenue" element={
+         <Dashboard>
+           <DashboardComponent>
+            <TotalRevenue/>
+          </DashboardComponent>
+         </Dashboard>
+        }/>
+        <Route path="/admin" element={
+         <Dashboard>
+           <DashboardComponent>
+            <TotalRevenue/>
           </DashboardComponent>
          </Dashboard>
         }/>
