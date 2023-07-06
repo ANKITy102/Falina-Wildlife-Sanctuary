@@ -1,5 +1,6 @@
 import React ,{useEffect, useState} from 'react'
 import mr from './GalleryStyle.module.css';
+import WhiteNavbar from '../../components/navbar/WhiteNavbar';
 
 export default function Gallery() {
 
@@ -26,11 +27,11 @@ export default function Gallery() {
     console.log(track.dataset.mouseDownAt)
     
     const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
-          maxDelta = window.innerWidth / 2;
+          maxDelta = window.innerWidth / 4;
     
     const percentage = (mouseDelta / maxDelta) * -100,
           nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
-          nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+          nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -250);
     
     track.dataset.percentage = nextPercentage;
     
@@ -71,9 +72,9 @@ export default function Gallery() {
 
   return (
     <div id="container" className={mr.container_gallery}>
+      <WhiteNavbar/>
       
-      
-<div id="navbar" className={mr.navbar}>
+{/* <div id="navbar" className={mr.navbar}>
 <div id="logo" className={mr.logo}>LOGO</div>
         <div id="menu" className={mr.menu}>
           <ul id='menu_list' className={mr.menu_list}>
@@ -85,10 +86,10 @@ export default function Gallery() {
           </ul>
           </div>
         <div id="sign" className={mr.sign}>LOGIN/SIGNUP</div>
-</div>
+</div> */}
 
 
-<span id="gallery_heading" className={mr.gallery_heading}>  GALLERY </span>
+<div id="gallery_heading" className={mr.gallery_heading}>  GALLERY </div>
 <div id="animals-heading" className={mr.animals_heading}>  ANIMALS </div>
 <div id="scenery-heading" className={mr.scenery_heading}>  SCENERY </div>
 <div id="safari-heading" className={mr.safari_heading}>  SAFARI </div>
@@ -129,7 +130,7 @@ export default function Gallery() {
     <img className={mr.image} id="img8" src="https://images.unsplash.com/photo-1617938544737-cf7b41829226?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" draggable="false" />
     </div>  
   </div>
-  <div><hr id="gallery-line" className={mr.gallery_line} /></div>
+  <hr id="gallery-line" className={mr.gallery_line} />
   <div id="laster" className={mr.laster}>
             <div >
                 <p id="gallery-last" className={mr.gallery_last}>©2023 Falina Wildlife Sanctuary. All right reserved.</p>

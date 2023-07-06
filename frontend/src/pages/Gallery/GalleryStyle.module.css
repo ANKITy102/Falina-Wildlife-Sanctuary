@@ -1,15 +1,13 @@
-/* body{
+body{
   overflow-x: hidden;
-  background-color: #181818;
-} */
+  /* background-color: #181818; */
+}
 .container_gallery {
-    overflow-x: hidden;
+    overflow: hidden;
     background-color: #181818;
     width: 100vw;
     background-color: #181818;
     margin: 0rem;
-    /* overflow:hidden; */
-    /* margin-bottom: 100px; */
   }
   
   .image_track {
@@ -22,7 +20,7 @@
     left: 30%;
     top: 100%;
     transform: translate(0%, -50%); 
-    user-select: none; /* -- Prevent image highlighting -- */
+    user-select: none;
   }
   .image_track div{
     z-index:1000;
@@ -34,37 +32,18 @@
     margin-bottom: 100px;
   }
   .animals{
-    /* padding-top: 10%; */
     top:0;
     text-align: start;
-    width:500px;
   }
 
   .scenery{
-    /* padding-top: 10%; */
     top:0;
     text-align: start;
-    width: 500px;
   }
 
   .safari{
-    /* padding-top: 10%; */
     top:0;
     text-align: start;
-    width: 500px;
-  }
-
-  .navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    /* height: 100px; */
-    /* width:full; */
-    margin:30px;
-    color:white;
-    user-select: none;
-    /* text-decoration: none; */
   }
 
   .navbar ul{
@@ -90,8 +69,11 @@
     font-size: 400px;
     color:white;
     position:relative;
-    user-select:none; 
-
+    user-select:none;
+    font-weight: 300;
+    /* background-image: url('https://images.unsplash.com/photo-1688488994043-ffb1a6c211f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size:cover ;
+    background-repeat: no-repeat; */
   }
   .animals_heading{
     /* text-align: center; */
@@ -100,9 +82,9 @@
     opacity: .4;
     height:50vh;
     user-select: none;
-    margin:100px;
     margin-top:150px;
     margin-bottom:200px;
+    margin-left:40px;
   }
   .scenery_heading{
     /* text-align: center; */
@@ -112,6 +94,7 @@
     height:50vh;
     user-select: none;
     margin:100px;
+    margin-left:40px;
   }
   .safari_heading{
     /* text-align: center; */
@@ -123,6 +106,7 @@
     margin:100px;
     margin-top:200px;
     margin-bottom:100px;
+    margin-left:40px;
   }
 
   .laster{
@@ -163,6 +147,5 @@
     margin-left:50px;
     margin-right:50px;
     height:1px;
-    /* border:0; */
-    border-top:0.5px;
+    border-top:.5px;
   }
