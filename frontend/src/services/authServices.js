@@ -83,7 +83,7 @@ export const googleLogin = async (token)=>{
         
         const response =await axios.get(`${BACKEND_URL}/user/google-login`, {headers});
         if(!response || response.data.status==="fail"){
-            return toast.err(response.data.message)
+            return toast.error(response.data.message)
         }
         return response.data;
     }catch(err){
