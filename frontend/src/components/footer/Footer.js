@@ -5,7 +5,7 @@ import {
     FaTwitter,
 } from 'react-icons/fa'
 import logo_footer from "../../assets/images/logo_footer.png"
-
+import { Link } from 'react-router-dom'
 
 export default function Footer() {
   return (
@@ -30,19 +30,19 @@ export default function Footer() {
                 <div className='flex flex-col gap-[40px]'>
                     <h5 className='text-xl font-bold'>Feature</h5>
                     <ul className='flex flex-col gap-4 font-light text-gray-500'>
-                        <li>Package</li>
-                        <li>Gallery</li>
-                        <li>Contact Us</li>
-                        <li>About Us</li>
+                        <Link to='/packages' className='no-underline'>Package</Link>
+                        <Link to='/gallery' className='no-underline'>Gallery</Link>
+                        <Link to='/contactus' className='no-underline'>Contact Us</Link>
+                        <Link to='/aboutus' className='no-underline'>About Us</Link>
                     </ul>
                 </div>
                 <div className='flex flex-col gap-[40px]'>
                     <h5 className='text-xl font-bold'>Trip Plan</h5>
                     <ul className='flex flex-col gap-4 font-light text-gray-500'>
-                        <li>Jeep Safari</li>
-                        <li>Resort Booking</li>
-                        <li>Night Safari</li>
-                        <li>Fun Tour</li>
+                        <Link to='/packages' className='no-underline'>Jeep Safari</Link>
+                        <Link to='/packages' className='no-underline'>Resort Booking</Link>
+                        <Link to='/packages' className='no-underline'>Night Safari</Link>
+                        <Link to='/packages' className='no-underline'>Fun Tour</Link>
                     </ul>
                 </div>
             </div>
