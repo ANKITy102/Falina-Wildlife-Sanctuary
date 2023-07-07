@@ -1,241 +1,285 @@
-@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100;200&family=Poppins:wght@300;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Geologica:wght@100;200&family=Poppins:wght@300;500&display=swap");
 
 .container {
-    overflow-x: hidden;
-    height: 115vh;
-    position: relative;
-    /* width: 90vwvw; */
-    /* background-image: url("https://images.unsplash.com/photo-1603483080228-04f2313d9f10?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80");
+  overflow-x: hidden;
+  height: 115vh;
+  position: relative;
+  /* width: 90vwvw; */
+  /* background-image: url("https://images.unsplash.com/photo-1603483080228-04f2313d9f10?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80");
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: 0px -450px; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.contImage{
-    z-index: -100;
+.contImage {
+  z-index: -100;
 }
-.container .img{
-    transition: opacity 1.2s cubic-bezier(0.39, 0.575, 0.565, 1), left 1s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-  
-   /* transition-timing-function:cubic-bezier(0.39, 0.575, 0.565, 1); */
-    height: 100%;
+.container .img {
+  transition: opacity 1.2s cubic-bezier(0.39, 0.575, 0.565, 1),
+    left 1s cubic-bezier(0.175, 0.885, 0.32, 1.1);
 
-    position: absolute;
-    width: 100%;
-}
-.mainBackground{
-    
-    opacity: 1;
+  /* transition-timing-function:cubic-bezier(0.39, 0.575, 0.565, 1); */
+  height: 100%;
 
+  position: absolute;
+  width: 100%;
 }
-.backgroundInactive{
-
-    /* width: 0px;  */
-    /* left: 100vw; */
-    opacity: 1;
-  
-    
+.mainBackground {
+  opacity: 1;
+}
+.backgroundInactive {
+  /* width: 0px;  */
+  /* left: 100vw; */
+  opacity: 1;
 }
 
 .navbar {
-    height: 8rem;
-    display: flex;
-    width: 100vw;
-    /* background-color: red; */
+  height: 8rem;
+  display: flex;
+  width: 100vw;
+  /* background-color: red; */
 }
 
 .logo {
-    position: absolute;
+  position: absolute;
 }
 
 .logo img {
-    height: 180px;
-    margin-top: -10px;
-    /* position: relative; */
+  height: 180px;
+  margin-top: -10px;
+  /* position: relative; */
 }
 
 .navLinks {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    /* padding-left: 30px; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* padding-left: 30px; */
 }
 
 .navLinks ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 20px;
-    gap: 50px;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 50px;
+  width: 100%;
 }
 
 .navLinks ul li {
-    list-style: none;
-    /* margin-left: 20px; */
+  list-style: none;
+  /* margin-left: 20px; */
 }
 
 .navLinks ul li a {
-    list-style: none;
-    text-decoration: none;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 100;
-    font-size: 25.1197px;
-    line-height: 38px;
-    text-align: center;
-    color: white;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 100;
+  font-size: 25.1197px;
+  line-height: 38px;
+  text-align: center;
+  color: white;
 }
-.authButtonli{
-    /* margin-left: 6vw; */
-    display: flex;
-    gap: 1rem;
-    position: absolute;
-    right: 0px;
-    font-size: 20px;
-    font-weight: bolder;
-    margin-right: 10px;
-    margin-top: -10px;
-    
+.authButtonli {
+  /* margin-left: 6vw; */
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  right: 0px;
+  font-size: 20px;
+  font-weight: bolder;
+  margin-right: 10px;
+  margin-top: -10px;
 }
-.signUPLink{
-     /* background-color: wheat; */
-     
-    padding: 4px 15px;
-    border-radius: 10px;
-    background: linear-gradient(95.92deg, rgba(8, 32, 249, 0.94) 61.72%, #e9ad16 101.27%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    border: 1px solid blueviolet;
+.signUPLink {
+  /* background-color: wheat; */
+
+  padding: 4px 15px;
+  border-radius: 10px;
+  background: linear-gradient(
+    95.92deg,
+    rgba(8, 32, 249, 0.94) 61.72%,
+    #e9ad16 101.27%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  border: 1px solid blueviolet;
 }
-.loginLink{
-    background: linear-gradient(95.92deg, rgba(252, 7, 232, 0.94) 61.72%, rgb(22, 125, 251) 101.27%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    padding: 4px 15px;
-    border-radius: 10px;
-    border: 1px solid pink;
-   
+.loginLink {
+  background: linear-gradient(
+    95.92deg,
+    rgba(252, 7, 232, 0.94) 61.72%,
+    rgb(22, 125, 251) 101.27%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding: 4px 15px;
+  border-radius: 10px;
+  border: 1px solid pink;
 }
 
 .information {
-    height: 55%;
-    /* background-color: red; */
-    display: flex;
-    flex-direction: row;
-    /* padding-bottom: 10rem; */
+  height: 55%;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: row;
+  /* padding-bottom: 10rem; */
 }
 
 .firstHalf {
-    height: 100%;
-    width: 50vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* margin-bottom: 10rem; */
+  height: 100%;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-bottom: 10rem; */
 }
 
 .mainHeading {
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 200px;
-    text-align: center;
-    height: 220px;
-    background: linear-gradient(95.92deg, rgba(255, 255, 255, 0.94) 61.72%, rgba(255, 255, 255, 0) 101.27%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 200px;
+  text-align: center;
+  height: 220px;
+  background: linear-gradient(
+    95.92deg,
+    rgba(255, 255, 255, 0.94) 61.72%,
+    rgba(255, 255, 255, 0) 101.27%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .subheading {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 28px;
-    /* line-height: 48px; */
-    text-align: center;
-    letter-spacing: 0.76em;
-    margin-left: 20px;
-    color: #FFFFFF;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  /* line-height: 48px; */
+  text-align: center;
+  letter-spacing: 0.76em;
+  margin-left: 20px;
+  color: #ffffff;
 
-    mix-blend-mode: normal;
+  mix-blend-mode: normal;
 }
-.userName{
-    font-size: 30px;
-    font-weight: 700;
-    padding: 5px 13px;
-    font-family: cursive;
+.userName {
+  font-size: 30px;
+  font-weight: 700;
+  padding: 5px 13px;
+  font-family: cursive;
 }
-.hi{
-    font-weight: 700;
-    font-family: cursive;
+.hi {
+  font-weight: 700;
+  font-family: cursive;
 }
 
 .info {
-    font-family: 'Poppins';
-font-style: normal;
-font-weight: 100;
-font-size: 15px;
-line-height: 22px;
-    width: 42rem;
-color: #FFFFFF;
-margin-left: 20px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 100;
+  font-size: 15px;
+  line-height: 22px;
+  width: 42rem;
+  color: #ffffff;
+  margin-left: 20px;
 }
 
 .secondHalf {
-    height: 80%;
-    /* background-color: yellow; */
+  height: 80%;
+  /* background-color: yellow; */
+  display: flex;
+  justify-content: end;
+  width: 50vw;
+  padding-right: 40px;
+}
+.button {
+  /* background-color: red; */
+  width: 88%;
+  margin-top: 20px;
+}
+.imageChanger {
     display: flex;
-    justify-content: end;
-    width: 50vw;
-    padding-right: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.button{
-    /* background-color: red; */
-    width: 88%;
-    margin-top: 20px;
+.button1 {
+  border: none;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid white;
+  background-color: transparent;
+  cursor: pointer;
 }
-.button button{
-    padding: 10px 30px;
-    border-radius: 30px ;
-    cursor: pointer;
-    border: none;
-    font-weight: 200;
-    background-color: white;
+.active {
+  background-color: white;
+  color: black;
 }
-.imageChanger{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.button1{
-    border: none;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    border: 1px solid white;
-    background-color: transparent;
-    cursor: pointer;
-}
-.active{
-    background-color: white;
-    color: black;
-}
-.line{
-    width: 2px;
-    background-color: white;
-    height: 70px;
+.line {
+  width: 2px;
+  background-color: white;
+  height: 70px;
 }
 
-.googleLoginButton{
-    display: hidden;
-    position: fixed;
-    top: -10vh;
+.googleLoginButton {
+  display: hidden;
+  position: fixed;
+  top: -10vh;
 }
+
+/* .buttonB button:before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  background: black;
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.buttonB button:before {
+  left: -30px;
+  bottom: 100%;
+  transition: all 0.7s;
+}
+
+.buttonB button:hover:before {
+  bottom: -50px;
+}
+*/
+.buttonB{
+    width: 100%;
+    margin-left: 8rem;
+    margin-top: 2rem;
+}
+/* .buttonB button {
+  padding: 10px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  border: none;
+  font-weight: 400;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+}  */
+
+/* .btn_ani{
+    position: relative;
+    color:black;
+    z-index:100;
+    
+} */
+
+/* .buttonB bu:hover .btn_ani{
+    color:white
+} */

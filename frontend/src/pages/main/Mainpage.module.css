@@ -24,3 +24,10 @@
     position: absolute;
     bottom: 2.5vh;
 }
+
+.line{
+    margin-top: 2rem;
+    margin-left: 6rem;
+    width: 88%;
+    background-color: black;
+}

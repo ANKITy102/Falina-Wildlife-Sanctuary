@@ -8,6 +8,7 @@ import { selectIsLoggedIn, selectLoading } from "../../redux/auth/authSlice";
 import Google from '../../services/google';
 import Navbar from "../navbar/Navbar";
 import Loader from "../loader/Loader";
+import BtnAni from "../button/BtnAni";
 const HeroSection = () => {
   const ref1 = useRef(null);
   const ref2 = useRef(null);
@@ -119,8 +120,9 @@ const HeroSection = () => {
             fade from memory. So we welcome you to start your journey here at
             the Falina Wildlife Sanctuary.
           </div>
-          <div className={st.button}>
-            <button>Book Now</button>
+          <div className={st.buttonB}>
+            {/* <button className={`${st.btn_ani}`}><div className={`${st.btn_ani_value}`}>Book Now</div></button> */}
+            <BtnAni value="Book Now"/>
           </div>
         </div>
         <div className={st.secondHalf}>

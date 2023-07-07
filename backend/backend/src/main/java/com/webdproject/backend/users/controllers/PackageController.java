@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.webdproject.backend.users.apimodels.APIReturnModel;
-import com.webdproject.backend.users.models.EmailDto;
 import com.webdproject.backend.users.models.PackageModel;
 import com.webdproject.backend.users.services.PackageServiceImpl;
 

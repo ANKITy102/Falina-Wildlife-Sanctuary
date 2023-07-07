@@ -23,6 +23,7 @@ const Mainpage = () => {
       <TripPlan/>
       <Feature/>
       <TourFalina/>
+      <hr className={st.line} />
       <Footer/>
     </div>
   )
