@@ -7,6 +7,7 @@ import st from "./Mainpage.module.css"
 import FantasticFalina from '../../components/fantasticFalina/FantasticFalina'
 import TripPlan from '../../components/tripPlanSection/TripPlan'
 import TourFalina from '../../components/tourFalinaSection/TourFalina'
+import Feature from '../../components/falinaFeature/Feature'
 const Mainpage = () => {
   return (
     <div>
@@ -20,6 +21,7 @@ const Mainpage = () => {
       <Aboutus/>
       <FantasticFalina/>
       <TripPlan/>
+      <Feature/>
       <TourFalina/>
       <Footer/>
     </div>
