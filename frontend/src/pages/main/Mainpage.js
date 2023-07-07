@@ -8,6 +8,8 @@ import FantasticFalina from '../../components/fantasticFalina/FantasticFalina'
 import TripPlan from '../../components/tripPlanSection/TripPlan'
 import TourFalina from '../../components/tourFalinaSection/TourFalina'
 import Feature from '../../components/falinaFeature/Feature'
+import Last from '../../components/falinaLast/Last'
+import Reach from '../../components/reach/Reach'
 const Mainpage = () => {
   return (
     <div>
@@ -23,6 +25,8 @@ const Mainpage = () => {
       <TripPlan/>
       <Feature/>
       <TourFalina/>
+      <Reach/>
+      <Last/>
       <Footer/>
     </div>
   )
