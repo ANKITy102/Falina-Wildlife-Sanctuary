@@ -74,19 +74,7 @@ export default function Gallery() {
     <div id="container" className={mr.container_gallery}>
       <WhiteNavbar/>
       
-{/* <div id="navbar" className={mr.navbar}>
-<div id="logo" className={mr.logo}>LOGO</div>
-        <div id="menu" className={mr.menu}>
-          <ul id='menu_list' className={mr.menu_list}>
-          <li>Home</li>
-          <li>Packages</li>
-          <li>Gallery</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          </ul>
-          </div>
-        <div id="sign" className={mr.sign}>LOGIN/SIGNUP</div>
-</div> */}
+
 
 
 <div id="gallery_heading" className={mr.gallery_heading}>  GALLERY </div>
