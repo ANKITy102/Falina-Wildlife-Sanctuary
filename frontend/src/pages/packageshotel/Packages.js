@@ -27,6 +27,7 @@ const initialState = {
 
 const Packages = () => {
   const [formData, setFormData] = useState(initialState);
+  
   const navigate = useNavigate();
   const currentDate = new Date();
   const minStartDate = new Date();

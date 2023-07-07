@@ -20,6 +20,10 @@ const TripPlan = () => {
         ref4.current.style.left = "105%";
         ref4.current.style.opacity="1";
 
+        // useInterval(()=>{
+
+        // },3500)
+
     },[])
     
     const navigateLeft=()=>{
@@ -138,7 +142,8 @@ const TripPlan = () => {
         }
     }
     return (
-        <div className="h-screen mt-4 flex flex-col 0 pt-14 justify-between max-h-[714px]">
+        <div className="h-[105vh] mt-4 flex flex-col mb-5  pt-14 justify-between">
+        {/* <div className="h-screen mt-4 flex flex-col 0 pt-14 justify-between max-h-[714px]"> */}
             <h1 className="text-8xl font-bold text-center">Trip Plan</h1>
             <div className="flex h-3/4  pb-5" >
                 <div className="h-full flex flex-col  w-2/5 pl-32 py-4">

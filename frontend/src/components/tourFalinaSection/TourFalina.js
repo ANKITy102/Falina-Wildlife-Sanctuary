@@ -79,7 +79,8 @@ const TourFalina = () => {
     }
   }
   return (
-    <div className={`h-[120vh]  w-full pt-7 flex flex-col max-h-[856px] items-center ${st.tourMainCont}`} >
+    // <div className={`h-[120vh]  w-full pt-7 flex flex-col max-h-[856px] items-center ${st.tourMainCont}`} >
+    <div className={`h-[120vh]  w-full pt-7 flex flex-col  items-center ${st.tourMainCont}`} >
       <div className="text-8xl text-center font-bold">Tour of Falina</div>
 
       <div className={`${st.tourCard} movingCar h-[86%] flex flex-col items-center  w-full pt-5 `} ref={ref1}>

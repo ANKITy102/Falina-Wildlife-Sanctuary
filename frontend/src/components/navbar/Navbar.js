@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { selectAdmin, selectIsLoggedIn, selectName, selectProfilePic } from '../../redux/auth/authSlice'
 import { useSelector } from 'react-redux'
 import { capitalizeFirstLetter } from '../../services/CapitalizeWord'
-
+import st from "./Navbar.module.css"
 const Navbar = (props) => {
     const isLogin = useSelector( selectIsLoggedIn);
     const name = useSelector(selectName);
@@ -23,7 +23,7 @@ const Navbar = (props) => {
   return (
     <nav className={`flex   px-5 justify-between items-center ${props.transparent?"bg-transparent":"bg-black"}`}>
         <div className="logo">
-            <img src={logo} alt="logo" width="100px" />
+            <img src={logo} alt="logo" className={st.changeIMG} width="100px" />
         </div>
         <div className="links flex">
             <ul className="flex gap-24 text-2xl text-white items-center">
