@@ -27,6 +27,7 @@ const Mainpage = () => {
       <TourFalina/>
       <Reach/>
       <Last/>
+      <hr className={st.line} />
       <Footer/>
     </div>
   )

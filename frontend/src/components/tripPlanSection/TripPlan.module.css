@@ -12,7 +12,7 @@
     align-items: end;
   
     /* color: white; */
-    z-index: -10;
+    /* z-index: -10; */
     box-shadow:  5px 5px 7px #636363;
 
 }
@@ -44,15 +44,15 @@
     font-size: 22px;
     letter-spacing:1.5px;
 }
-.buttonSec{
-    background-color: white;
+/* .buttonSec{
+    background-color: transparent;
     text-align: center;
     font-size: 14px;
     color: black;
     margin-top: 10px;
     padding: 10px 20px;
-    width: fit-content;
+    width: 3rem;
     border-radius: 20px;
     cursor: pointer;
     letter-spacing: 0.5px;
-}
+} */

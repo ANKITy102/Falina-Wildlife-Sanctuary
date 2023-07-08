@@ -122,7 +122,7 @@ const HeroSection = () => {
           </div>
           <div className={st.buttonB}>
             {/* <button className={`${st.btn_ani}`}><div className={`${st.btn_ani_value}`}>Book Now</div></button> */}
-            <BtnAni value="Book Now"/>
+            <BtnAni value="Book Now" scale="1"/>
           </div>
         </div>
         <div className={st.secondHalf}>
