@@ -10,9 +10,10 @@ import TourFalina from '../../components/tourFalinaSection/TourFalina'
 import Feature from '../../components/falinaFeature/Feature'
 import Last from '../../components/falinaLast/Last'
 import Reach from '../../components/reach/Reach'
+
 const Mainpage = () => {
   return (
-    <div>
+    <div className={st.overFlowHide}>
       <HeroSection/>
       <div className={st.explore}>
         <div className={st.roundedButton}>

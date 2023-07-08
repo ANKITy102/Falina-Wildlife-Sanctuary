@@ -1,3 +1,6 @@
+.overFlowHide{
+    overflow-x: hidden;
+}
 .explore{
     height: 16vh;
     display: flex;
