@@ -1,135 +1,77 @@
-import React ,{useEffect, useState} from 'react'
-import mr from './GalleryStyle.module.css';
-import WhiteNavbar from '../../components/navbar/WhiteNavbar';
+import React from 'react'
+import rm from './Gallery.module.css'
+import Navbar from '../../components/navbar/Navbar'
 
 export default function Gallery() {
-
-  const [track,setTrack] = useState(document.getElementById('image-track'));
-  useEffect(()=>{
-    const elements = document.getElementById("image-track");
-    setTrack(elements);
-  },[])
-  // const [dataset,setDataset] = "";
-
-  // const track = document.getElementById("image-track");
-
-  const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
-  const handleOnUp = () => {
-    track.dataset.mouseDownAt = "0";  
-    track.dataset.prevPercentage = track.dataset.percentage;
-  }
-  
-  const handleOnMove = e => {
-    
-    // if(track.dataset===null) return;
-    if(track.dataset.mouseDownAt === "0") return;
-    console.log(e.clientX)
-    console.log(track.dataset.mouseDownAt)
-    
-    const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
-          maxDelta = window.innerWidth / 4;
-    
-    const percentage = (mouseDelta / maxDelta) * -100,
-          nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
-          nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -250);
-    
-    track.dataset.percentage = nextPercentage;
-    
-  
-    track.animate({
-      transform: `translate(${nextPercentage}%, -50%)`
-    }, { duration: 1200, fill: "forwards" },);
-    
-    for(const image of track.getElementsByClassName("image")) {
-      image.animate({
-        objectPosition: `${100 + nextPercentage}% center`
-      }, { duration: 500, fill: "forwards" });
-    }
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  /* -- Had to add extra lines for touch events -- */
-  
-  window.onmousedown = e => handleOnDown(e);
-  
-  window.ontouchstart = e => handleOnDown(e.touches[0]);
-  
-  window.onmouseup = e => handleOnUp(e);
-  
-  window.ontouchend = e => handleOnUp(e.touches[0]);
-  
-  window.onmousemove = e => handleOnMove(e);
-  
-  window.ontouchmove = e => handleOnMove(e.touches[0]);
-  
-
-
   return (
-    <div id="container" className={mr.container_gallery}>
-      <WhiteNavbar/>
+    <div>
+        <Navbar/>
+       <div className={rm.container}>
+    <div className={rm.heading}>
+      <h3>PHOTO <span>Gallery</span></h3>
+    </div>
+    <div className={rm.box}>
       
+      <div className={rm.col}>
+        <a href="https://en.wikipedia.org/wiki/Cheetah"><img src="https://images.unsplash.com/photo-1534759846116-5799c33ce22a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2lsZGxpZmUlMjBzY2NjZW5lcnl8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"/></a>
+         <a href="https://en.wikipedia.org/wiki/Zebra"><img src="https://images.unsplash.com/photo-1503656142023-618e7d1f435a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8d2lsZGxpZmUlMjBzY2NjZW5lcnl8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"/></a>
+          <a href="https://en.wikipedia.org/wiki/Wolf"><img src="https://images.unsplash.com/photo-1516934024742-b461fba47600?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d2lsZGxpZmUlMjBzY2NjZW5lcnl8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"/></a>
+           <a href="https://en.wikipedia.org/wiki/Elephant"><img src="https://images.unsplash.com/photo-1549366021-9f761d450615?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8d2lsZGxpZmUlMjBzY2NjZW5lcnl8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"/></a>
+            <a href="https://en.wikipedia.org/wiki/Squirrel"><img src="https://images.unsplash.com/photo-1504006833117-8886a355efbf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8d2lsZGxpZmUlMjBzY2NjZW5lcnl8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"/></a>
+            <a href="https://en.wikipedia.org/wiki/Hippopotamus"><img src="https://images.unsplash.com/photo-1541414779316-956a5084c0d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8d2lsZGxpZmUlMjBzY2NjZW5lcnl8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"/></a>
+            <a href="https://en.wikipedia.org/wiki/Lion"><img src="https://images.unsplash.com/photo-1575550959106-5a7defe28b56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"/></a>
+           <a href="https://en.wikipedia.org/wiki/Wolf"> <img src="https://images.unsplash.com/photo-1500479694472-551d1fb6258d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8d2lsZGxpZmUlMjBzY2NjZW5lcnl8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"/></a>
+            <a href="https://en.wikipedia.org/wiki/Wolf"><img src="https://images.unsplash.com/photo-1530090382228-7195e08d7a75?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"/></a>
+           <a href="https://en.wikipedia.org/wiki/Sparrow"> <img src="https://images.unsplash.com/photo-1533388109040-cb6a0fa5006a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"/></a>
+            <a href="https://en.wikipedia.org/wiki/Deer"><img src="https://images.unsplash.com/photo-1543946207-39bd91e70ca7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTl8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60" /></a>
+            <a href="https://en.wikipedia.org/wiki/Tiger"><img src="https://images.unsplash.com/photo-1605092676920-8ac5ae40c7c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTUzfHx3aWxkbGlmZSUyMHNjY2NlbmVyeXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60"/></a>
+      </div>
+
+        <div className={rm.col}>
+        <a href="https://en.wikipedia.org/wiki/Zebra"><img src="https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1625&q=80" /></a>
+         <a href="https://en.wikipedia.org/wiki/Deer"><img src="https://images.unsplash.com/photo-1505297442708-165286308e1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" /></a>
+         <a href="https://en.wikipedia.org/wiki/Bear"><img src="https://images.unsplash.com/photo-1525869916826-972885c91c1e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80" /></a>
+          <a href="https://en.wikipedia.org/wiki/Flamingo"><img src="https://images.unsplash.com/photo-1470619549108-b85c56fe5be8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1049&q=80" /></a>
+          <a href="https://en.wikipedia.org/wiki/Owl"><img src="https://images.unsplash.com/photo-1516233758813-a38d024919c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" /></a>
+            <a href="https://en.wikipedia.org/wiki/Cheetah"> <img src="https://images.unsplash.com/photo-1544979590-37e9b47eb705?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzF8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" /></a>
+            <a href="https://en.wikipedia.org/wiki/Deer"> <img src="https://images.unsplash.com/photo-1545063914-a1a6ec821c88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" /></a>
+              <a href="https://en.wikipedia.org/wiki/Macaw"> <img src="https://images.unsplash.com/photo-1452570053594-1b985d6ea890?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" /></a>
+                <a href="https://en.wikipedia.org/wiki/Squirrel"><img src="https://images.unsplash.com/photo-1470130623320-9583a8d06241?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" /></a>
+                  <a href="https://en.wikipedia.org/wiki/Wolf"><img src="https://images.unsplash.com/photo-1505259839540-04105fcd8ba3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzZ8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" /></a>
+                    <a href="https://en.wikipedia.org/wiki/Peafowl"> <img src="https://images.unsplash.com/photo-1652643152582-8d90c40085fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjU0fHx3aWxkbGlmZSUyMHNjY2NlbmVyeXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60" /></a>
+                <a href="https://en.wikipedia.org/wiki/Dragonfly"><img src="https://images.unsplash.com/photo-1507018757949-5259dcd9d5bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" /></a>
+      </div>
+
+        <div className={rm.col}>
+        <a href="https://en.wikipedia.org/wiki/Redwing"><img src="https://images.unsplash.com/photo-1616906052146-f0ba7aa4fd5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTB8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"/></a>
+        <a href="https://en.wikipedia.org/wiki/Kingfisher"> <img src="https://images.unsplash.com/photo-1618914070127-515cdf4e6afa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTJ8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"/></a>
+          <a href="https://en.wikipedia.org/wiki/Cheetah"><img src="https://images.unsplash.com/photo-1544985361-b420d7a77043?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"/></a>
+           <a href="https://en.wikipedia.org/wiki/Elephant"><img src="https://images.unsplash.com/photo-1531210156519-af875520c158?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTh8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"/></a>
+           <a href="https://en.wikipedia.org/wiki/Wolf"> <img src="https://images.unsplash.com/photo-1478250205167-6965d29e47c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTl8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"/></a>
+           <a href="https://en.wikipedia.org/wiki/Puffin"> <img src="https://images.unsplash.com/photo-1504618223053-559bdef9dd5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjE5fHx3aWxkbGlmZSUyMHNjY2NlbmVyeXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60" /></a>
+           <a href="https://en.wikipedia.org/wiki/Monkey"> <img src="https://images.unsplash.com/photo-1539606249016-c9d3f9bea580?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjV8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"/></a>
+           <a href="https://en.wikipedia.org/wiki/Bull"> <img src="https://images.unsplash.com/photo-1536607043666-458456307176?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njl8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"/></a>
+           <a href="https://en.wikipedia.org/wiki/Eagle"> <img src="https://images.unsplash.com/photo-1514730328399-788445ed8c22?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjM3fHx3aWxkbGlmZSUyMHNjY2NlbmVyeXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60"/></a>
+            <a href="https://en.wikipedia.org/wiki/Grasshopper"><img src="https://images.unsplash.com/photo-1529973803407-d906b4a8432d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzd8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"/></a>
+            <a href="https://en.wikipedia.org/wiki/Elephant"><img src="https://images.unsplash.com/photo-1544211412-2a32426e7fd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODV8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"/></a>
+            <a href="https://en.wikipedia.org/wiki/Raccoon"><img src="https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTJ8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"/></a>
+            <a href="https://en.wikipedia.org/wiki/Horse"><img src="https://images.unsplash.com/photo-1533621541721-fa6d97bb0048?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTUwfHx3aWxkbGlmZSUyMHNjY2NlbmVyeXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60" /></a>
+      </div>
 
 
 
-<div id="gallery_heading" className={mr.gallery_heading}>  GALLERY </div>
-<div id="animals-heading" className={mr.animals_heading}>  ANIMALS </div>
-<div id="scenery-heading" className={mr.scenery_heading}>  SCENERY </div>
-<div id="safari-heading" className={mr.safari_heading}>  SAFARI </div>
 
-      <div id="image-track" className={mr.image_track} data-mouse-down-at="0" data-prev-percentage="0">
-     <div>
-    <div id="animals" className={mr.animals}>ANIMALS</div> 
-    <img className={mr.image} id="img1" src="https://images.unsplash.com/photo-1534759846116-5799c33ce22a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2lsZGxpZmUlMjBzY2NjZW5lcnl8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" draggable="false" />
-    <img className={mr.image} id="img2" src="https://images.unsplash.com/photo-1503656142023-618e7d1f435a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8d2lsZGxpZmUlMjBzY2NjZW5lcnl8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" draggable="false" />
-    <img className={mr.image} id="img3" src="https://images.unsplash.com/photo-1516934024742-b461fba47600?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d2lsZGxpZmUlMjBzY2NjZW5lcnl8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" draggable="false" />
-    <img className={mr.image} id="img4" src="https://images.unsplash.com/photo-1541414779316-956a5084c0d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8d2lsZGxpZmUlMjBzY2NjZW5lcnl8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" draggable="false" />
-    <img className={mr.image} id="img5" src="https://images.unsplash.com/photo-1575550959106-5a7defe28b56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" draggable="false" />
-    <img className={mr.image} id="img6" src="https://images.unsplash.com/photo-1543946207-39bd91e70ca7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTl8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60" draggable="false" />
-    <img className={mr.image} id="img7" src="https://images.unsplash.com/photo-1533621541721-fa6d97bb0048?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTUwfHx3aWxkbGlmZSUyMHNjY2NlbmVyeXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60" draggable="false" />
-    <img className={mr.image} id="img8" src="https://images.unsplash.com/photo-1536607043666-458456307176?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njl8fHdpbGRsaWZlJTIwc2NjY2VuZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60" draggable="false" />
-    </div> 
-    <div>
-    <div id="scenery" className={mr.scenery}>SCENERY</div> 
-    <img className={mr.image} id="img1" src="https://images.unsplash.com/photo-1563824458370-ffcdb1cdf372?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2532&q=80" draggable="false" />
-    <img className={mr.image} id="img2" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3174&q=80" draggable="false" />
-    <img className={mr.image} id="img3" src="https://images.unsplash.com/photo-1478466406421-ff7174ac07f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2532&q=80" draggable="false" />
-    <img className={mr.image} id="img4" src="https://images.unsplash.com/photo-1500964757637-c85e8a162699?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2103&q=80" draggable="false" />
-    <img className={mr.image} id="img5" src="https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" draggable="false" />
-    <img className={mr.image} id="img6" src="https://images.unsplash.com/photo-1520181934446-42566c322a18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" draggable="false" />
-    <img className={mr.image} id="img7" src="https://images.unsplash.com/photo-1637081108269-5dd3c97250f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fHNjZW5lcnklMjBtb3VudGFpbnN8ZW58MHwwfDB8fHww&auto=format&fit=crop&w=800&q=60" draggable="false" />
-    <img className={mr.image} id="img8" src="https://images.unsplash.com/photo-1606663967575-8ca32425b97b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" draggable="false" />
-    </div>  
-    
-    <div>
-    <div id="safari" className={mr.safari}>SAFARI</div> 
-    <img className={mr.image} id="img1" src="https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2068&q=80" draggable="false" />
-    <img className={mr.image} id="img2" src="https://images.unsplash.com/photo-1535082623926-b39352a03fb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2091&q=80" draggable="false" />
-    <img className={mr.image} id="img3" src="https://images.unsplash.com/photo-1655397043415-1e963a14d320?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" draggable="false" />
-    <img className={mr.image} id="img4" src="https://images.unsplash.com/photo-1513956641271-ade32a45470f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" draggable="false" />
-    <img className={mr.image} id="img5" src="https://images.unsplash.com/photo-1614315555724-92f81a62bc2f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" draggable="false" />
-    <img className={mr.image} id="img6" src="https://images.unsplash.com/photo-1527436298911-9b95bb614f43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" draggable="false" />
-    <img className={mr.image} id="img7" src="https://images.unsplash.com/photo-1489493887464-892be6d1daae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2067&q=80" draggable="false" />
-    <img className={mr.image} id="img8" src="https://images.unsplash.com/photo-1617938544737-cf7b41829226?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" draggable="false" />
-    </div>  
+    </div>
+    <div className={rm.btn}>
+      <a href="#">BACK TO TOP</a>
+    </div>
+
+
+
+
+
   </div>
-  <hr id="gallery-line" className={mr.gallery_line} />
-  <div id="laster" className={mr.laster}>
-            <div >
-                <p id="gallery-last" className={mr.gallery_last}>©2023 Falina Wildlife Sanctuary. All right reserved.</p>
-            </div>
-            <div id="gallery-last-links" className={mr.gallery_last_links}>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Cookies Settings</a>
-            </div>
-        </div>
-        
+
     </div>
   )
 }

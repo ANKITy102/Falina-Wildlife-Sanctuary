@@ -1,7 +1,7 @@
 .movingCardParentDiv{
     position: relative;
     overflow-x: hidden ;
-    /* z-index: -100; */
+    /* z-index: -4; */
 }
 .movingCard{
     width: 33%;
@@ -13,6 +13,7 @@
     align-items: end;
   
     /* color: white; */
+    z-index: 100;
     /* z-index: -10; */
     z-index: 100;
     box-shadow:  5px 5px 7px #636363;
@@ -48,6 +49,8 @@
 }
 /* .buttonSec{
     background-color: transparent;
+.buttonSec{
+    /* background-color: white;
     text-align: center;
     font-size: 14px;
     color: black;
@@ -58,3 +61,7 @@
     cursor: pointer;
     letter-spacing: 0.5px;
 } */
+    /*letter-spacing: 0.5px; */
+    /*background-color: transparent;*/
+    /* z-index: 400; */
+/* } */

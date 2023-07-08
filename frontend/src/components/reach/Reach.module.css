@@ -1,0 +1,62 @@
+
+.container{
+    width:100vw;
+    height:850px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+.heading{
+    text-align: center;
+    font-size: 150px;
+    font-weight: 700;
+    margin-bottom: 4rem;
+}
+.details{
+    display: flex;
+    flex-direction: column;
+    padding-inline: 150px;
+    justify-content: center;
+    gap:5rem;
+    margin-left: 7rem;
+
+
+}
+/* .road{
+    display: flex;
+    flex-direction: row;
+    padding:50px;
+    margin-left:-50px;
+} */
+.details span{
+    font-weight: bold;
+    font-size:1.3rem;
+}
+
+.train{
+    display: flex;
+    flex-direction: row;
+    gap:5rem; 
+    margin-right: 50px;
+
+}
+.image{
+    width:100px;
+    height:auto;
+    object-fit: cover;
+}
+
+.roadText{
+    position: absolute;
+    margin-left: -4rem;
+    margin-right:14rem;
+
+}
+
+.travelHeading{
+    position: relative;
+    margin-left: -4rem;
+    font-weight:bolder;
+    margin-bottom: 0.2rem;
+}
+
+
