@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import st from "./Packages.module.css";
 import Footer from "../../components/footer/Footer";
@@ -26,6 +26,11 @@ const initialState = {
 }
 
 const Packages = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   const [formData, setFormData] = useState(initialState);
   
   const navigate = useNavigate();

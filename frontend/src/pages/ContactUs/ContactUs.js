@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import sks from './ContactUs.module.css';
 import st from '../packageshotel/Packages.module.css'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from "../../assets/images/logo.svg";
 import Footer from '../../components/footer/Footer';
 import WhiteNavbar from '../../components/navbar/WhiteNavbar';
@@ -18,7 +18,11 @@ const initialState = {
     query: ""
 }
 const Contactus = () => {
+    const { pathname } = useLocation();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
     const [formData, setFormData] = useState(initialState)
     const isLoading = useSelector(selectLoading);
     const dispatch =  useDispatch();

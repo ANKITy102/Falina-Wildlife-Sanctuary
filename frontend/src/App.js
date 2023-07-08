@@ -23,6 +23,7 @@ import Settings from './components/settingsPage/Settings'
 import TableAdmin from './components/tableAdmin/TableAdmin'
 // import axios from "axios";
 const App = () => {
+  
   // const dispatch = useDispatch();
   // const getUser = async () => {
   //   try {

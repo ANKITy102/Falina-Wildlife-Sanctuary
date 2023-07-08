@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import rm from './Gallery.module.css'
 import Navbar from '../../components/navbar/Navbar'
+import { useLocation } from 'react-router-dom';
 
 export default function Gallery() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <div>
         <Navbar/>

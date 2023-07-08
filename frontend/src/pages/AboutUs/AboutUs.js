@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import sp from './AboutUs.module.css'
 import st from '../packageshotel/Packages.module.css'
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import logo from "../../assets/images/logo.svg";
 import WhiteNavbar from '../../components/navbar/WhiteNavbar';
 import Footer from "../../components/footer/Footer";
 
 const AboutUs = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <div className={sp.container}>
         <WhiteNavbar/>
