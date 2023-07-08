@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import st from "./TripPlan.module.css";
 import {BsArrowRight,BsArrowLeft} from "react-icons/bs";
+import BtnAni from '../button/BtnAni'
 const TripPlan = () => {
     const ref1 = useRef(null);
     const ref2 = useRef(null);
@@ -156,8 +157,15 @@ const TripPlan = () => {
                         <div className="border-black p-2 rounded-full border-2 hover:cursor-pointer" onClick={navigateRight}><BsArrowRight/></div>
                     </div>
                 </div>
-                <div className={`flex h-full pt-3 w-3/5  ${st.movingCardParentDiv}`}>
-                    <div className={`h-[95%] ${st.transition} ${st.movingCard} ${st.image1}`} ref={ref1}> <div className={st.movingCardContent}>Jeep Safari <br/> Booking<div className={st.buttonSec}>Book Now</div></div> </div>
+                <div className={`flex h-full pt-3 w-3/5 ${st.movingCardParentDiv}`}>
+                    <div className={`h-[95%] ${st.transition} ${st.movingCard} ${st.image1}`} ref={ref1}>
+                         <div className={st.movingCardContent}>Jeep Safari <br/> Booking
+            <BtnAni value="Book Now"/>
+                         </div> 
+                         </div>
+
+
+
                     <div className={`h-[95%] ${st.transition}  ${st.movingCard} ${st.image2}`} ref={ref2}> <div className={st.movingCardContent}>Night Safari <br/> Booking<div className={st.buttonSec}>Book Now</div></div> </div>
                     <div className={`h-[95%] ${st.transition}  ${st.movingCard} ${st.image3}`} ref={ref3}> <div className={st.movingCardContent}>Falina Resort <br/> Booking<div className={st.buttonSec}>Book Now</div></div> </div>
                     <div className={`h-[95%] ${st.transition}  ${st.movingCard} ${st.image4}`} ref={ref4}> <div className={st.movingCardContent}>Falina Package <br/> Booking<div className={st.buttonSec}>Book Now</div></div> </div>
