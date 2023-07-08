@@ -4,6 +4,7 @@ import {SET_LOADING, SET_QUERIES, isLoading, selectQueries} from "../../redux/st
 import Loader from "../loader/Loader"
 import QueriesCard from "../queriesCard/QueriesCard"
 import { getAllQueries } from '../../services/statsServices'
+import st from './userQueries.module.css'
 const UserQueries = () => {
     const dispatch = useDispatch();
     const queries = useSelector(selectQueries);
@@ -24,7 +25,7 @@ const UserQueries = () => {
         getMessage();
     }, [])
     return (
-        <div className="w-full h-full flex-row overflow-y-auto flex flex-wrap justify-between px-14 items-start pt-8">
+        <div className={`w-full h-full flex-row overflow-y-auto flex flex-wrap justify-start gap-14 px-14 items-start pt-8 ${st.syy}`}>
             {seleLoading && <Loader/>}
             {
                 queries.map((elem)=>{

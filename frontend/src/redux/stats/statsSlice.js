@@ -6,7 +6,8 @@ const initialState = {
     isLoading: false,
     queries:[],
     bookings:[],
-    totalFare: 0
+    totalFare: 0,
+    admins:[]
 }
 
 const statsSlice = createSlice({
@@ -16,12 +17,16 @@ const statsSlice = createSlice({
         SET_ALLUSERS(state, action) {
             state.AllUsers = (action.payload);
             let count = 0;
+            let arr = [];
             for (const elem of action.payload) {
                 if (elem.admin) {
+                    arr.push(elem);
                     count++;
                 }
             }
+            
             state.AdminCount = count;
+            state.admins = arr;
         },
         SET_LOADING(state,action){
             state.isLoading=action.payload;
@@ -92,6 +97,7 @@ export const NoofAdmin = (state) => {
 }
 export const isLoading = (state)=> state.stats.isLoading;
 export const selectQueries = (state)=> state.stats.queries;
+export const selectAdmins = (state)=> state.stats.admins
 export const totalRevenue = (state)=> state.stats.totalFare;
 export const { SET_ALLUSERS, SET_QUERIES, SET_LOADING, SET_BOOKINGS } = statsSlice.actions;
 export default statsSlice.reducer;

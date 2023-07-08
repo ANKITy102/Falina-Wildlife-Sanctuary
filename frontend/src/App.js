@@ -19,6 +19,8 @@ import Gallery from "./pages/Gallery/Gallery"
 import UserQueries from './components/userQueries/UserQueries'
 import Payment from './pages/Payment/paymnet'
 import TotalRevenue from './graphs/TotalRevenue'
+import Settings from './components/settingsPage/Settings'
+import TableAdmin from './components/tableAdmin/TableAdmin'
 // import axios from "axios";
 const App = () => {
   // const dispatch = useDispatch();
@@ -89,13 +91,13 @@ const App = () => {
         <Route path="/admin" element={
          <Dashboard>
            <DashboardComponent>
-            <TotalRevenue/>
+            <TableAdmin/>
           </DashboardComponent>
          </Dashboard>
         }/>
         <Route path="/settings" element={
          <Dashboard>
-          <Users/>
+            <Settings/>
          </Dashboard>
         }/>
         <Route path="/dashboard/queries" element={

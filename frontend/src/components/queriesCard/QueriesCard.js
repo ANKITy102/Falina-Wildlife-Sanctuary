@@ -2,7 +2,7 @@ import React from 'react'
 
 const QueriesCard = ({name, message,email}) => {
   return (
-    <div className="w-[29%] h-fit px-3 mb-5 pb-3 flex items-center flex-col rounded-lg" style={{
+    <div className="w-[29%] h-fit px-3 mb-1 pb-3 flex items-center flex-col rounded-lg" style={{
       boxShadow:"0px 0px 10px black"
     }}> 
       <h1 className="text-3xl w-full text-blue-900 py-2 border-b-2 border-slate-400 mb-2 font-[500]">

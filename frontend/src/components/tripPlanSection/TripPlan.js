@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import st from "./TripPlan.module.css";
 import {BsArrowRight,BsArrowLeft} from "react-icons/bs";
+
 import BtnAni from '../button/BtnAni';
+
 
 const TripPlan = () => {
     const ref1 = useRef(null);
