@@ -1,5 +1,5 @@
 import React, {  useState } from 'react'
-import logo from "../../assets/images/logo_footer.png"
+import logo from "../../assets/images/logo_footer_transparent.png"
 import avatar from "../../assets/images/defaultAvatar.png"
 import { Link } from 'react-router-dom'
 import { selectAdmin, selectIsLoggedIn, selectName, selectProfilePic } from '../../redux/auth/authSlice'

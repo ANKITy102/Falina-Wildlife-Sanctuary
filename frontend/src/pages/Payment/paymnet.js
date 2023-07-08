@@ -1,17 +1,19 @@
 import React from 'react';
 import py from './paymnet.module.css';
+import WhiteNavbar from "../../components/navbar/WhiteNavbar";
 
 function Payment(){
   return(
     <>
     <div className={py.container}>
-          <div className={py.nav}>
+          {/* <div className={py.nav}>
               <div className={py.item}>Home</div>
               <div className={py.item}>Packages</div>
               <div className={py.item}></div>
               <div className={py.item}>Gallery</div>
               <div className={py.item}>About Us</div>
-          </div>
+          </div> */}
+          <WhiteNavbar/>
           <div className={py.banner}>
               <p>PAYMENT</p>
           </div>
